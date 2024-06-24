@@ -1,53 +1,41 @@
-import React from "react";
-
+import React from 'react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+import LoginForm from '../LoginForm';
 
 function Navbar() {
   return (
-    <nav className="nav">
-      <a id="link" href="#" className="nav__brand">
-        {" "}
-        Herdoy
-      </a>
-      <ul className="nav__Menu">
-        <li className="nav__Item">
-          {" "}
-          <a id="link" href="#" className="nav__Link">
-            home
-          </a>
-        </li>
-        <li className="nav__Item">
-          {" "}
-          <a id="link" href="#" className="nav__Link">
-            Abount
-          </a>
-        </li>
-        <li className="nav__Item">
-          {" "}
-          <a id="link" href="#" className="nav__Link">
-            Skills
-          </a>
-        </li>
-        <li className="nav__Item">
-          {" "}
-          <a id="link" href="#" className="nav__Link">
-            Portafolio
-          </a>
-        </li>
-        <li  className="nav__Item">
-          {" "}
-          <a id="link" href="#" className="nav__Link">
-            Contact
-          </a>
-        </li>
-        <li className="nav__Item">
-          {" "}
-          <a href="#" className="nav__Link">
-            home
-          </a>
-        </li>
-      </ul>
-
-    </nav>
+      <nav className="nav">
+        <Link id="link"  className="nav__brand">
+          Herdoy
+        </Link>
+        <ul className="nav__Menu">
+          <li className="nav__Item">
+            <Link id="link" to="/login" className="nav__Link">
+              Login
+            </Link>
+          </li>
+          <li className="nav__Item">
+            <Link id="link" className="nav__Link">
+              About
+            </Link>
+          </li>
+          <li className="nav__Item">
+            <Link id="link" className="nav__Link">
+              Skills
+            </Link>
+          </li>
+          <li className="nav__Item">
+            <Link id="link" className="nav__Link">
+              Portfolio
+            </Link>
+          </li>
+          <li className="nav__Item">
+            <Link id="link" className="nav__Link">
+              Contact
+            </Link>
+          </li>
+        </ul>
+      </nav>
   );
 }
 
