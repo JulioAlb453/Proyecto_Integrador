@@ -1,17 +1,24 @@
-import Button from './assets/Components/Button'
-import Navbar from './assets/Components/Button/Navbar'
-import './App.css'
-import './navbar.css' 
+import Button from "./assets/Components/Button";
+import LoginForm from "./assets/Components/LoginForm";
+import Navbar from "./assets/Components/Navbar";
+import "./LoginForm.css"
+import "./navbar.css";
+// import { BrowserRouter, Router, Routers } from "react-router-dom";
 
 function App() {
-
-
   return (
     <>
+      {/* <BrowserRouter>
+        <Navbar />
+        <Routers>
+          <Router></Router>
+        </Routers>
+      </BrowserRouter> */}
       <Navbar/>
-      <Button/>
+      <LoginForm />
+      <Button />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

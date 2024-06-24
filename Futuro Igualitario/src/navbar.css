@@ -1,26 +1,6 @@
-*,*::after, *,*::before{
-    margin: 0;
-    box-sizing: border-box;
-}
-
-html{
-    font-size: 62.5%;
-}
-
-body{
-    font-size: 1.6rem;
-
-}
-
-li{
-    list-style: none;
-}
-
-a{
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-}
-
+#link, .nav__Link {
+    color: white;
+  }
 .nav{
     display: flex;
     align-items: center;
