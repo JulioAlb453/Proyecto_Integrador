@@ -1,0 +1,47 @@
+.main-content1 {
+  width: 50%;
+  background-color: rgba(128, 255, 0, 0.264);
+  height: 600px;
+}
+
+.title {
+  width: 100%;
+  height: 45px;
+  text-align: center;
+  background-color: antiquewhite;
+}
+
+.Programas_destacados {
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* Organiza las secciones en una columna */
+  background-color: #F5D7E1;
+}
+
+
+.seccion2 {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #fff; /* Color de fondo blanco para las secciones */
+  margin-bottom: 10px; /* Espacio entre las secciones */
+}
+
+ .image1 {
+  margin-right: 20px;
+}
+
+ .image2 img {
+  max-width: 200px;
+  height: auto;
+}
+
+.contenido2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.descripcion2 {
+  font-size: 16px;
+}

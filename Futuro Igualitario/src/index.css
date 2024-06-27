@@ -1,7 +1,7 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
  
-  background: url('./assets/fondo.jpg')
+ background-color: bisque
   no-repeat;
   background-size: cover;
   background-position: center;
@@ -11,6 +11,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body{
+  background-color: rgb(49, 154, 219);
 }
 
 *,*::after, *,*::before{

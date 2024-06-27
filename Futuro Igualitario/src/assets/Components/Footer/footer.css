@@ -1,0 +1,39 @@
+
+footer {
+    background-color: #f1f1f1;
+
+  }
+  
+  .main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Cambia a row si quieres que los elementos estén en una fila */
+    text-align: center;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .imagen img {
+    max-width: 100px;
+    height: auto;
+  }
+  
+  .seccion1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 20px;
+  }
+  
+  .description, .contacts {
+    margin: 10px 0;
+  }
+  

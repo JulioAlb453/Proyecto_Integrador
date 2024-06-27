@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
-import LoginForm from '../LoginForm';
+
 
 function Navbar() {
   return (
       <nav className="nav">
-        <Link id="link"  className="nav__brand">
+        <Link id="link"  to={"/"} className="nav__brand">
           Herdoy
         </Link>
         <ul className="nav__Menu">

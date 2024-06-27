@@ -6,7 +6,12 @@
     align-items: center;
     justify-content: center;
     height: 9vh;
-    background-color: #C82F63;
+    background-color: #C82F63; 
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 1000;
 }
 
 .nav__brand{
