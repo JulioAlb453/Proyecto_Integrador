@@ -29,6 +29,7 @@ function Home() {
                 <div className="descripcion2">
                   <p> Este es otro apoyo:</p>
                   <p>aqui vendra toda la descripcion de este otro programa</p>
+                  <p>aqui vendra toda la descripcion de este otro programa</p>
                 </div>
               </div>  
             </div>
