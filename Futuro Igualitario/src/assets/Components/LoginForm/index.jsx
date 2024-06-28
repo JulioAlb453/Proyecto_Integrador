@@ -3,6 +3,7 @@ import React from 'react';
 import { CiLock } from 'react-icons/ci';
 import Carrusel from '../Carrusel';
 import { SlUserFemale } from 'react-icons/sl';
+
 import './LoginForm.css';
 
 function LoginForm() {
@@ -35,7 +36,6 @@ function LoginForm() {
                 </div>
             </form>
         </div>
-
         </section>
     );
 }
