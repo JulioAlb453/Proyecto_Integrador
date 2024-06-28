@@ -1,33 +1,31 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
- 
- background-color: bisque
-  no-repeat;
+
+  background-color: bisque no-repeat;
   background-size: cover;
   background-position: center;
   height: 100%;
-
 
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-body{
+body {
   background-color: rgb(49, 154, 219);
 }
 
-*,*::after, *,*::before{
+*,
+*::after,
+*,
+*::before {
   margin: 0;
   box-sizing: border-box;
 }
 
-
-li{
+li {
   list-style: none;
 }
-
-
 
 button {
   border-radius: 8px;
@@ -47,6 +45,3 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
-
-

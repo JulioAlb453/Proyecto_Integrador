@@ -86,19 +86,17 @@ function Home() {
         <div className="main-content-vision">
           <div className="title">Vision</div>
           <div className="Vision">
-          <div className="seccion-vision">
-            
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8lORGx2KRQ4ReFGud_Q-5rK9W_8nVXEr9j6f050dc5TOoA-kovI_1G3UatPYFwLs2c0I&usqp=CAU"
-                  alt="Imagen destacada 2"
-                />
+            <div className="seccion-vision">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8lORGx2KRQ4ReFGud_Q-5rK9W_8nVXEr9j6f050dc5TOoA-kovI_1G3UatPYFwLs2c0I&usqp=CAU"
+                alt="Imagen destacada 2"
+              />
               <div className="descripcion-vision">
                 <p> Seccion de noticias:</p>
                 <p>aqui vendra toda la descripcion de este otro programa</p>
                 <p>aqui vendra toda la descripcion de este otro programa</p>
               </div>
-              </div>
-
+            </div>
           </div>
         </div>
       </div>
