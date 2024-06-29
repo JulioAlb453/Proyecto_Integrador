@@ -8,7 +8,7 @@ function Home() {
     <section className="main-section">
       <div>
         <Carrusel />
-      </div>  
+      </div>
       <div className="content-wrapper">
         <div className="main-content1">
           <div className="title">Programas destacados</div>

@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <nav className="nav">
       <Link id="link" to={"/"} className="nav__brand">
-        Herdoy
+        Home
       </Link>
       <ul className="nav__Menu">
         <li className="nav__Item">
@@ -14,8 +14,8 @@ function Navbar() {
           </Link>
         </li>
         <li className="nav__Item">
-          <Link id="link" className="nav__Link">
-            About
+          <Link id="link" to="/agendarCitas" className="nav__Link">
+            agendarCitas
           </Link>
         </li>
         <li className="nav__Item">
