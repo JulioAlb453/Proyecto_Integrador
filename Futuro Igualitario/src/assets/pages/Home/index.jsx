@@ -1,6 +1,6 @@
 import React from "react";
-import Carrusel from "../Carrusel";
-import Footer from "../Footer";
+import Carrusel from "../../Components/Carrusel";
+import Footer from "../../Components/Footer";
 import "./home.css";
 
 function Home() {
@@ -8,7 +8,7 @@ function Home() {
     <section className="main-section">
       <div>
         <Carrusel />
-      </div>
+      </div>  
       <div className="content-wrapper">
         <div className="main-content1">
           <div className="title">Programas destacados</div>
@@ -65,12 +65,12 @@ function Home() {
               <div className="seccion2">
                 <div className="image2">
                   <img
-                    src="https://image.winudf.com/v2/image1/Y29tLnJhbmlhYXBwcy5hbmltZXByb2ZpbGVwaWN0dXJlX3NjcmVlbl8wXzE2ODM0ODYxMTBfMDUy/screen-0.jpg?fakeurl=1&type=.jpg"
+                    src="https://i.pinimg.com/280x280_RS/12/f1/97/12f1977920092d8164884049dabec2d2.jpg"
                     alt="Imagen destacada 2"
                   />
                 </div>
                 <div className="contenido2">
-                  <div className="descripcion2">
+                  <div className="noticia_descripcion2">
                     <p> Este es otro apoyo:</p>
                     <p>aqui vendra toda la descripcion de este otro programa</p>
                     <p>aqui vendra toda la descripcion de este otro programa</p>
@@ -88,7 +88,23 @@ function Home() {
           <div className="Vision">
             <div className="seccion-vision">
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8lORGx2KRQ4ReFGud_Q-5rK9W_8nVXEr9j6f050dc5TOoA-kovI_1G3UatPYFwLs2c0I&usqp=CAU"
+                src="https://i.pinimg.com/236x/c3/a6/e1/c3a6e12585e2a7d78a066b1f9aa7e88e.jpg"
+                alt="Imagen destacada 2"
+              />
+              <div className="descripcion-vision">
+                <p> Seccion de noticias:</p>
+                <p>aqui vendra toda la descripcion de este otro programa</p>
+                <p>aqui vendra toda la descripcion de este otro programa</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="main-content-mision2">
+          <div className="title">Mision</div>
+          <div className="Mision">
+            <div className="seccion-mision">
+              <img
+                src="https://i.pinimg.com/236x/c3/a6/e1/c3a6e12585e2a7d78a066b1f9aa7e88e.jpg"
                 alt="Imagen destacada 2"
               />
               <div className="descripcion-vision">

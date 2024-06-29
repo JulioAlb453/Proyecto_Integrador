@@ -1,16 +1,8 @@
-.main-sectionx {
+.main-section {
   display: flex;
   flex-direction: column;
 }
-.content-wraper2 {
-  width: 48%;
-  padding-bottom: 10%;
-}
 
-.Vision {
-  width: 100%;
-  background-color: #f5d7e1;
-}
 .content-wrapper {
   display: flex;
   justify-content: space-between;
@@ -20,14 +12,27 @@
 .main-content1,
 .main-content2 {
   width: 48%;
+  
 }
 
-.main-content1 {
+.main-content1,
+.main-content2,
+.main-content-vision,
+.main-content-mision2 {
   height: auto;
+  
 }
 
-.main-content2 {
-  height: auto;
+.content-wraper2 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 10%;
+}
+
+.main-content-vision,
+.main-content-mision2 {
+  width: 48%;
 }
 
 .title {
@@ -38,7 +43,9 @@
 }
 
 .Programas_destacados,
-.noticias {
+.noticias,
+.Vision,
+.Mision {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -48,11 +55,14 @@
 .seccion1,
 .seccion2,
 .noticia-seccion1,
-.seccion-vision {
+.noticia-seccion2,
+.seccion-vision,
+.seccion-mision {
+  
   display: flex;
   align-items: flex-start;
   padding: 20px;
-  background-color: #fff;
+  background-color: #f5d7e1;
   margin-bottom: 10px;
 }
 
@@ -72,13 +82,17 @@
 .contenido1,
 .contenido2,
 .descripcion1,
-.descripcion2 {
+.descripcion2,
+.descripcion-vision {
   display: flex;
+  
   flex-direction: column;
   justify-content: center;
 }
 
 .descripcion1,
-.descripcion2 {
+.descripcion2,
+.noticia_descripcion2,
+.descripcion-vision {
   font-size: 16px;
 }

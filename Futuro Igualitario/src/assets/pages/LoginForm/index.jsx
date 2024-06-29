@@ -1,7 +1,7 @@
 // ./components/LoginForm.jsx
 import React from "react";
 import { CiLock } from "react-icons/ci";
-import Carrusel from "../Carrusel";
+import Carrusel from "../../Components/Carrusel";
 import { SlUserFemale } from "react-icons/sl";
 
 import "./LoginForm.css";
