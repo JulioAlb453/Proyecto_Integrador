@@ -1,11 +1,13 @@
 import React from "react";
 import Carrusel from "../../Components/Carrusel";
 import Footer from "../../Components/Footer";
+import Navbar from "../../Components/Navbar"
 import "./home.css";
 
 function Home() {
   return (
     <section className="main-section">
+      <Navbar/>
       <div>
         <Carrusel />
       </div>

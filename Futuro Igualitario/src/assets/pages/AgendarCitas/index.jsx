@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import './calendar.css'; // Si deseas personalizar el estilo del calendario
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import Navbar from "../../Components/Navbar";
+import Footer from "../../Components/Footer";
+import "./calendar.css"; // Import the CSS file
 
 function Calendar() {
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState(null);
   const [bookings, setBookings] = useState([]);
 
@@ -21,11 +23,13 @@ function Calendar() {
     if (selectedDate && selectedTime) {
       const newBooking = {
         date: selectedDate.toDateString(),
-        time: selectedTime.toTimeString().split(' ')[0],
+        time: selectedTime.toTimeString().split(" ")[0],
       };
       setBookings([...bookings, newBooking]);
-      alert(`Reserva confirmada para el ${newBooking.date} a las ${newBooking.time}`);
-      setSelectedDate(null);
+      alert(
+        `Reserva confirmada para el ${newBooking.date} a las ${newBooking.time}`
+      );
+      setSelectedDate(new Date());
       setSelectedTime(null);
     }
   };
@@ -33,8 +37,8 @@ function Calendar() {
   const isTimeBooked = (time) => {
     return bookings.some(
       (booking) =>
-        booking.date === selectedDate?.toDateString() &&
-        booking.time === time.toTimeString().split(' ')[0]
+        booking.date === selectedDate.toDateString() &&
+        booking.time === time.toTimeString().split(" ")[0]
     );
   };
 
@@ -43,7 +47,7 @@ function Calendar() {
     const start = new Date();
     start.setHours(9, 0, 0, 0); // Start at 9:00 AM
     const end = new Date();
-    end.setHours(17, 0, 0, 0); // End at 5:00 PM
+    end.setHours(12 , 0, 0, 0); // End at 5:00 PM
 
     while (start <= end) {
       times.push(new Date(start));
@@ -53,36 +57,51 @@ function Calendar() {
   };
 
   return (
-    <div className="calendar-container">
-      <h2>Agendar una cita</h2>
-      <DatePicker
-        selected={selectedDate}
-        onChange={handleDateChange}
-        dateFormat="dd/MM/yyyy"
-        inline
-      />
-      {selectedDate && (
-        <div className="time-picker">
-          <h3>Selecciona una hora:</h3>
-          {generateTimes().map((time) => (
-            <button
-              key={time}
-              disabled={isTimeBooked(time)}
-              onClick={() => handleTimeChange(time)}
-              className={selectedTime && selectedTime.getTime() === time.getTime() ? 'selected' : ''}
-            >
-              {time.toTimeString().split(' ')[0]}
-            </button>
-          ))}
+    <section>
+      <Navbar />
+      <div className="MainConteiner">
+        <div className="calendar-container">
+          <div className="calendar-side">
+            <h2>Agendar una cita</h2>
+            <DatePicker
+              selected={selectedDate}
+              onChange={handleDateChange}
+              dateFormat="dd/MM/yyyy"
+              inline
+            />
+          </div>
+          <div className="time-side">
+            <h3>Selecciona una hora:</h3>
+            <div className="time-picker">
+              {generateTimes().map((time) => (
+                <button
+                  key={time}
+                  disabled={isTimeBooked(time)}
+                  onClick={() => handleTimeChange(time)}
+                  className={
+                    selectedTime && selectedTime.getTime() === time.getTime()
+                      ? "selected"
+                      : ""
+                  }
+                >
+                  {time.toTimeString().split(" ")[0]}
+                </button>
+              ))}
+            </div>
+            {selectedDate && selectedTime && (
+              <div className="booking-summary">
+                <p>
+                  Has seleccionado: {selectedDate.toLocaleDateString()} a las{" "}
+                  {selectedTime.toTimeString().split(" ")[0]}
+                </p>
+                <button onClick={handleBooking}>Confirmar Reserva</button>
+              </div>
+            )}
+          </div>
         </div>
-      )}
-      {selectedDate && selectedTime && (
-        <div className="booking-summary">
-          <p>Has seleccionado: {selectedDate.toLocaleDateString()} a las {selectedTime.toTimeString().split(' ')[0]}</p>
-          <button onClick={handleBooking}>Confirmar Reserva</button>
-        </div>
-      )}
-    </div>
+      </div>
+      <Footer />
+    </section>
   );
 }
 

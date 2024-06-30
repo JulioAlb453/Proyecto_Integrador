@@ -1,43 +1,47 @@
-// ./components/LoginForm.jsx
 import React from "react";
 import { CiLock } from "react-icons/ci";
-import Carrusel from "../../Components/Carrusel";
 import { SlUserFemale } from "react-icons/sl";
 
 import "./LoginForm.css";
 
 function LoginForm() {
   return (
-    <section>
+    <section className="container-login">
+      <img
+        src="https://www.nvinoticias.com/sites/default/files/styles/medium/public/articulos/2024/Mar/marcha-feminista-oaxaca6.jpg.webp?itok=R94gpTZc"
+        alt="Marcha Feminista"
+        className="imagen"
+      />
+
       <div className="wrapper">
         <form action="">
-          <h1>Login</h1>
+          <h1>Inicio de sesion</h1>
           <div className="input-box">
-            <input type="text" placeholder="UserName" required />
+            <input type="text" placeholder="Id usuario" required />
             <SlUserFemale className="icon" />
           </div>
           <div className="input-box">
-            <input type="password" placeholder="Password" required />
+            <input type="password" placeholder="Contraseña" required />
             <CiLock className="icon" />
           </div>
 
           <div className="remember-forgot">
             <label>
               <input type="checkbox" />
-              Remember me
+              recuerdame
             </label>
             <a href="#" className="link">
-              Forgot password?
+              ¿Olvidate tu contraseña?
             </a>
           </div>
 
-          <button type="submit">Login</button>
+          <button type="submit">Iniciar sesion</button>
 
           <div className="register-link">
             <p>
-              Don't have an account?{" "}
+              ¿No tienes una cuenta?{" "}
               <a href="#" className="link">
-                Register
+                Registrate!
               </a>
             </p>
           </div>

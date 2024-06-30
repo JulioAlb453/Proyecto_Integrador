@@ -8,7 +8,6 @@ import "./navbar.css";
 function App() {
   return (
     <Router>
-      <Navbar />
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
