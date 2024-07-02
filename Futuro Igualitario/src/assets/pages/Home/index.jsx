@@ -50,20 +50,25 @@ function Home() {
         <div className="main-content2">
           <div className="title">Noticias</div>
           <div className="noticias">
-            <div className="noticia-seccion1">
-              <div className="img-noticia">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8lORGx2KRQ4ReFGud_Q-5rK9W_8nVXEr9j6f050dc5TOoA-kovI_1G3UatPYFwLs2c0I&usqp=CAU"
-                  alt="Imagen destacada 2"
-                />
-              </div>
-              <div className="descripcion2">
-                <p> Seccion de noticias:</p>
-                <p>aqui vendra toda la descripcion de este otro programa</p>
-                <p>aqui vendra toda la descripcion de este otro programa</p>
+          <div className="noticia-seccion3">
+              <div className="seccion2">
+                <div className="image2">
+                  <img
+                    src="https://i.pinimg.com/280x280_RS/12/f1/97/12f1977920092d8164884049dabec2d2.jpg"
+                    alt="Imagen destacada 2"
+                  />
+                </div>
+                <div className="contenido2">
+                  <div className="noticia_descripcion2">
+                    <p> Este es otro apoyo:</p>
+                    <p>aqui vendra toda la descripcion de este otro programa</p>
+                    <p>aqui vendra toda la descripcion de este otro programa</p>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="noticia-seccion2">
+            
+            <div className="noticia-seccion4">
               <div className="seccion2">
                 <div className="image2">
                   <img

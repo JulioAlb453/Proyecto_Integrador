@@ -12,7 +12,6 @@
 .main-content1,
 .main-content2 {
   width: 48%;
-  
 }
 
 .main-content1,
@@ -20,7 +19,6 @@
 .main-content-vision,
 .main-content-mision2 {
   height: auto;
-  
 }
 
 .content-wraper2 {
@@ -54,16 +52,18 @@
 
 .seccion1,
 .seccion2,
-.noticia-seccion1,
-.noticia-seccion2,
 .seccion-vision,
 .seccion-mision {
-  
   display: flex;
   align-items: flex-start;
   padding: 20px;
   background-color: #f5d7e1;
-  margin-bottom: 10px;
+ 
+}
+
+.seccion1,.seccion2,.noticia-seccion1,.seccion-vision, .seccion-mision{
+  border: 2px solid black; /* Agregado borde negro */
+
 }
 
 .image1,
@@ -85,7 +85,6 @@
 .descripcion2,
 .descripcion-vision {
   display: flex;
-  
   flex-direction: column;
   justify-content: center;
 }
