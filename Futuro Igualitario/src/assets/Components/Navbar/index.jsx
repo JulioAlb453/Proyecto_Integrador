@@ -19,7 +19,7 @@ function Navbar() {
           </Link>
         </li>
         <li className="nav__Item">
-          <Link id="link" className="nav__Link">
+          <Link id="link" to='/adminTable' className="nav__Link">
             Skills
           </Link>
         </li>

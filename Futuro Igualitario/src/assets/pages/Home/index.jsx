@@ -1,15 +1,35 @@
 import React from "react";
 import Carrusel from "../../Components/Carrusel";
 import Footer from "../../Components/Footer";
-import Navbar from "../../Components/Navbar"
+import Navbar from "../../Components/Navbar";
 import "./home.css";
-
+import { toast, Toaster } from "react-hot-toast";
 function Home() {
+  const notify = () => toast.success("Succes");
+
   return (
     <section className="main-section">
-      <Navbar/>
+      <Navbar />
       <div>
         <Carrusel />
+        <button onClick={notify}>boton</button>
+        <Toaster
+          toastOptions={{
+            style: {
+              
+              width:'400px',
+              height:'300px',
+              border: "1px solid",
+              padding: "16px",
+              color: "#00000",
+              backgroundColor: '#759242',
+            },
+            iconTheme:{
+              primary: 'white',
+              secondary: 'green'
+            }
+          }}
+        />
       </div>
       <div className="content-wrapper">
         <div className="main-content1">
@@ -50,7 +70,7 @@ function Home() {
         <div className="main-content2">
           <div className="title">Noticias</div>
           <div className="noticias">
-          <div className="noticia-seccion3">
+            <div className="noticia-seccion3">
               <div className="seccion2">
                 <div className="image2">
                   <img
@@ -67,7 +87,7 @@ function Home() {
                 </div>
               </div>
             </div>
-            
+
             <div className="noticia-seccion4">
               <div className="seccion2">
                 <div className="image2">
