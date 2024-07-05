@@ -1,33 +1,31 @@
 import React from "react";
-import Carrusel from "../../Components/Carrusel";
 import Footer from "../../Components/Footer";
 import Navbar from "../../Components/Navbar";
 import "./home.css";
 import { toast, Toaster } from "react-hot-toast";
+import MyCarousel from "../../Components/Carousel";
 function Home() {
   const notify = () => toast.success("Succes");
-
   return (
     <section className="main-section">
       <Navbar />
       <div>
-        <Carrusel />
+        <MyCarousel />
         <button onClick={notify}>boton</button>
         <Toaster
           toastOptions={{
             style: {
-              
-              width:'400px',
-              height:'300px',
+              width: "400px",
+              height: "300px",
               border: "1px solid",
               padding: "16px",
               color: "#00000",
-              backgroundColor: '#759242',
+              backgroundColor: "#759242",
             },
-            iconTheme:{
-              primary: 'white',
-              secondary: 'green'
-            }
+            iconTheme: {
+              primary: "white",
+              secondary: "green",
+            },
           }}
         />
       </div>
