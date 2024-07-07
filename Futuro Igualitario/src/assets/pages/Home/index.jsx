@@ -1,33 +1,17 @@
 import React from "react";
 import Footer from "../../Components/Footer";
 import Navbar from "../../Components/Navbar";
-import "./home.css";
-import { toast, Toaster } from "react-hot-toast";
+import Button from "../../Components/Button";
 import MyCarousel from "../../Components/Carousel";
+import "./home.css";
+
 function Home() {
-  const notify = () => toast.success("Succes");
   return (
     <section className="main-section">
       <Navbar />
       <div>
         <MyCarousel />
-        <button onClick={notify}>boton</button>
-        <Toaster
-          toastOptions={{
-            style: {
-              width: "400px",
-              height: "300px",
-              border: "1px solid",
-              padding: "16px",
-              color: "#00000",
-              backgroundColor: "#759242",
-            },
-            iconTheme: {
-              primary: "white",
-              secondary: "green",
-            },
-          }}
-        />
+        <Button />
       </div>
       <div className="content-wrapper">
         <div className="main-content1">
@@ -36,29 +20,29 @@ function Home() {
             <div className="seccion2">
               <div className="image2">
                 <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4nyvBGIDunNc7Rob0Kz2IP-pSHBrI-EYrQw&s"
+                  src="https://becas.news/wp-content/uploads/Asi-es-como-puedes-hacer-tu-registro-a-Mujer-es-poder.jpg"
                   alt="Imagen destacada 2"
                 />
               </div>
               <div className="contenido2">
                 <div className="descripcion2">
                   <p> Este es otro apoyo:</p>
-                  <p>aqui vendra toda la descripcion de este otro programa</p>
+                  <p>aquí vendrá toda la descripción de este otro programa</p>
                 </div>
               </div>
             </div>
             <div className="seccion2">
               <div className="image2">
                 <img
-                  src="https://image.winudf.com/v2/image1/Y29tLnJhbmlhYXBwcy5hbmltZXByb2ZpbGVwaWN0dXJlX3NjcmVlbl8wXzE2ODM0ODYxMTBfMDUy/screen-0.jpg?fakeurl=1&type=.jpg"
+                  src="https://tvazteca.brightspotcdn.com/dims4/default/3198725/2147483647/strip/true/crop/1280x720+0+0/resize/928x522!/format/jpg/quality/90/?url=http%3A%2F%2Ftv-azteca-brightspot.s3.amazonaws.com%2F4c%2F28%2F2c576d514615ac73f17a1dff2c60%2Fescasez-de-agua-26.jpg"
                   alt="Imagen destacada 2"
                 />
               </div>
               <div className="contenido2">
                 <div className="descripcion2">
                   <p> Este es otro apoyo:</p>
-                  <p>aqui vendra toda la descripcion de este otro programa</p>
-                  <p>aqui vendra toda la descripcion de este otro programa</p>
+                  <p>aquí vendrá toda la descripción de este otro programa</p>
+                  <p>aquí vendrá toda la descripción de este otro programa</p>
                 </div>
               </div>
             </div>
@@ -72,15 +56,15 @@ function Home() {
               <div className="seccion2">
                 <div className="image2">
                   <img
-                    src="https://i.pinimg.com/280x280_RS/12/f1/97/12f1977920092d8164884049dabec2d2.jpg"
+                    src="https://www.elsoldemexico.com.mx/mexico/politica/8uzwr6-pri-mujeres-cortesia.jpeg/ALTERNATES/LANDSCAPE_768/PRI%20mujeres%20CORTESIA.jpeg"
                     alt="Imagen destacada 2"
                   />
                 </div>
                 <div className="contenido2">
                   <div className="noticia_descripcion2">
                     <p> Este es otro apoyo:</p>
-                    <p>aqui vendra toda la descripcion de este otro programa</p>
-                    <p>aqui vendra toda la descripcion de este otro programa</p>
+                    <p>aquí vendrá toda la descripción o programa</p>
+                    <p>aquí vendrá toda la descripción de este otro programa</p>
                   </div>
                 </div>
               </div>
@@ -90,15 +74,15 @@ function Home() {
               <div className="seccion2">
                 <div className="image2">
                   <img
-                    src="https://i.pinimg.com/280x280_RS/12/f1/97/12f1977920092d8164884049dabec2d2.jpg"
+                    src="https://www.canaldelcongreso.gob.mx/assets/img/noticias/0f68afd242fdc35fd53f207de8a85e8f.jpg"
                     alt="Imagen destacada 2"
                   />
                 </div>
                 <div className="contenido2">
                   <div className="noticia_descripcion2">
                     <p> Este es otro apoyo:</p>
-                    <p>aqui vendra toda la descripcion de este otro programa</p>
-                    <p>aqui vendra toda la descripcion de este otro programa</p>
+                    <p>aquí vendrá toda la descri este otro programa</p>
+                    <p>aquíción de este otro programa</p>
                   </div>
                 </div>
               </div>
@@ -107,35 +91,39 @@ function Home() {
         </div>
       </div>
 
-      <div className="content-wraper2">
+      <div className="content-wrapper2">
         <div className="main-content-vision">
-          <div className="title">Vision</div>
+          <div className="title">Visión</div>
           <div className="Vision">
             <div className="seccion-vision">
-              <img
-                src="https://i.pinimg.com/236x/c3/a6/e1/c3a6e12585e2a7d78a066b1f9aa7e88e.jpg"
-                alt="Imagen destacada 2"
-              />
+              <div className="image2">
+                <img
+                  src="https://salud.morelos.gob.mx/sites/salud.morelos.gob.mx/files/noticias/principal/llama_secretario_de_salud_a_trabajar_en_equipo_para_impulsar_un_morelos_mas_sano1.png"
+                  alt="Imagen destacada 2"
+                />
+              </div>
               <div className="descripcion-vision">
-                <p> Seccion de noticias:</p>
-                <p>aqui vendra toda la descripcion de este otro programa</p>
-                <p>aqui vendra toda la descripcion de este otro programa</p>
+                <p> Sección de noticias:</p>
+                <p>aquí vendrá toda la descripción de este otro programa</p>
+                <p>aquí vendrá toda la descripción de este otro programa</p>
               </div>
             </div>
           </div>
         </div>
         <div className="main-content-mision2">
-          <div className="title">Mision</div>
+          <div className="title">Misión</div>
           <div className="Mision">
             <div className="seccion-mision">
-              <img
-                src="https://i.pinimg.com/236x/c3/a6/e1/c3a6e12585e2a7d78a066b1f9aa7e88e.jpg"
-                alt="Imagen destacada 2"
-              />
+              <div className="image2">
+                <img
+                  src="https://www.elsoldeirapuato.com.mx/local/hk8c3s-luis-ricardo/alternates/LANDSCAPE_400/Luis%20Ricardo"
+                  alt="Imagen destacada 2"
+                />
+              </div>
               <div className="descripcion-vision">
-                <p> Seccion de noticias:</p>
-                <p>aqui vendra toda la descripcion de este otro programa</p>
-                <p>aqui vendra toda la descripcion de este otro programa</p>
+                <p> Sección de noticias:</p>
+                <p>aquí vendrá toda la descripción de este otro programa</p>
+                <p>aquí vendrá toda la descripción de este otro programa</p>
               </div>
             </div>
           </div>

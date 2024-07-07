@@ -1,50 +1,63 @@
 .Conteiner-MyCarrousel {
   min-width: 35%;
-  max-width: 70%; /* Cambiado de 30% a 90% para abarcar casi todo el ancho de la página */
-  margin: 0 auto; 
-  padding: 20px; 
+  max-width: 70%;
+  margin: 0 auto;
+  padding: 20px;
   background-color: #f8f8f8;
-  border-radius: 15px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); 
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
 }
 
 .carousel .slide img {
   width: 80%;
-  border-radius: 10px; /* Esquinas redondeadas de las imágenes */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra de las imágenes */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .carousel .control-arrow {
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-  padding: 10px; /* Espaciado interno */
+  background-color: black;
+  border-radius: 50px;
+  padding: 10px;
 }
 
 .carousel .control-arrow:hover {
-  background-color: rgba(0, 0, 0, 0.7); /* Mayor opacidad al pasar el ratón */
+  background-color: black;
 }
 
-/* Posicionamiento de las flechas */
 .carousel .control-prev.control-arrow {
-  left: 15px; /* Flecha anterior */
+  left: 15px;
 }
 
 .carousel .control-next.control-arrow {
-  right: 15px; /* Flecha siguiente */
+  right: 15px;
 }
 
-/* Ocultar el contador de slides */
 .carousel .carousel-status {
   display: none;
 }
 
-/* Ocultar las miniaturas (thumbnails) */
 .carousel .thumbs-wrapper {
   display: none;
 }
 
-/* Evitar desbordamiento del contenedor del carrusel */
 .carousel .carousel-slider {
   overflow: hidden;
   border-radius: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .Conteiner-MyCarrousel {
+    min-width: 90%;
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .carousel .slide img {
+    width: 100%;
+  }
+
+  .carousel .control-arrow {
+    padding: 5px;
+  }
 }

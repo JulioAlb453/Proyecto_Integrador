@@ -4,7 +4,8 @@ import Home from "./assets/pages/Home";
 import AdminTable from "./assets/Components/adminTable";
 import LoginForm from "./assets/pages/LoginForm";
 import AgendarCitas from "./assets/pages/AgendarCitas";
-import "./navbar.css";
+import Register from "./assets/pages/Register";
+
 function App() {
   return (
     <Router>
@@ -14,6 +15,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/agendarCitas" element={<AgendarCitas />} />
           <Route path="/AdminTable" element= {<AdminTable/>}/>
+          <Route path="/registrar" element={<Register/>}/>
           {/* Otras rutas pueden ir aquí */}
         </Routes>
       </div>
