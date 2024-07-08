@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "../src/assets/templates/HomePageTemplate";
+import ContentWrapper from "./assets/orgams/ContentWrapper/ContentWrapper";
 import LoginForm from './assets/templates/LoginForm'
 import AgendarCitas from './assets/templates/AgendarCitas'
 import AdminTable from './assets/templates/adminTable'
@@ -11,7 +11,7 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<ContentWrapper/>} />
           <Route path="/login" element={<LoginForm/>} />
           <Route path="/agendarCitas" element={<AgendarCitas/>} />
           <Route path="/AdminTable" element= {<AdminTable/>}/>

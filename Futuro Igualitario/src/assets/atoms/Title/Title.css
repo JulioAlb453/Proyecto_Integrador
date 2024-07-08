@@ -6,6 +6,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    font-family: "Schibsted Grotesk", sans-serif;
+    font-optical-sizing: auto;
     
   }
