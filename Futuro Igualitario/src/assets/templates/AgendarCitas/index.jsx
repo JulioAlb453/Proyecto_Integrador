@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Navbar from "../../Components/Navbar";
-import Footer from "../../Components/Footer";
+import Navbar from "../../orgams/Navbar";
+import Footer from "../../orgams/Footer";
 import "./calendar.css"; // Import the CSS file
 
 function Calendar() {

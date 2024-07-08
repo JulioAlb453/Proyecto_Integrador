@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../adminTable/adminTable.css'; // Asegúrate de crear este archivo CSS
+import './adminTable.css'; // Asegúrate de crear este archivo CSS
 function AdminTable() {
   const userData = [
     { id: 1, name: 'Juan', age: 30, gender: 'Male', position: 'Manager' },
