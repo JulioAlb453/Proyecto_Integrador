@@ -4,7 +4,9 @@ import NewsSection from "../../molecule/NewsSection/NewsSection";
 import Title from "../../atoms/Title";
 import FooterOrganism from "../FooterOrganism";
 import CarouselOrganism from "../CarouselOrganism";
+import MissionVisionOrganism from "../MisionVisionOrganism";
 import Navbar from "../Navbar";
+import './ContentWrapper.css';
 
 function ContentWrapper() {
   const programs = [
@@ -35,16 +37,26 @@ function ContentWrapper() {
         "https://www.elsoldemexico.com.mx/mexico/politica/8uzwr6-pri-mujeres-cortesia.jpeg/ALTERNATES/LANDSCAPE_768/PRI%20mujeres%20CORTESIA.jpeg",
       imgAlt: "Imagen destacada 3",
       description: [
-        "Este es otro apoyo:",
+        "Noticia:",
         "aquí vendrá toda la descripción o programa",
         "aquí vendrá toda la descripción de este otro programa",
       ],
     },
+
+    {
+      imgSrc:
+      "https://i0.wp.com/www3.gobiernodecanarias.org/medusa/ecoescuela/igualdad/files/2021/11/whatsapp-image-2021-11-23-at-9-13-02-am.jpeg?w=636&h=756&ssl=1",
+      description: [
+        "Noticia:",
+        "aquí vendrá toda la descripción o programa",
+        "aquí vendrá toda la descripción de este otro programa",
+      ]
+    }
   ];
 
   return (
     <div className="main-section">
-    <Navbar/>
+      <Navbar/>
       <div className="CarouselOrganism">
         <CarouselOrganism />
       </div>
@@ -61,6 +73,7 @@ function ContentWrapper() {
                 imgSrc={program.imgSrc}
                 imgAlt={program.imgAlt}
                 description={program.description}
+                className= 'image-conteiner'
               />
             ))}
           </div>
@@ -78,10 +91,17 @@ function ContentWrapper() {
                 imgSrc={newsItem.imgSrc}
                 imgAlt={newsItem.imgAlt}
                 description={newsItem.description}
+                className= 'image-conteiner'
               />
             ))}
           </div>
         </div>
+      </div>
+      <div className="MisionVisionOrgans-main">
+      <div className="MissionVisionOrgans">
+        <MissionVisionOrganism/>
+      </div>
+
       </div>
       <FooterOrganism/>
     </div>

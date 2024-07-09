@@ -3,42 +3,36 @@
   display: flex;
   flex-direction: column;
 }
-.CarouselOrganism{
+.CarouselOrganism {
   padding-bottom: 20px;
 }
-.content-wrapper,
-.content-wrapper2 {
+.content-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding-bottom: 10%;
 }
 
-.content-wrapper .main-content1,
-.content-wrapper .main-content2,
-.content-wrapper2 .main-content-vision,
-.content-wrapper2 .main-content-mision2 {
+.main-content1,
+.main-content2,
+.MisionVisionOrgans-main {
   width: 100%;
   margin-bottom: 20px;
 }
 
-.content-wrapper .main-content1,
-.content-wrapper .main-content2,
-.content-wrapper2 .main-content-vision,
-.content-wrapper2 .main-content-mision2 {
+.main-content1,
+.main-content2 {
   height: auto;
 }
 
 @media (min-width: 1024px) {
   .content-wrapper,
-  .content-wrapper2 {
+  .MisionVisionOrgans-main {
     flex-direction: row;
   }
 
-  .content-wrapper .main-content1,
-  .content-wrapper .main-content2,
-  .content-wrapper2 .main-content-vision,
-  .content-wrapper2 .main-content-mision2 {
+  .main-content1,
+  .main-content2 {
     width: 48%;
     margin-bottom: 0;
   }
@@ -46,8 +40,7 @@
 
 .Programas_destacados,
 .noticias,
-.Vision,
-.Mision {
+.mission-vision-content {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -58,7 +51,7 @@
 .seccion-vision,
 .seccion-mision {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Por defecto, se apilarán en pantallas pequeñas */
   align-items: flex-start;
   padding: 20px;
   background-color: #f5d7e1;
@@ -71,45 +64,38 @@
   .seccion2,
   .seccion-vision,
   .seccion-mision {
-    flex-direction: row;
-
+    flex-direction: row; /* Se alinearán lado a lado en pantallas más grandes */
+    align-items: center; /* Alineación vertical centrada */
   }
-}
 
-.image1,
-.image2,
-.img-noticia {
-  margin-right: 20px;
-  flex-shrink: 0;
-  width: 350px;
-  height: auto;
+  .image1,
+  .image2,
+  .img-noticia,
+  .image-mission,
+  .image-vision {
+    margin-right: 20px; /* Espacio entre la imagen y el texto */
+    flex-shrink: 0;
+    width: 350px;
+    height: auto;
+  }
 }
 
 .image1 img,
 .image2 img,
-.img-noticia img {
+.img-noticia img,
+.image-mission img,
+.image-vision img {
   width: 100%;
   height: auto;
   object-fit: cover;
 }
 
-.contenido1,
-.contenido2,
-.descripcion1,
-.descripcion2,
-.descripcion-vision {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #f5d7e1;
-}
-
 .descripcion1,
 .descripcion2,
 .noticia_descripcion2,
-.descripcion-vision {
+.descripcion-vision,
+.descripcion-mission {
   font-size: 20px;
   font-family: "Schibsted Grotesk", sans-serif;
   font-optical-sizing: auto;
-  
 }
