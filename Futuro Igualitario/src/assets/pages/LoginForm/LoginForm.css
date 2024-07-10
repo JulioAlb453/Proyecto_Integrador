@@ -1,0 +1,147 @@
+.container-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #c82f63;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.imagen {
+  width: 800px;
+  height: 600px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.wrapper {
+  flex: 1;
+  max-width: 600px;
+  height: 600px;
+  padding: 50px;
+  background: #fff6ee;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.wrapper h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.input-box {
+  position: relative;
+  margin: 20px 0;
+  background-color: #f9e0ec;
+  border-radius: 50px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 10px 40px 10px 10px;
+  background: transparent;
+  border: none;
+  border-radius: 40px;
+  outline: none;
+  font-size: 16px;
+}
+
+.input-box .icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin: -10px 0 15px;
+}
+
+.remember-forgot input {
+  accent-color: #f9e0ec;
+}
+
+.remember-forgot a {
+  color: #ff009d;
+  text-decoration: none;
+}
+
+.remember-forgot a:hover {
+  text-decoration: underline;
+}
+
+.wrapper button {
+  width: 100%;
+  padding: 10px;
+  background: #ff0090;
+  border: none;
+  border-radius: 45px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.register-link {
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.register-link a {
+  color: #ff00aa;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+  .container-login {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .imagen {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .wrapper {
+    max-width: 100%;
+    height: auto;
+    padding: 20px;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .wrapper h1 {
+    font-size: 28px;
+  }
+
+  .input-box input {
+    font-size: 14px;
+  }
+
+  .input-box .icon {
+    font-size: 20px;
+  }
+
+  .remember-forgot {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .remember-forgot a {
+    margin-top: 10px;
+  }
+}
