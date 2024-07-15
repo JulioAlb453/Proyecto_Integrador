@@ -26,6 +26,7 @@
     "react-router-dom": "^6.24.1",
     "router-dom": "^2.2.11",
     "sonner": "^1.5.0",
+    "sweetalert2": "^11.12.2",
     "yarn": "^1.22.22"
   },
   "devDependencies": {
