@@ -6,7 +6,11 @@ import LoginForm from "./assets/Components/pages/LoginForm";
 import AgendarCitas from './assets/Components/pages/Agendarcitas'
 import Register from './assets/Components/pages/Register'
 import SectionNews from './assets/Components/pages/SeccionNoticias'
-
+import ProfilePage from "./assets/Components/pages/ProfilePage";
+import RegistrationPage from "./assets/Components/pages/RegistrationPage";
+import RegistroViviendaPage from "./assets/Components/pages/RegistroVivienda";
+import RegistroEconomicoPage from "./assets/Components/pages/RegistroEconomicoPage";
+import RegistroDenunciasPage from "./assets/Components/pages/RegistroDenuncia";
 function App() {
   return (
     <Router>
@@ -18,7 +22,11 @@ function App() {
           <Route path="/AdminTable" element= {<AdminTable/>}/>
           <Route path="/registrar" element={<Register/>}/>
           <Route path="/SeccionNoticias" element={<SectionNews/>}/>
-          {/* Otras rutas pueden ir aquí */}
+          <Route path="/Perfil" element={<ProfilePage/>}/>
+          <Route path="/RegistroDatosUsuaria" element={<RegistrationPage/>}/>
+          <Route path="/RegistroVivienda" element=<RegistroViviendaPage/>/>
+          <Route path="/RegistroEconomico" element ={<RegistroEconomicoPage/>}/>
+          <Route path="/RegistroDenuncia" element={<RegistroDenunciasPage/>}/>
         </Routes>
       </div>
     </Router>

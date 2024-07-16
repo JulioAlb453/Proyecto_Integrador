@@ -26,8 +26,8 @@ function Navbar() {
           </Link>
         </li>
         <li className="nav__Item">
-          <Link id="link" to="/agendarCitas" className="nav__Link" onClick={handleToggle}>
-            Agendar Citas
+          <Link id="link" to="/Perfil" className="nav__Link" onClick={handleToggle}>
+            Perfil
           </Link>
         </li>
         <li className="nav__Item">

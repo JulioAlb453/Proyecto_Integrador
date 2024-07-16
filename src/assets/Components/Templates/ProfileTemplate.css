@@ -1,0 +1,126 @@
+.perfil-content {
+  width: 80%;
+  margin: 20px auto;
+  border: 2px solid #f7bfdbd0;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #f7bfdbd0;
+}
+
+.perfil-header {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #030303;
+}
+
+.perfil-header h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #030303;
+}
+
+.profile-content {
+  display: flex;
+  flex-wrap: wrap;
+  color: #000000;
+}
+
+.resumen-cita {
+  width: 100%;
+  background-color: #f7bfdbd0;
+  margin-bottom: 20px;
+}
+
+.detalles-cita {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.tipo-cita, .tipo-cita2 {
+  width: calc(50% - 10px);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fdfdfd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: black;
+}
+
+.profile-info, .resumen-cita, .seguimiento-denuncias {
+  width: 48%;
+  margin: 1%;
+  padding: 10px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.perfil-detalles p {
+  margin: 5px 0;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.seguimiento-denuncias .detalles-denuncias {
+  background-color: #fcfcfcd0;
+  padding: 10px;
+  border-radius: 5px;
+  color: #000000;
+  margin: 10px 0;
+}
+
+.detalles-cita h2, .seguimiento-denuncias h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.action-buttons div {
+  width: 30%;
+  text-align: center;
+}
+
+.action-buttons h1 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+.action-buttons button {
+  background-color: #6d2d30;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.action-buttons button:hover {
+  background-color: #dba7c7;
+}
