@@ -1,9 +1,13 @@
-import React from "react";
-import TablaAdministrador from "../Organism/AdminTablePage";
-function AdminTable(){
-    return(
-        <TablaAdministrador/>
-    )
-}
+import React from 'react';
+import AdminTable from '../Templates/AdminTable';
 
-export default AdminTable
+const App = () => {
+  return (
+    <div className="App">
+      <h1>Administrar Tablas</h1>
+      <AdminTable />
+    </div>
+  );
+};
+
+export default App;
