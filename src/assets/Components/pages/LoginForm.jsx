@@ -2,32 +2,31 @@ import React, { useState } from 'react';
 import { CiLock } from 'react-icons/ci';
 import { SlUserFemale } from 'react-icons/sl';
 import './LoginForm.css';
-import { login } from '../../Components/services/login'; // Asegúrate de importar correctamente tu función de servicio de login
+import { login } from '../../Components/services/login'; 
+import { useNavigate } from 'react-router-dom';
 
-function LoginForm() {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
+const LoginForm = () => {
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await login(formData); 
-      alert(response.mensaje); 
-      localStorage.setItem('token', response.token);
-      alert(`Token guardado: ${response.token}`);
-      window.location.href = '/';
+      const data = await login(formData.email, formData.password);
+      const { token } = data;
+      localStorage.setItem('token', token);
+      alert(`Token: ${token}`);
+      navigate('/'); // Redirigir a la página principal
     } catch (error) {
-      alert('Error logging in');
+      alert('Error al iniciar sesión. Verifica tus credenciales.');
     }
   };
 
@@ -89,6 +88,6 @@ function LoginForm() {
       </div>
     </section>
   );
-}
+};
 
 export default LoginForm;

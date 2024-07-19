@@ -1,13 +1,14 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/Usuarios/login';
+const API_URL = 'http://localhost:3000/Usuarios';
 
-export const login = async (user) => {
-    try {
-      const response = await axios.get(API_URL, user);
-      return response.data;
-    } catch (error) {
-      console.error('Error logging in:', error);
-      throw error;
-    }
-  };
+export const login = async (email, password) => {
+  try {
+    const response = await axios.get(`${API_URL}/login`, {
+      params: { email, password }
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response ? error.response.data : new Error('Error de conexión');
+  }
+};

@@ -1,93 +1,123 @@
 import React, { useState } from 'react';
-import TableHeader from '../Atoms/TableHeader';
-import TableBody from '../Molecule/TableBody';
-import Form from '../Molecule/Form';
+import {addNoticia, updateNoticia, deleteNoticia } from '../services/noticias';
 
-const NewsTable = ({ data, onDataChange }) => {
-  const [formMode, setFormMode] = useState(null);
-  const [formData, setFormData] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('');
+const NewsTable = () => {
+  const [noticias, setNoticias] = useState([]);
+  const [formData, setFormData] = useState({
+    titulo: '',
+    descripcion: '',
+    fecha: ''
+  });
 
-  const columns = {
-    title: 'Título',
-    description: 'Descripción',
-    date: 'Fecha',
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
   };
 
-  const handleAdd = () => {
-    setFormMode('add');
-    setFormData(null);
-  };
-
-  const handleEdit = (item) => {
-    setFormMode('edit');
-    setFormData({ ...item });
-  };
-
-  const handleDelete = (id) => {
-    if (window.confirm('¿Estás seguro de que deseas eliminar este registro?')) {
-      const updatedData = data.filter((item) => item.id !== id);
-      onDataChange(updatedData);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await addNoticia(formData);
+      setNoticias([...noticias, formData]); // Agregamos la nueva noticia al estado local
+      setFormData({ titulo: '', descripcion: '', fecha: '' });
+    } catch (error) {
+      console.error('Error adding noticia:', error);
     }
   };
 
-  const handleFormSubmit = (formData) => {
-    if (formMode === 'add') {
-      const newItem = { ...formData, id: Date.now() };
-      onDataChange([...data, newItem]);
-    } else if (formMode === 'edit') {
-      const updatedData = data.map((item) =>
-        item.id === formData.id ? formData : item
+  const handleUpdate = async (id) => {
+    const updatedData = {
+      titulo: formData.titulo,
+      descripcion: formData.descripcion,
+      fecha: formData.fecha
+    };
+    try {
+      await updateNoticia(id, updatedData);
+      const updatedNoticias = noticias.map(noticia =>
+        noticia.id === id ? { ...noticia, ...updatedData } : noticia
       );
-      onDataChange(updatedData);
+      setNoticias(updatedNoticias);
+    } catch (error) {
+      console.error('Error updating noticia:', error);
     }
-    setFormMode(null);
-    setFormData(null);
   };
 
-  const handleSearch = (event) => {
-    setSearchQuery(event.target.value);
+  const handleDelete = async (id) => {
+    try {
+      await deleteNoticia(id);
+      const updatedNoticias = noticias.filter(noticia => noticia.id !== id);
+      setNoticias(updatedNoticias);
+    } catch (error) {
+      console.error('Error deleting noticia:', error);
+    }
   };
-
-  const filteredData = data.filter((item) =>
-    Object.values(item).some((value) =>
-      value.toString().toLowerCase().includes(searchQuery.toLowerCase())
-    )
-  );
 
   return (
     <div>
-      <div className="table-actions">
-        <button onClick={handleAdd}>Agregar</button>
-        <input
-          type="text"
-          placeholder="Buscar..."
-          value={searchQuery}
-          onChange={handleSearch}
-        />
-      </div>
+      <h2>Administrar Noticias</h2>
+      
+      <form onSubmit={handleSubmit}>
+        <label>
+          Título:
+          <input
+            type="text"
+            name="titulo"
+            value={formData.titulo}
+            onChange={handleInputChange}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Descripción:
+          <textarea
+            name="descripcion"
+            value={formData.descripcion}
+            onChange={handleInputChange}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Fecha:
+          <input
+            type="date"
+            name="fecha"
+            value={formData.fecha}
+            onChange={handleInputChange}
+            required
+          />
+        </label>
+        <br />
+        <button type="submit">Agregar Noticia</button>
+      </form>
+      
       <table>
-        <TableHeader columns={columns} selectedColumns={columns} />
-        <TableBody
-          data={filteredData}
-          columns={columns}
-          selectedColumns={columns}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-        />
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {noticias.map(noticia => (
+            <tr key={noticia.id}>
+              <td>{noticia.titulo}</td>
+              <td>{noticia.descripcion}</td>
+              <td>{new Date(noticia.fecha).toLocaleDateString()}</td>
+              <td>
+                <button onClick={() => handleUpdate(noticia.id)}>Actualizar</button>
+                <button onClick={() => handleDelete(noticia.id)}>Eliminar</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
-      {formMode && (
-        <Form
-          mode={formMode}
-          initialData={formData}
-          columns={columns}
-          onSubmit={handleFormSubmit}
-          onCancel={() => {
-            setFormMode(null);
-            setFormData(null);
-          }}
-        />
-      )}
     </div>
   );
 };
