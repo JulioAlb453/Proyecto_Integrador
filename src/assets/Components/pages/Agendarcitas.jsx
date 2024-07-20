@@ -44,7 +44,7 @@ function Calendar() {
         alert(`Cita confirmada:
 Tipo de Cita: ${newBooking.tipo}
 Fecha: ${newBooking.fecha}
-Horario: ${newBooking.horario}
+Horario: ${newBooking.horario}w
 ${newBooking.idDenuncia ? `ID de Denuncia: ${newBooking.idDenuncia}` : ""}`);
       } catch (error) {
         alert("Error al agregar la cita");

@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../Styles/Atoms/ButtonLink.css'
+
 function ButtonLink({ text, to, link }) {
   return (
     <Link to={to || link} className="button-link">

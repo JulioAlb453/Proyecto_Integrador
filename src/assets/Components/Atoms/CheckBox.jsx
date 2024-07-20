@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Styles/Atoms/Checkbox.css'
+
 const Checkbox = ({ id, label, checked, onChange }) => (
   <label className="checkbox-label">
     <input

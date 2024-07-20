@@ -1,0 +1,89 @@
+/* RegistroEconomico.css */
+
+/* General */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.cofre-left, .cofre-right {
+  flex: 1;
+  min-width: 45%;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.field {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  color: #030303;
+  font-weight: bold;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #ffffff;
+}
+
+.input:focus {
+  border-color: #f7bfdbd0;
+  outline: none;
+}
+
+.submit-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #6d2d30;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.submit-button:hover {
+  background-color: #5a1f1c;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.success-message {
+  color: #5bc0de;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}

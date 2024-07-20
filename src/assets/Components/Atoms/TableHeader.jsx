@@ -1,5 +1,6 @@
 import React from 'react';
 import '../Styles/Atoms/TableHeader.css'
+
 const TableHeader = ({ columns, selectedColumns }) => {
   return (
     <thead>

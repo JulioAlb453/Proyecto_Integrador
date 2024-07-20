@@ -1,0 +1,10 @@
+.news-section {
+    padding: 16px;
+  }
+  
+@media screen and (max-with: 768px) {
+    .news-section{
+        flex-direction: column;
+        padding: 10px;
+    }
+}

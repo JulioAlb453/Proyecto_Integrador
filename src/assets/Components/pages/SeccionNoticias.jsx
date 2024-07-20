@@ -21,7 +21,7 @@ const newsItems = [
     imgAlt: "Noticia 2",
     date: "20/02/2023",
   },
-
+  // Agrega más noticias según sea necesario
 ];
 
 const App = () => {

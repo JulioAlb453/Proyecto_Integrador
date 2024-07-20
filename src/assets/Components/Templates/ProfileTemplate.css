@@ -113,6 +113,14 @@
 }
 
 
+.action-buttons button {
+  background-color: #6d2d30;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 .action-buttons button:hover {
   background-color: #dba7c7;

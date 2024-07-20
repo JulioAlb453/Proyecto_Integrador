@@ -2,6 +2,7 @@
 import React from 'react';
 import '../Styles/Atoms/Message.css'
 
+
 function Message({ text, type }) {
   return (
     <p className={`message ${type}`}>
