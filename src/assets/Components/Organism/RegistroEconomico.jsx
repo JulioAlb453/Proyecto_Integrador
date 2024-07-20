@@ -1,7 +1,7 @@
 // src/components/organisms/RegistroEconomico.js
 import React, { useState } from 'react';
 import FielGroup from '../Molecule/FieldGroup'
-import './RegistroEconomico.css';
+import '../Styles/organism/RegistroEconomico.css';
 
 const RegistroEconomico = () => {
   const [values, setValues] = useState({

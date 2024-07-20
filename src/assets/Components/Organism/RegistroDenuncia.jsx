@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import FieldGroup from '../Molecule/FieldGroup';
 import ButtonSubmit from '../Atoms/ButtonSumit';
 import Message from '../Atoms/Message';
-import './RegistroDenuncia.css'
+import '../Styles/organism/RegistroDenuncia.css'
 
 const RegistroDenuncia = () => {
   const [values, setValues] = useState({

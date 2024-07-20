@@ -1,20 +1,18 @@
 .footer {
-  background-color: #C82F63;
+  background-color: #c82f63;
   padding: 20px 0;
   border-top: 1px solid #ddd;
 }
 
 .footer-content {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  align-items: flex-end;
+  max-width: 1000px;
+  margin: auto;
 }
 
 .footer-logo img {
-  max-width: 40%;
+  max-width: 30%;
   height: auto;
 }
 

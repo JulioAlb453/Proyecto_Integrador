@@ -1,7 +1,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import './NewsSectionOrganism.css';
+import '../Styles/organism/NewsSectionOrganism.css';
 import NewsCardMolecule from '../Molecule/NewsCardMolecule';
 const NewsSectionOrganism = ({ newsItems }) => {
   return (

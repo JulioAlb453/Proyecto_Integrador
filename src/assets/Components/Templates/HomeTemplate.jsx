@@ -8,7 +8,7 @@ import Program from '../Molecule/Program';
 import NewsItem from '../Molecule/NewsItem';
 import VisionSection from '../Organism/MissionSection';
 import MissionSection from '../Organism/MissionSection';
-import './HomeTemplate.css';
+import '../Styles/templates/HomeTemplate.css';
 
 function HomeTemplate() {
   const programs = [

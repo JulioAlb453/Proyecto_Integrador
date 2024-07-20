@@ -1,7 +1,7 @@
 // src/components/organisms/CarouselOrganism.js
 import React from 'react';
 import CarouselMolecule from '../Molecule/CarrouselMolecule';
-import './CarrouselOrganism.css'; 
+import '../Styles/organism/CarrouselOrganism.css'; 
 
 function CarouselOrganism() {
   const images = [

@@ -5,7 +5,7 @@ import TitleNews from "../Atoms/TitleNews";
 import ParagraphAtom from "../Atoms/ParagraphAtom";
 import ImageAtom from "../Atoms/ImageAtom";
 import DateAtom from "../Atoms/DateAtom";
-import "./NewsCardMolecule.css";
+import "../Styles/Molecule/NewsCardMolecule.css";
 
 const NewsCardMolecule = ({ title, text, imgSrc, imgAlt, date }) => {
   return (

@@ -5,7 +5,7 @@ import EventsAdminTable from '../Organism/EventsAdminTable';
 import SocialSupportsTable from '../Organism/SocialSupportsTable';
 import NewsTable from '../Organism/NewsTable';
 import AppointmentsTable from '../Organism/AppointmentsTable';
-import './AdminTable.css'
+import '../Styles/templates/AdminTable.css'
 
 const AdminTable = () => {
   const [tableType, setTableType] = useState('users');

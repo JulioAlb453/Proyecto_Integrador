@@ -1,7 +1,7 @@
 // src/components/pages/RegistrationPage.js
 import React from 'react';
 import RegistrationTemplate from '../Templates/RegistrationTemplate';
-import './RegistrationPage.css'
+import '../Styles/templates/RegistrationPage.css'
 
 function RegistrationPage() {
   return <RegistrationTemplate />;

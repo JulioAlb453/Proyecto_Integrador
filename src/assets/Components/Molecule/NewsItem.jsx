@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ImageAtom from '../Atoms/ImageAtom';
-import './NewsItem.css'
+import '../Styles/Molecule/NewsItem.css'
 
 function NewsItem({ imgSrc, imgAlt, description }) {
   return (

@@ -1,7 +1,7 @@
 // src/components/organisms/RegistroVivienda.js
 import React, { useState } from 'react';
 import FieldGroup from '../Molecule/FieldGroup';
-import './RegistroVivienda.css'
+import '../Styles/organism/RegistroVivienda.css'
 function RegistroVivienda({ onSubmit }) {
   const [values, setValues] = useState({
     calle: '',

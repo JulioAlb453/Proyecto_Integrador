@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CiLock } from 'react-icons/ci';
 import { SlUserFemale } from 'react-icons/sl';
-import './LoginForm.css';
+import '../Styles/templates/LoginForm.css';
 import { login } from '../../Components/services/login'; 
 import { useNavigate } from 'react-router-dom';
 

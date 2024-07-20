@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ImageAtom from '../Atoms/ImageAtom'
-import './Program.css'
+import '../Styles/Molecule/Program.css'
 
 function Program({ imgSrc, imgAlt, description }) {
   return (

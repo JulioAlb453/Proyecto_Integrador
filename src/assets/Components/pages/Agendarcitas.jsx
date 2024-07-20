@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Navbar from "../Molecule/Navbar";
 import Footer from "../Molecule/Footer";
 import { addCita } from "../../Components/services/citas";
-import "./calendar.css";
+import "../Styles/templates/calendar.css";
 
 function Calendar() {
   const [selectedDate, setSelectedDate] = useState(new Date());

@@ -4,7 +4,7 @@ import ProfileInfo from "../Organism/ProfileInfo";
 import ActionButtons from "../Organism/ActionButtons";
 import Navbar from "../Molecule/Navbar";
 import Footer from '../Molecule/Footer'
-import "./ProfileTemplate.css";
+import "../Styles/templates/ProfileTemplate.css";
 function ProfileTemplate() {
   return (
     <div className="mainConteiner">
