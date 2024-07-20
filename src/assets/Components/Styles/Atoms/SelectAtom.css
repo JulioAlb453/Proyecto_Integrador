@@ -1,0 +1,20 @@
+.select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  
+  .select:focus {
+    border-color: #4CAF50; /* Green */
+    outline: none;
+  }
+  
+  .select option {
+    padding: 8px;
+  }
+  

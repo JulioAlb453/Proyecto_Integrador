@@ -1,0 +1,8 @@
+.date-atom {
+    font-size: 14px; /* Tamaño de fuente más pequeño para fechas */
+    color: #666; /* Color gris para el texto de la fecha */
+    font-style: italic; /* Estilo de fuente en cursiva para dar un toque diferente */
+    margin: 0; /* Elimina el margen por defecto */
+    padding: 0; /* Elimina el padding por defecto */
+  }
+  

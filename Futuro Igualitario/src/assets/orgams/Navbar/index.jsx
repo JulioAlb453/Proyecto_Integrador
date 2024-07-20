@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {Link } from "react-router-dom";
-import "./Navbar.css"; // Asegúrate de tener tu archivo CSS importado
-
+import '../Styles/Molecule/Navbar.css'
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -15,9 +14,7 @@ function Navbar() {
         Home
       </Link>
       <div className="nav__toggler" onClick={handleToggle}>
-        <div></div>
-        <div></div>
-        <div></div>
+
       </div>
       <ul className={`nav__Menu ${isOpen ? "open" : ""}`}>
         <li className="nav__Item">

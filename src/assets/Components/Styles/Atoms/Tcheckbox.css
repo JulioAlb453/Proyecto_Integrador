@@ -1,0 +1,33 @@
+.checkbox {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+  }
+  
+  .checkbox label {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .checkbox input[type="checkbox"] {
+    margin-right: 8px;
+  }
+  
+  .input-box {
+    margin-top: 10px;
+  }
+  
+  .input-box input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .input-box input[type="text"]:focus {
+    border-color: #4CAF50; /* Green */
+    outline: none;
+  }
+  
