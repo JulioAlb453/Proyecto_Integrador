@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { datosPersonales } from '../services/datosUsuarios'; // Importa la función desde la carpeta servicios
+import { datosPersonales } from '../services/datosUsuarios';
 
 const RegistrarPersonal = () => {
   const [formData, setFormData] = useState({

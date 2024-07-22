@@ -24,7 +24,7 @@ const LoginForm = () => {
       const { token } = data;
       localStorage.setItem('token', token);
       alert(`Token: ${token}`);
-      navigate('/'); // Redirigir a la página principal
+      navigate('/');
     } catch (error) {
       alert('Error al iniciar sesión. Verifica tus credenciales.');
     }

@@ -1,86 +1,66 @@
-// src/components/organisms/RegistroEconomico.js
 import React, { useState } from 'react';
-import FielGroup from '../Molecule/FieldGroup'
-import './RegistroEconomico.css';
+import { datosEconomicos } from '../services/datosUsuarios';
 
 const RegistroEconomico = () => {
-  const [values, setValues] = useState({
+  const [formData, setFormData] = useState({
     ocupacion: '',
     ingresosMensuales: '',
     gastosMensuales: '',
     apoyosExternos: ''
   });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
 
-  const handleChange = (id, value) => {
-    setValues(prevValues => ({
-      ...prevValues,
-      [id]: value
-    }));
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    setError(null);
-    setSuccess(null);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('Usuario no autenticado');
+      return;
+    }
 
     try {
-      const response = await fetch('https://your-api-endpoint.com/registro-economico', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(values)
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to submit form');
-      }
-
-      setSuccess('Datos registrados correctamente');
-      setValues({ ocupacion: '', ingresosMensuales: '', gastosMensuales: '', apoyosExternos: '' });
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+      const response = await datosEconomicos(formData);
+      alert('Datos registrados correctamente');
+    } catch (error) {
+      alert(error.message || 'Error al registrar los datos');
     }
   };
 
   return (
-    <div className="form-container">
-      <form onSubmit={handleSubmit}>
-        <div className="form-section">
-          <div className="cofre-left">
-            <FielGroup
-              fields={[
-                { id: 'ocupacion', label: 'Ocupación', required: true },
-                { id: 'ingresosMensuales', label: 'Ingresos mensuales', required: true }
-              ]}
-              values={values}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="cofre-right">
-            <FielGroup
-              fields={[
-                { id: 'gastosMensuales', label: 'Gastos mensuales' },
-                { id: 'apoyosExternos', label: 'Apoyos externos' }
-              ]}
-              values={values}
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        {error && <p className="error-message">{error}</p>}
-        {success && <p className="success-message">{success}</p>}
-        <button type="submit" className="submit-button" disabled={loading}>
-          {loading ? 'Enviando...' : 'Enviar'}
-        </button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <label>
+        Ocupación:
+        <input type="text" name="ocupacion" value={formData.ocupacion} onChange={handleChange} required />
+      </label>
+      <br />
+      <label>
+        Ingresos Mensuales:
+        <input type="number" name="ingresosMensuales" value={formData.ingresosMensuales} onChange={handleChange} required />
+      </label>
+      <br />
+      <label>
+        Gastos Mensuales:
+        <input type="number" name="gastosMensuales" value={formData.gastosMensuales} onChange={handleChange} required />
+      </label>
+      <br />
+      <label>
+        Apoyos Externos:
+        <select name="apoyosExternos" value={formData.apoyosExternos} onChange={handleChange} required>
+          <option value="">Selecciona una opción</option>
+          <option value="ninguno">Ninguno</option>
+          <option value="Apoyo al progreso del gobierno federal">Prospera</option>
+          <option value="Apoyo a la manutencion para Madres solteras">Apoyo a madres solteras del estado</option>
+        </select>
+      </label>
+      <br />
+      <button type="submit">Registrar</button>
+    </form>
   );
 };
 
