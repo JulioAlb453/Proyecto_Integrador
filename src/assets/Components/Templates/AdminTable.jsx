@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Select from '../Atoms/SelectAtom'
+import Select from '../Atoms/SelectTable'
 import UsersAdminTable from '../Organism/UsersAdminTable';
 import EventsAdminTable from '../Organism/EventsAdminTable';
 import SocialSupportsTable from '../Organism/SocialSupportsTable';
@@ -8,6 +8,8 @@ import AppointmentsTable from '../Organism/AppointmentsTable';
 import '../Styles/templates/AdminTable.css'
 
 const AdminTable = () => {
+  
+  //Datos de usuario
   const [tableType, setTableType] = useState('users');
   const [data, setData] = useState({
     users: [
@@ -19,7 +21,7 @@ const AdminTable = () => {
     news: [],
     appointments: [],
   });
-
+  //Agregar usuario
   const handleDataChange = (tableType, newData) => {
     setData((prevData) => ({
       ...prevData,
@@ -27,6 +29,7 @@ const AdminTable = () => {
     }));
   };
 
+  // selecionar tipo de tabla
   const options = [
     { value: 'users', label: 'Administrar Usuarios' },
     { value: 'events', label: 'Administrar Eventos' },

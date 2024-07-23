@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import TableHeader from '../Atoms/TableHeader';
+import SearchInput from '../Atoms/SearchInput'; // Asegúrate de que la ruta sea correcta
+import TableHeader from '../Molecule/FormHeader';
 import TableBody from '../Molecule/TableBody';
-import Form from '../Molecule/Form';
+import Form from './Form';
 
 const UsersAdminTable = ({ data, onDataChange }) => {
   const [formMode, setFormMode] = useState(null);
@@ -51,18 +52,14 @@ const UsersAdminTable = ({ data, onDataChange }) => {
   };
 
   const filteredData = data.filter((item) =>
-    Object.values(item).some((value) =>
-      value.toString().toLowerCase().includes(searchQuery.toLowerCase())
-    )
+    item.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
     <div>
       <div className="table-actions">
         <button onClick={handleAdd}>Agregar</button>
-        <input
-          type="text"
-          placeholder="Buscar..."
+        <SearchInput
           value={searchQuery}
           onChange={handleSearch}
         />

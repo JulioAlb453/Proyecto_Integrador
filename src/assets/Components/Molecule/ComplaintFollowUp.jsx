@@ -1,11 +1,11 @@
 import React from 'react';
-import Label from '../Atoms/Label';
+import LabelProfile from '../Atoms/LabelProfile';
 
 function ComplaintFollowUp() {
   return (
     <div className="detalles-denuncias">
-      <Label strong="Estatus" text="En seguimiento" />
-      <Label strong="Motivo" text="Agresión física" />
+      <LabelProfile strong="Estatus" text="En seguimiento" />
+      <LabelProfile strong="Motivo" text="Agresión física" />
     </div>
   );
 }

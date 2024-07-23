@@ -1,7 +1,7 @@
 // src/Organism/Tables/UsersTable.js
 import React from 'react';
-import TableHeader from '../Molecule/TableHeader';
-import TableBody from '../Templates/TableBody';
+import TableHeader from './TableHeader';
+import TableBody from './TableBody';
 
 const UsersTable = ({ data, columns, selectedColumns, onEdit, onDelete }) => (
   <table>

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../Styles/Atoms/Paragraph.css'
 
 
 const ParagraphAtom = ({ text, className = '' }) => {

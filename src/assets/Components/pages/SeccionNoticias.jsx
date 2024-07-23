@@ -1,5 +1,9 @@
 import React from "react";
 import NewsSectionOrganism from "../Organism/NewsSectionOrganism";
+import Navbar from '../Molecule/Navbar';
+import Footer from '../Molecule/Footer';
+import '../Styles/Page/SeccionNoticias.css';
+
 const newsItems = [
   {
     title: "Noticia 1",
@@ -15,7 +19,7 @@ const newsItems = [
     title: "Noticia 2",
     text:
       "La desigualdad es un obstáculo para el desarrollo personal, y dentro de las empresas no es la excepción. En este sentido, si las compañías aún no implementan estrategias y/o políticas a favor de la igualdad de género, tendrán problemas dentro del mercado. " +
-      "Dentro del panel He For She: Hombres como aliados en la igualdad de género, organizado por Pacto Mundial Red México 2024, se abordó el papel de los hombres como aliados en la lucha por la equidad de género.3mj",
+      "Dentro del panel He For She: Hombres como aliados en la igualdad de género, organizado por Pacto Mundial Red México 2024, se abordó el papel de los hombres como aliados en la lucha por la equidad de género.",
     imgSrc:
       "https://www.eleconomista.com.mx/__export/1716555780138/sites/eleconomista/img/2024/05/24/mujeres-junta-directiva.jpg_1758632412.jpg",
     imgAlt: "Noticia 2",
@@ -27,7 +31,15 @@ const newsItems = [
 const App = () => {
   return (
     <div>
-      <NewsSectionOrganism newsItems={newsItems} />
+      <div className="Navbar">
+        <Navbar />
+      </div>
+      <div className="NewsSection">
+        <NewsSectionOrganism newsItems={newsItems} />
+      </div>
+      <div className="Footer">
+        <Footer />
+      </div>
     </div>
   );
 };

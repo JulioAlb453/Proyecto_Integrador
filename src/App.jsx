@@ -11,6 +11,7 @@ import RegistrationPage from "./assets/Components/pages/RegistrationPage";
 import RegistroViviendaPage from "./assets/Components/pages/RegistroVivienda";
 import RegistroEconomicoPage from "./assets/Components/pages/RegistroEconomicoPage";
 import RegistroDenunciasPage from "./assets/Components/pages/RegistroDenuncia";
+import ServiceView from "./assets/Components/Organism/Servicios";
 function App() {
   return (
     <Router>
@@ -27,6 +28,7 @@ function App() {
           <Route path="/RegistroVivienda" element=<RegistroViviendaPage/>/>
           <Route path="/RegistroEconomico" element ={<RegistroEconomicoPage/>}/>
           <Route path="/RegistroDenuncia" element={<RegistroDenunciasPage/>}/>
+          <Route path="/Servicios" element={<ServiceView/>}/>
         </Routes>
       </div>
     </Router>

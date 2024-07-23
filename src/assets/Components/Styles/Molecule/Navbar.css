@@ -1,66 +1,124 @@
-#link,
-.nav__Link {
-  color: white;
-}
-
+/* Navbar styles */
 .nav {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  height: 9vh;
-  background-color: #c82f63;
-  position: sticky;
-  top: 0;
-  width: 100%;
+  align-items: center;
+  background-color: #651d77;
+  color: #fff;
   padding: 10px 20px;
-  z-index: 1000;
+  position: fixed; /* Fija el navbar en la parte superior */
+  width: 100%;
+  height: 80px;
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  transition: top 0.3s; /* Agrega una transición suave al cambiar la posición */
+  
+}
+
+.nav__left {
+  display: flex;
+  align-items: center;
 }
 
 .nav__brand {
-  text-transform: uppercase;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
-.nav__Menu {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 3rem;
-}
-
 .nav__toggler {
-  display: none;
-  flex-direction: column;
   cursor: pointer;
 }
 
-.nav__toggler div {
-  width: 2rem;
-  height: 0.2rem;
-  margin: 0.3rem 0;
-  background-color: darkgray;
+.nav__toggler > div {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 4px 0;
+  transition: all 0.3s ease;
 }
 
-@media screen and (max-width: 768px) {
+.nav__menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* Alinea los enlaces en columna */
+  align-items: flex-start; /* Alinea los enlaces a la izquierda */
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #333;
+  height: 100vh; /* Alto del menú igual al 100% del viewport */
+  width: 300px; /* Ancho del menú desplegable */
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transform: translateX(100%); /* Inicialmente fuera de la pantalla */
+  transition: transform 0.3s ease;
+}
+
+.nav__menu.open {
+  transform: translateX(0); /* Muestra el menú desplegable */
+}
+
+.nav__section {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ccc;
+}
+
+.nav__item {
+  margin-bottom: 60px; /* Espaciado entre los enlaces */
+  
+}
+
+.nav__link {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav__icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+.nav__link:hover {
+  color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
   .nav__toggler {
-    display: flex;
+    display: block; /* Muestra el botón de hamburguesa en pantallas pequeñas */
   }
 
-  .nav__Menu {
-    display: none;
-    position: fixed;
-    top: 9vh;
+  .nav__menu {
+    position: absolute;
+    top: 0;
     right: 0;
-    width: 50%;
-    height: 91vh;
-    background: #c82f63;
-    flex-direction: column;
-    justify-content: start;
-    padding-top: 2rem;
-    gap: 2rem;
+    background-color: #333;
+    height: 100vh;
+    width: 200px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: none; /* Oculta el menú desplegado en pantallas pequeñas */
+    transform: translateX(100%); /* Inicialmente fuera de la pantalla */
+    transition: transform 0.3s ease;
   }
 
-  .nav__Menu.open {
-    display: flex;
+  .nav__menu.open {
+    transform: translateX(0); /* Muestra el menú desplegado en pantallas pequeñas */
+  }
+
+  .nav__section,
+  .nav__item {
+    margin-bottom: 10px;
+  }
+
+  .nav__icon {
+    margin-right: 10px;
+    font-size: 1.2rem;
   }
 }

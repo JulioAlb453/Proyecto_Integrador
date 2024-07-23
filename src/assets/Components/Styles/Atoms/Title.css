@@ -1,11 +1,22 @@
+/* Estilo para los titulos */
 .title {
-  width: 100%;
-  height: 45px;
+  color: white;
+  background-color: #4A148C; /* Fondo púrpura */
+  padding: 10px 20px; /* Añadir un poco de padding para espacio interno */
+  border-radius: 8px; /* Bordes redondeados */
+  font-size: 30px; /* Ajustar tamaño de letra para no abarcar mucho espacio */
+  font-weight: bold;
   text-align: center;
-  color: black;
-  background-color: antiquewhite;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 2rem;
+  margin: 10px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 2.6s ease-out, transform 0.6s ease-out;
+  max-width: 80%; /* Limitar el ancho máximo */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title.visible {
+  opacity: 1;
+  transform: translateY(0);
 }

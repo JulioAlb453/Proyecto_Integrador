@@ -1,21 +1,21 @@
-import React from "react";
+import React from 'react';
+import TableDataCell from '../Atoms/TableDataCell';
 
-const TableBody = ({ data, columns, selectedColumns, onEdit, onDelete }) => {
-  return (
-    <tbody>
-      {data.map((item) => (
-        <tr key={item.id}>
-          {Object.keys(columns).map((key) =>
-            selectedColumns[key] ? <td key={key}>{item[key]}</td> : null
-          )}
-          <td>
-            <button onClick={() => onEdit(item)}>Editar</button>
-            <button onClick={() => onDelete(item.id)}>Eliminar</button>
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  );
-};
+// Su propósito es renderizar las filas y celdas de datos en la tabla
+const TableBody = ({ data, columns, selectedColumns, onEdit, onDelete }) => (
+  <tbody>
+    {data.map((item) => (
+      <tr key={item.id}>
+        {Object.keys(columns).map((key) =>
+          selectedColumns[key] ? <TableDataCell key={key}>{item[key]}</TableDataCell> : null
+        )}
+        <TableDataCell>
+          <button onClick={() => onEdit(item)}>Editar</button>
+          <button onClick={() => onDelete(item.id)}>Eliminar</button>
+        </TableDataCell>
+      </tr>
+    ))}
+  </tbody>
+);
 
 export default TableBody;

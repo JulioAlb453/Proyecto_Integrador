@@ -1,7 +1,6 @@
 import React from 'react';
 import TableHeaderCell from '../Atoms/TableHeaderCell';
 
-//Su propósito es agrupar y organizar las celdas de encabezado (<th>) de la tabla
 const TableHeader = ({ columns, selectedColumns }) => (
   <thead>
     <tr>

@@ -1,18 +1,18 @@
 import React from 'react';
-import Label from '../Atoms/Label'
+import LabelProfile from '../Atoms/LabelProfile'
 import ImageAtom from '../Atoms/ImageAtom';
 
 function ProfileDetail() {
     return (
       <div className="perfil-detalles">
-        <Label strong="Nombre" text="Ana Belen Nuñez Hernandez" />
+        <LabelProfile strong="Nombre" text="Ana Belen Nuñez Hernandez" />
         <div className="profile-picture">
           <ImageAtom src="path/to/profile-picture.png" alt="Foto de perfil" />
         </div>
-        <Label strong="Fecha de nacimiento" text="XX/XX/XXXX" />
-        <Label strong="Estado civil" text="Casada" />
-        <Label strong="Lugar de residencia" text="15 Sur Oriente Col. Palmas" />
-        <Label strong="Ocupación" text="Estudiante" />
+        <LabelProfile strong="Fecha de nacimiento" text="XX/XX/XXXX" />
+        <LabelProfile strong="Estado civil" text="Casada" />
+        <LabelProfile strong="Lugar de residencia" text="15 Sur Oriente Col. Palmas" />
+        <LabelProfile strong="Ocupación" text="Estudiante" />
       </div>
     );
   }

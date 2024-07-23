@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import TableBody from '../Molecule/TableBody';
-import TableHeader from '../Atoms/TableHeader';
-import Form from '../Molecule/Form';
-
+import TableHeader from '../Molecule/FormHeader';
+import Form from './Form';
 const EventsAdminTable = ({ data, onDataChange }) => {
   const [formMode, setFormMode] = useState(null);
   const [formData, setFormData] = useState(null);

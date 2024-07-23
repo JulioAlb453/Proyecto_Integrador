@@ -1,11 +1,11 @@
-// src/organisms/MissionSection.js
 import React from 'react';
-import Program from '../Molecule/Program';
+import CardInformativo from '../Molecule/CardInformativo';
 
+//Seecion de Mision
 function MissionSection() {
   return (
     <div className="mission-section">
-      <Program
+      <CardInformativo
         imgSrc="https://www.elsoldeirapuato.com.mx/local/hk8c3s-luis-ricardo/alternates/LANDSCAPE_400/Luis%20Ricardo"
         imgAlt="Imagen de Misión"
         description={[

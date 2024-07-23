@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import TableHeader from '../Atoms/TableHeader';
+import TableHeader from '../Molecule/FormHeader';
 import TableBody from '../Molecule/TableBody';
-import Form from '../Molecule/Form';
+import Form from './Form';
 
 const SocialSupportsTable = ({ data, onDataChange }) => {
   const [formMode, setFormMode] = useState(null);

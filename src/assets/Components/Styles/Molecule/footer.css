@@ -1,29 +1,32 @@
 .footer {
-  background-color: #c82f63;
-  padding: 20px 0;
+  background-color: #5c4a7d; /* Color de fondo morado oscuro */
   border-top: 1px solid #ddd;
+  height: 190px;
 }
 
 .footer-content {
   display: flex;
-  align-items: flex-end;
   max-width: 1000px;
   margin: auto;
 }
 
 .footer-logo img {
-  max-width: 30%;
+  max-width: 130px; /* Reducimos un poco el tamaño del logo */
   height: auto;
+  margin-top: 20px;
 }
 
 .footer-sections {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between; /* Distribuimos los elementos equitativamente */
   width: 100%;
+  margin-top: 50px; /* Añadimos margen superior */
+  margin-left: 40px;
 }
 
 .footer-section {
-  margin-left: 20px;
+  flex: 1; /* Que cada sección ocupe el mismo espacio */
+  margin: 0 10px; /* Añadimos margen a los lados de cada sección */
 }
 
 .footer-section h3 {
@@ -36,7 +39,7 @@
 .footer-section ul {
   margin: 0;
   font-size: 14px;
-  color: #ffffff;
+  color: #f1f1f1; /* Texto blanco para mejor contraste */
 }
 
 .footer-section ul {
