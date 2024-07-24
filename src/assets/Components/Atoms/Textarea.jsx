@@ -1,5 +1,5 @@
 import React from 'react';
-// import '../Styles/Atoms/Textarea.css';
+import '../Styles/Atoms/TextArea.css';
 
 //Agrega la descripcion
 const Textarea = ({ name, value, onChange, placeholder = '', required = false }) => (

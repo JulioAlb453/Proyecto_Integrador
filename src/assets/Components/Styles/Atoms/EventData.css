@@ -1,0 +1,57 @@
+.event-item {
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-top: 2%;
+    margin-bottom: 20px;
+    max-width: 100%; /* Ajusta el ancho máximo si es necesario */
+  }
+  
+  .event-image-container {
+    width: 20%; /* Establece el ancho fijo */
+    height: 10%; /* Establece la altura fija */
+    overflow: hidden; /* Oculta cualquier contenido que se desborde */
+  }
+  
+  .event-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsionar */
+  }
+  
+  .event-content {
+    padding: 15px;
+    flex: 1;
+  }
+  
+  .event-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .event-date,
+  .event-location {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  .event-description {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  @media (max-width: 768px) {
+    .event-item {
+      flex-direction: column; /* En pantallas pequeñas, la imagen estará arriba y el contenido abajo */
+    }
+}
+
+@media (min-width: 768px) {
+    .event-item {
+      flex-direction: row; /* En pantallas grandes, la imagen estará a la izquierda y el contenido a la derecha */
+    }
+}
+  

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import LabelProfile from '../Atoms/LabelProfile'
+import LabelProfile from '../Atoms/LabelAtom'
 import InputAdminTable from '../Atoms/TextDisplay';
 
 function FieldGroup({ fields }) {

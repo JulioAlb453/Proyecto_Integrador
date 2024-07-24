@@ -1,11 +1,10 @@
 import React from 'react';
-import '../Styles/Atoms/Button.css'
 
-//Funcionalidad del boton
-const Button = ({ onClick, children }) => (
-  <button onClick={onClick}>
-    {children}
+
+const ButtonSubmit = ({ text, type, disabled }) => (
+  <button className="submit-button" type={type} disabled={disabled}>
+    {text}
   </button>
 );
 
-export default Button;
+export default ButtonSubmit;

@@ -1,9 +1,9 @@
 import React from "react";
-import RegistroDenuncia from "../Organism/RegistroDenuncia";
+import RegistroDenunciaOrganism from "../Organism/RegistroDenunciaOrganism";
 
 function RegistroDenunciasPage(){
     return(
-        <RegistroDenuncia/>
+        <RegistroDenunciaOrganism/>
     )
 }
 

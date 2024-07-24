@@ -1,63 +1,101 @@
-/* src/components/Organisms/ActionButtons.css */
+/* Estilos generales de la página */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-.action-buttons {
-    width: 80%;
-    margin: 20px auto;
-    padding: 20px;
-    border: 2px solid #f7bfdbd0;
-    border-radius: 10px;
-    background-color: #f7bfdbd0;
-  }
-  
-  .action-buttons > div {
-    margin-bottom: 20px;
-  }
-  
-  .action-buttons h1 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #030303;
-  }
-  
-  .action-buttons .button-link {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #6d2d30;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .action-buttons .button-link:hover {
-    background-color: #5a1f1c;
-  }
-  
-  .action-buttons .button-link:disabled {
-    background-color: #aaa;
-    cursor: not-allowed;
-  }
-  
-  .action-buttons .cofre-left, .action-buttons .cofre-right, .action-buttons .modificar-personal, 
-  .action-buttons .asesorias, .action-buttons .contactos, .action-buttons .RegistroDatosEconomicos,
-  .action-buttons .RegistroDatosVivienda {
-    margin-bottom: 20px;
-    padding: 15px;
-    border-radius: 8px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .action-buttons .cofre-left, .action-buttons .cofre-right {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .action-buttons .cofre-left h1, .action-buttons .cofre-right h1 {
-    margin-bottom: 10px;
-    font-size: 16px;
-    color: #030303;
-  }
-  
+/* Contenedor del formulario para centrarlo en la página */
+.form-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Estilo del contenedor del formulario */
+.form-container {
+  max-width: 900px;
+  width: 100%;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Sección del formulario */
+.form-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Contenedor de campos a la izquierda y derecha */
+.cofre-left,
+.cofre-right {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Agrupación de campos del formulario */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+/* Etiquetas de los campos */
+.form-group label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+/* Campos de texto */
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Textarea */
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+  resize: vertical; /* Permite redimensionar solo verticalmente */
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #650b5a;
+}
+
+/* Mensajes de éxito y error */
+.message {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+}

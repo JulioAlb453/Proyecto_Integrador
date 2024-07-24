@@ -1,7 +1,7 @@
 import React from 'react';
 // import '../Styles/Atoms/Input.css';
 
-//Input para la entrada de datos
+//Se usa en: datos de usuario, para el registro de denuncia
 const InputData = ({ name, value, onChange, type = 'text', placeholder = '', required = false }) => (
   <input
     className="input-field"

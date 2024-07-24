@@ -11,7 +11,6 @@
   height: 80px;
   z-index: 1000; /* Asegura que esté por encima de otros elementos */
   transition: top 0.3s; /* Agrega una transición suave al cambiar la posición */
-  
 }
 
 .nav__left {
@@ -25,6 +24,7 @@
 }
 
 .nav__toggler {
+  display: none; /* Oculta el botón de hamburguesa en pantallas grandes */
   cursor: pointer;
 }
 
@@ -41,34 +41,13 @@
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column; /* Alinea los enlaces en columna */
-  align-items: flex-start; /* Alinea los enlaces a la izquierda */
-  position: fixed;
-  top: 0;
-  right: 0;
-  background-color: #333;
-  height: 100vh; /* Alto del menú igual al 100% del viewport */
-  width: 300px; /* Ancho del menú desplegable */
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transform: translateX(100%); /* Inicialmente fuera de la pantalla */
-  transition: transform 0.3s ease;
+  flex-direction: row; /* Alinea los enlaces en fila en pantallas grandes */
+  align-items: center; /* Centra los enlaces verticalmente */
+  position: relative; /* Cambia a posición relativa para menú desplegable */
 }
 
-.nav__menu.open {
-  transform: translateX(0); /* Muestra el menú desplegable */
-}
-
-.nav__section {
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #ccc;
-}
-
-.nav__item {
-  margin-bottom: 60px; /* Espaciado entre los enlaces */
-  
+.nav__menu > .nav__item {
+  margin-left: 20px; /* Espaciado entre los enlaces */
 }
 
 .nav__link {
@@ -89,36 +68,42 @@
   color: #f0f0f0;
 }
 
+/* Estilos específicos para el menú desplegable en pantallas pequeñas */
 @media (max-width: 768px) {
   .nav__toggler {
     display: block; /* Muestra el botón de hamburguesa en pantallas pequeñas */
   }
 
   .nav__menu {
-    position: absolute;
+    display: none; /* Oculta el menú en pantallas pequeñas por defecto */
+    flex-direction: column; /* Cambia la dirección del menú a columna */
+    position: fixed;
     top: 0;
     right: 0;
     background-color: #333;
     height: 100vh;
-    width: 200px;
+    width: 250px;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    display: none; /* Oculta el menú desplegado en pantallas pequeñas */
     transform: translateX(100%); /* Inicialmente fuera de la pantalla */
     transition: transform 0.3s ease;
   }
 
   .nav__menu.open {
-    transform: translateX(0); /* Muestra el menú desplegado en pantallas pequeñas */
+    display: flex; /* Muestra el menú desplegable */
+    transform: translateX(0); /* Muestra el menú en pantalla */
   }
 
-  .nav__section,
   .nav__item {
-    margin-bottom: 10px;
+    margin: 10px 0; /* Ajusta el espaciado entre los enlaces en pantallas pequeñas */
+  }
+
+  .nav__link {
+    font-size: 1.2rem; /* Ajusta el tamaño de la fuente en pantallas pequeñas */
   }
 
   .nav__icon {
-    margin-right: 10px;
-    font-size: 1.2rem;
+    margin-right: 15px; /* Ajusta el margen del ícono en pantallas pequeñas */
+    font-size: 1.5rem; /* Ajusta el tamaño del ícono en pantallas pequeñas */
   }
 }

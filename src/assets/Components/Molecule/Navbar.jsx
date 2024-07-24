@@ -68,7 +68,7 @@ function Navbar() {
           </Link>
         </li>
         <li className="nav__item">
-          <Link to="/agendarCitas" className="nav__link" onClick={handleToggle}>
+          <Link to="/RegistroDenuncia" className="nav__link" onClick={handleToggle}>
             <FontAwesomeIcon icon={faExclamationCircle} className="nav__icon" />
             Denuncias
           </Link>
@@ -84,7 +84,7 @@ function Navbar() {
           </Link>
         </li>
         <li className="nav__item">
-          <Link to="/eventos" className="nav__link" onClick={handleToggle}>
+          <Link to="/Eventos" className="nav__link" onClick={handleToggle}>
             <FontAwesomeIcon icon={faCalendarAlt} className="nav__icon" />
             Eventos
           </Link>

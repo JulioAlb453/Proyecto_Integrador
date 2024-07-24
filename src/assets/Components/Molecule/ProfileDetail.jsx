@@ -1,5 +1,5 @@
 import React from 'react';
-import LabelProfile from '../Atoms/LabelProfile'
+import LabelProfile from '../Atoms/LabelAtom'
 import ImageAtom from '../Atoms/ImageAtom';
 
 function ProfileDetail() {

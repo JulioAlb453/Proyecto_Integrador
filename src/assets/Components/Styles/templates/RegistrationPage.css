@@ -2,10 +2,10 @@
 .content {
     width: 80%;
     margin: 20px auto;
-    border: 2px solid #f7bfdbd0;
+
     border-radius: 10px;
     padding: 20px;
-    background-color: #f7bfdbd0;
+
   }
   
   
@@ -36,7 +36,6 @@
   }
   
   .input:focus {
-    border-color: #f7bfdbd0;
     outline: none;
   }
   
