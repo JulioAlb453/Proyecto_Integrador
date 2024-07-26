@@ -27,10 +27,12 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
   border-radius: 8px; /* Bordes redondeados */
   padding: 30px;
+  text-align: center;
 }
 
 .MainContainer {
   display: flex;
+  flex: 1;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -38,8 +40,16 @@
 
 .calendar-container {
   display: flex;
+  flex: 1;
   justify-content: space-between;
   align-items: flex-start;
+  height: 600px;
+  max-width: 900px;
+  width: 100%;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .calendar-side {

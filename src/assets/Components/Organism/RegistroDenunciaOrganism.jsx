@@ -4,15 +4,14 @@ import Button from "../Atoms/Button";
 import Message from "../Atoms/Message";
 import Navbar from "../Molecule/Navbar";
 import Footer from "../Molecule/Footer";
-import "../Styles/organism/RegistroDenuncia.css"; // Asegúrate de tener estilos
+import "../Styles/organism/RegistroDenuncia.css"; 
+import { addDenuncia } from '../services/denuncia';
+import Swal from 'sweetalert2';
 
 const RegistroDenunciaOrganism = () => {
   const [values, setValues] = useState({
-    nombreDenunciante: "",
-    fechaDenuncia: "",
-    descripcion: "",
-    evidencias: "",
-    gravedad: "", // Campo para gravedad
+    motivoDenuncia: "",
+    gravedadCaso: "", 
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -30,80 +29,71 @@ const RegistroDenunciaOrganism = () => {
     setLoading(true);
     setError(null);
     setSuccess(null);
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('Usuario no autenticado');
+      setLoading(false);
+      return;
+    }
+    const currentDate = new Date();
+    const formattedDate = currentDate.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+    const formattedTime = currentDate.toTimeString().split(' ')[0]; // Formato HH:MM:SS
 
+    const denunciaData = {
+      ...values,
+      fechaDenuncia: formattedDate,
+      horaDenuncia: formattedTime,
+      estatusDenuncia: 'inicializada',
+    };
     try {
-      const response = await fetch(
-        "https://your-api-endpoint.com/registro-denuncia",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(values),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to submit form");
-      }
-
+      const response = await addDenuncia(denunciaData, token);
+      Swal.fire({
+        title: 'Éxito',
+        text: 'Denuncia registrada correctamente',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+    }); 
       setSuccess("Denuncia registrada correctamente");
       setValues({
-        nombreDenunciante: "",
-        fechaDenuncia: "",
-        descripcion: "",
-        gravedad: "",
+        motivoDenuncia: "",
+        gravedadCaso: "",
       });
     } catch (err) {
+      console.log("Error:", err.message);
       setError(err.message);
     } finally {
+      console.log("Setting loading to false");
       setLoading(false);
     }
   };
 
   return (
-    // Contenerdor principal
     <div className="page-container">
       <Navbar />
-      {/* Contenedor del form */}
       <div className="form-wrapper">
-      {/* Contenedor del contenido del form */}
         <div className="form-container">
           <form onSubmit={handleSubmit}>
             <div className="form-section">
-            {/* Parte de la izquierda del form */}
               <div className="cofre-left">
                 <FieldGroup
-                  fields={[
-                    {
-                      id: "nombreDenunciante",
-                      label: "Nombre del denunciante",
-                      required: true,
-                    },
-                    {
-                      id: "fechaDenuncia",
-                      label: "Fecha de denuncia",
-                      type: "date",
-                      required: true,
-                    },
-                  ]}
+                  fields={[]}
                   values={values}
                   onChange={handleChange}
                 />
               </div>
-              {/* Parte de la derecha */}
               <div className="cofre-right">
+                <h1 className="titulo">Denuncia</h1><br />
                 <FieldGroup
                   fields={[
                     {
-                      id: "descripcion",
+                      id: "motivoDenuncia",
                       label: "Descripción",
                       type: "textarea",
                       required: true,
-                    },,
+                    },
                     {
-                      id: "gravedad",
-                      label: "Gravedad del abuso",
+                      id: "gravedadCaso",
+                      label: "Gravedad del caso",
                       type: "select",
                       options: [
                         { value: "", label: "Selecciona una opción" },
@@ -122,7 +112,7 @@ const RegistroDenunciaOrganism = () => {
             {error && <Message text={error} type="error" />}
             {success && <Message text={success} type="success" />}
             <Button
-              text={loading ? "Enviando..." : "Enviar"}
+              text="Enviar"
               disabled={loading}
             />
           </form>

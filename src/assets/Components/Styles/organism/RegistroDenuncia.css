@@ -7,10 +7,12 @@
 
 /* Contenedor del formulario para centrarlo en la página */
 .form-wrapper {
-  flex: 1;
+  flex: auto;
+  margin-top: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: left;
   padding: 20px;
 }
 
@@ -27,17 +29,12 @@
 /* Sección del formulario */
 .form-section {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  padding: 10px;
 }
+
+
 
 /* Contenedor de campos a la izquierda y derecha */
-.cofre-left,
-.cofre-right {
-  flex: 1;
-  min-width: 300px;
-}
-
 /* Agrupación de campos del formulario */
 .form-group {
   margin-bottom: 1rem;
@@ -73,6 +70,10 @@
   box-sizing: border-box;
   resize: vertical; /* Permite redimensionar solo verticalmente */
 }
+button{
+  gap: none;
+  margin: none;
+}
 
 button:disabled {
   background-color: #ccc;
@@ -99,3 +100,4 @@ button:hover:not(:disabled) {
   background-color: #d4edda;
   color: #155724;
 }
+

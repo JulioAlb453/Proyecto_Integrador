@@ -1,13 +1,12 @@
-// src/components/organisms/RegistroVivienda.js
 import React, { useState } from 'react';
-import FieldGroup from '../Molecule/FieldGroup';
-import '../Styles/organism/RegistroVivienda.css'
-function RegistroVivienda({ onSubmit }) {
+import { datosVivienda } from '../services/datosUsuario'; // Asegúrate de que esta función exista en el archivo
+
+const RegistroVivienda = () => {
   const [values, setValues] = useState({
     calle: '',
     colonia: '',
     numeroExterior: '',
-    numeroInterior: '',
+    numInterior: '',
     codigoPostal: '',
     numHabitaciones: '',
     estatusVivienda: '',
@@ -17,32 +16,28 @@ function RegistroVivienda({ onSubmit }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleChange = (id, value) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
     setValues(prevValues => ({
       ...prevValues,
-      [id]: value
+      [name]: value
     }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setLoading(true);
     setError(null);
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('Usuario no autenticado');
+      setLoading(false);
+      return;
+    }
+
     try {
-      const response = await fetch('/api/viviendas', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(values)
-      });
-
-      if (!response.ok) {
-        throw new Error('Error al enviar los datos');
-      }
-
-      const data = await response.json();
-      console.log('Datos enviados exitosamente:', data);
-      // Maneja el éxito, tal vez redirigiendo o mostrando un mensaje
+      const response = await datosVivienda(values);
+      alert('Datos registrados correctamente');
     } catch (err) {
       setError(err.message);
     } finally {
@@ -51,41 +46,107 @@ function RegistroVivienda({ onSubmit }) {
   };
 
   return (
-    <div className="form-group">
+    <form onSubmit={handleSubmit} className="form-group">
       <div className="cajita1">
-        <FieldGroup 
-          fields={[
-            { id: 'calle', label: 'Calle' },
-            { id: 'colonia', label: 'Colonia' },
-            { id: 'numeroExterior', label: 'Número exterior' },
-            { id: 'numeroInterior', label: 'Número interior' }
-          ]}
-          values={values}
-          onChange={handleChange}
-        />
+        <label>
+          Calle:
+          <input
+            type="text"
+            name="calle"
+            value={values.calle}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Colonia:
+          <input
+            type="text"
+            name="colonia"
+            value={values.colonia}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Número exterior:
+          <input
+            type="number"
+            name="numeroExterior"
+            value={values.numeroExterior}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Número interior:
+          <input
+            type="number"
+            name="numInterior"
+            value={values.numInterior}
+            onChange={handleChange}
+            required
+          />
+        </label>
       </div>
       <div className="cajita2">
-        <FieldGroup 
-          fields={[
-            { id: 'codigoPostal', label: 'Código postal' },
-            { id: 'numHabitaciones', label: 'Num de habitaciones' },
-            { id: 'estatusVivienda', label: 'Estatus vivienda' },
-            { id: 'tipoVivienda', label: 'Tipo vivienda' }
-          ]}
-          values={values}
-          onChange={handleChange}
-        />
+        <label>
+          Código postal:
+          <input
+            type="number"
+            name="codigoPostal"
+            value={values.codigoPostal}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Número de habitaciones:
+          <input
+            type="number"
+            name="numHabitaciones"
+            value={values.numHabitaciones}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Estatus de vivienda:
+          <input
+            type="text"
+            name="estatusVivienda"
+            value={values.estatusVivienda}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Tipo de vivienda:
+          <input
+            type="text"
+            name="tipoVivienda"
+            value={values.tipoVivienda}
+            onChange={handleChange}
+            required
+          />
+        </label>
       </div>
-      <button 
-        className="submit-button" 
-        onClick={handleSubmit}
+      <button
+        type="submit"
+        className="submit-button"
         disabled={loading}
       >
         {loading ? 'Enviando...' : 'Enviar'}
       </button>
       {error && <p className="error-message">{error}</p>}
-    </div>
+    </form>
   );
-}
+};
 
 export default RegistroVivienda;

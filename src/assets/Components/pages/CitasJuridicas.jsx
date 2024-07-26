@@ -1,8 +1,8 @@
 import React from "react";
-import LegalCalendar from "../Organism/LegalCalendar";
+import Calendar from "../Organism/LegalCalendar.jsx";
 
 export default function CitasJuridicasPage(){
     return(
-        <LegalCalendar/>
+        <Calendar/>
     )
 }
