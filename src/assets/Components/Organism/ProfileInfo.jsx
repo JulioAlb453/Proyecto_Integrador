@@ -1,20 +1,25 @@
-import React from 'react';
-import ProfileDetail from '../Molecule/DetallesPerfil';
-import AppointmentSummary from '../Molecule/ResumenCita';
-import ComplaintFollowUp from '../Molecule/SeguimientoDenuncia';
+import React from "react";
+import DetallesPerfil from "../Molecule/DetallesPerfil";
+import DetallesCita from "../Molecule/ResumenCita";
+import SeguimientoDenuncia from "../Molecule/SeguimientoDenuncia";
+import "../Styles/organism/ProfileInfo.css";
+
 function ProfileInfo() {
   return (
     <div className="profile-content">
-      <div className="profile-info">
-        <ProfileDetail />
+      <div className="details-content">
+        <div className="profile-info">
+          <DetallesPerfil />
+        </div>
+
+        <div className="resumen-cita">
+          <h2>RESUMEN DE LA CITA</h2>
+          <DetallesCita />
+        </div>
       </div>
-      <div className="resumen-cita">
-        <h2>RESUMEN DE LA CITA</h2>
-        <AppointmentSummary />
-      </div>
+    {/* Div Denuncias */}
       <div className="seguimiento-denuncias">
-        <h2>SEGUIMIENTO DE LA DENUNCIA</h2>
-        <ComplaintFollowUp />
+        <SeguimientoDenuncia />
       </div>
     </div>
   );

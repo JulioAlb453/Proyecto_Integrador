@@ -1,32 +1,22 @@
-.profile-info, .resumen-cita, .seguimiento-denuncias {
-    width: 48%;
-    
-    margin: 1%;
+
+/* Div principal del perfil de usuaria */
+.profile-info{
+    width: 40%;
     padding: 10px;
     border: 1px solid #000000;
     border-radius: 5px;
+    background-color: aliceblue;
   }
   
-  .profile-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .perfil-detalles p {
-    margin: 5px 0;
-  }
-  
+  /* Imagen-contenedor */
   .profile-picture {
-
     width: 150px;
     height: 150px;
-    border: 1px solid #000000;
     border-radius: 5px;
     overflow: hidden;
     margin: 10px 0;
   }
-  
+  /* Imagen en si */
   .profile-picture img {
     width: 100%;
     height: 100%;

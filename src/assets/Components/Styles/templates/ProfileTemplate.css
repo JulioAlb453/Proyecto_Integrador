@@ -1,51 +1,29 @@
+/* Contenedor principal */
+
 .perfil-content {
-  width: 80%;
+  width: 90%;
   margin: 20px auto;
   border: 2px solid #f7bfdbd0;
   border-radius: 10px;
+  margin-top: 10%;
   padding: 20px;
-  background-color: #f7bfdbd0;
+  background-color: #dd95b9d0;
 }
 
+/* Titulo */
 .perfil-header {
   text-align: center;
   margin-bottom: 20px;
   color: #030303;
 }
 
+/* Titulo */
 .perfil-header h1 {
   font-size: 24px;
   margin-bottom: 20px;
   color: #030303;
 }
 
-.profile-content {
-  display: flex;
-  flex-wrap: wrap;
-  color: #000000;
-}
 
-.resumen-cita {
-  width: 100%;
-  background-color: #f7bfdbd0;
-  margin-bottom: 20px;
-}
-
-.detalles-cita {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.tipo-cita, .tipo-cita2 {
-  width: calc(50% - 10px);
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  background-color: #fdfdfd;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  color: black;
-}
 
 

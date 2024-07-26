@@ -3,7 +3,7 @@ import React from "react";
 import ProfileInfo from "../Organism/ProfileInfo";
 import ActionButtons from "../Organism/ActionButtons";
 import Navbar from "../Molecule/Navbar";
-import Footer from '../Molecule/Footer'
+import Footer from "../Molecule/Footer";
 import "../Styles/templates/ProfileTemplate.css";
 function ProfileTemplate() {
   return (
@@ -13,10 +13,14 @@ function ProfileTemplate() {
         <div className="perfil-header">
           <h1>PERFIL</h1>
         </div>
-        <ProfileInfo />
-        <ActionButtons />
+        <div className="InfoPerfil">
+          <ProfileInfo />
+        </div>
+        <div className="Botones-Forms">
+          <ActionButtons />
+        </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

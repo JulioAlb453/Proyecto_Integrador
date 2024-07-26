@@ -1,7 +1,9 @@
 import React from 'react';
 import LabelProfile from '../Atoms/LabelAtom';
-import '../Styles/Molecule/AppointmentSummary.css'
-function AppointmentSummary() {
+import '../Styles/Molecule/ResumenCita.css'
+
+
+function DetallesCita() {
   return (
     <div className="detalles-cita">
       <div className="tipo-cita">
@@ -18,4 +20,4 @@ function AppointmentSummary() {
   );
 }
 
-export default AppointmentSummary;
+export default DetallesCita;
