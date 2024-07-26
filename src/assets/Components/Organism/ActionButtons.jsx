@@ -1,5 +1,6 @@
 import React from 'react';
 import ButtonLink from '../Atoms/ButtonLink';
+import '../Styles/organism/ActionsButtonsProfile.css'
 function ActionButtons() {
   return (
     <div className="action-buttons">

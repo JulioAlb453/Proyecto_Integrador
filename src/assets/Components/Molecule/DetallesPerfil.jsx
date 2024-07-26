@@ -1,6 +1,7 @@
 import React from 'react';
 import LabelProfile from '../Atoms/LabelAtom'
 import ImageAtom from '../Atoms/ImageAtom';
+import '../Styles/Molecule/ProfileDetail.css'
 
 function ProfileDetail() {
     return (

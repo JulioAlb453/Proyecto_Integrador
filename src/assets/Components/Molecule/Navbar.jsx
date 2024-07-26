@@ -35,7 +35,7 @@ function Navbar() {
   }, [isOpen]);
 
   const handleToggle = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prevState) => !prevState);
   };
 
   return (
@@ -44,17 +44,26 @@ function Navbar() {
         <Link to="/" className="nav__link" onClick={() => setIsOpen(false)}>
           <span className="nav__brand">Secretaría de Igualdad de la Mujer</span>
         </Link>
-      </div>  
-
-      {/* Botón de hamburguesa para el menú */}
-      <div className="nav__toggler" onClick={handleToggle}>
-        <div></div>
-        <div></div>
-        <div></div>
       </div>
 
+      {/* Botón de hamburguesa para el menú */}
+      <button
+        className="nav__toggler"
+        onClick={handleToggle}
+        aria-label="Toggle menu"
+        aria-expanded={isOpen}
+      >
+        <div></div>
+        <div></div>
+        <div></div>
+      </button>
+
       {/* Menú desplegable */}
-      <ul ref={navRef} className={`nav__menu ${isOpen ? "open" : ""}`}>
+      <ul
+        ref={navRef}
+        className={`nav__menu ${isOpen ? "open" : ""}`}
+        aria-hidden={!isOpen}
+      >
         <li className="nav__item">
           <Link to="/Perfil" className="nav__link" onClick={handleToggle}>
             <FontAwesomeIcon icon={faUser} className="nav__icon" />
@@ -96,11 +105,7 @@ function Navbar() {
           </Link>
         </li>
         <li className="nav__item">
-          <Link
-            to="/login"
-            className="nav__link"
-            onClick={handleToggle}
-          >
+          <Link to="/login" className="nav__link" onClick={handleToggle}>
             <FontAwesomeIcon icon={faSignOutAlt} className="nav__icon" />
             Cerrar Sesión
           </Link>

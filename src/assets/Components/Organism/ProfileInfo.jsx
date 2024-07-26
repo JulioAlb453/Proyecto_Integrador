@@ -1,7 +1,7 @@
 import React from 'react';
-import ProfileDetail from '../Molecule/ProfileDetail';
-import AppointmentSummary from '../Molecule/AppointmentSummary';
-import ComplaintFollowUp from '../Molecule/ComplaintFollowUp';
+import ProfileDetail from '../Molecule/DetallesPerfil';
+import AppointmentSummary from '../Molecule/ResumenCita';
+import ComplaintFollowUp from '../Molecule/SeguimientoDenuncia';
 function ProfileInfo() {
   return (
     <div className="profile-content">
