@@ -5,7 +5,6 @@ import EconomicDataMol from '../Molecule/EconomicDataMol';
 import HousingDataMol from '../Molecule/HousingDataMol';
 import AppointmentSummaryMol from '../Molecule/AppointmentSummaryMol';
 import CardAtom from '../Atoms/CardAtom';
-import '../Styles/organism/UserProfileOrganism.css'
 
 function UserProfileOrganism() {
   const [userData, setUserData] = useState(null);

@@ -6,12 +6,10 @@ function MissionSection() {
   return (
     <div className="mission-section">
       <CardInformativo
-        imgSrc="https://www.elsoldeirapuato.com.mx/local/hk8c3s-luis-ricardo/alternates/LANDSCAPE_400/Luis%20Ricardo"
+        imgSrc="src\assets\img\foto2.jpeg"
         imgAlt="Imagen de Misión"
         description={[
-          'Sección de noticias:',
-          'aquí vendrá toda la descripción de este otro programa',
-          'aquí vendrá toda la descripción de este otro programa',
+          "Promover la igualdad de género y empoderar a las mujeres de Tuxtla Gutiérrez mediante la provisión de recursos, información, y apoyo. Nuestra plataforma, Futuro Igualitario, ofrece acceso a servicios esenciales, fomenta la comunidad y facilita el cambio hacia un futuro más justo e inclusivo para todas las ciudadanas."
         ]}
       />
     </div>

@@ -1,31 +1,42 @@
-// src/components/molecules/CarouselComponent.js
 import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import ImageAtom from '../Atoms/ImageAtom';
-import PropTypes from 'prop-types';
+import Slider from 'react-slick';
+import '../Styles/Molecule/Carousel.css';
 
-function CarouselMolecule({ images }) {
-  return (
-    // el carrusel en si
-                                     //tiempo entre las imagenes
-    <Carousel showThumbs={false} autoPlay interval={5000} infiniteLoop>
-      {images.map((image, index) => (
-        <div key={index}>
-          <ImageAtom src={image.src} alt={image.alt} />
+import foto1 from '../../img/foto1.jpeg';
+import foto2 from '../../img/foto2.jpeg';
+import foto3 from '../../img/foto3.jpeg';
+import foto4 from '../../img/foto4.jpeg';
+
+const images = [
+    foto1,
+    foto2,
+    foto3,
+    foto4
+];
+
+const Carousel = () => {
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 8000, // Cambiar cada 10 segundos
+        arrows: true, // Mostrar flechas de navegación
+    };
+
+    return (
+        <div className="carousel">
+            <Slider {...settings}>
+                {images.map((image, index) => (
+                    <div key={index} className="carousel-slide">
+                        <img src={image} alt={`Slide ${index}`} className="carousel-image" />
+                    </div>
+                ))}
+            </Slider>
         </div>
-      ))}
-    </Carousel>
-  );
-}
-
-CarouselMolecule.propTypes = {
-  images: PropTypes.arrayOf(
-    PropTypes.shape({
-      src: PropTypes.string.isRequired,
-      alt: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+    );
 };
 
-export default CarouselMolecule;
+export default Carousel;

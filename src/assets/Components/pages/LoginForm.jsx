@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { CiLock } from 'react-icons/ci';
 import { SlUserFemale } from 'react-icons/sl';
 import '../Styles/templates/LoginForm.css';
-import { login } from '../../Components/services/login'; 
+import { login, getPerfil } from '../../Components/services/login';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../Atoms/Authcontext';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const navigate = useNavigate();
+  const { login: authenticate } = useAuth();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,9 +24,17 @@ const LoginForm = () => {
     try {
       const data = await login(formData.email, formData.password);
       const { token } = data;
-      localStorage.setItem('token', token);
+      authenticate(token);
       alert(`Token: ${token}`);
-      navigate('/'); // Redirigir a la página principal
+      const perfilData = await getPerfil();
+      const { tipoPerfil } = perfilData;
+      if (tipoPerfil == 1) {
+        navigate('/AdminHome');
+      } else if (tipoPerfil == 2) {
+        navigate('/home');
+      } else {
+        alert('Tipo de perfil desconocido.');
+      }
     } catch (error) {
       alert('Error al iniciar sesión. Verifica tus credenciales.');
     }
@@ -37,7 +47,6 @@ const LoginForm = () => {
         alt="Marcha Feminista"
         className="imagen"
       />
-
       <div className="wrapper">
         <form onSubmit={handleSubmit}>
           <h1>Inicio de sesión</h1>
@@ -63,24 +72,13 @@ const LoginForm = () => {
             />
             <CiLock className="icon" />
           </div>
-
-          <div className="remember-forgot">
-            <label>
-              <input type="checkbox" />
-              Recuérdame
-            </label>
-            <a href="#" className="link">
-              ¿Olvidaste tu contraseña?
-            </a>
-          </div>
-
           <button type="submit">Iniciar sesión</button>
 
           <div className="register-link">
             <p>
               ¿No tienes una cuenta?{" "}
               <a href="/registrar" className="link">
-                Regístrate!
+                ¡Regístrate!
               </a>
             </p>
           </div>

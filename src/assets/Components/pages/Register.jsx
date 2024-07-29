@@ -92,7 +92,7 @@ function LoginForm() {
           <div className="register-link">
             <p>
               ¿Ya tienes una cuenta?
-              <a href="/login" className="link">
+              <a href="/" className="link">
                 Iniciar sesión
               </a>
             </p>

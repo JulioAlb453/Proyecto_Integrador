@@ -1,21 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Swal from 'sweetalert2';
 import Navbar from "../Molecule/Navbar";
 import Footer from "../Molecule/Footer";
-import { addCita } from "../services/citas.js"; 
+import { addCita, getAllCitasJuridicas } from "../services/citas.js";
 import "../Styles/templates/calendar.css";
 
 function Calendar() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState(null);
-  const [bookings, setBookings] = useState([]); // Definición de bookings
+  const [bookings, setBookings] = useState([]);
   const [showIdDenuncia, setShowIdDenuncia] = useState(false);
   const [idDenuncia, setIdDenuncia] = useState("");
+  const [citas, setCitas] = useState([]);
+
+  useEffect(() => {
+    const fetchCitas = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          Swal.fire('Usuario no autenticado');
+          return;
+        }
+        const citasData = await getAllCitasJuridicas(token);
+        setCitas(citasData);
+      } catch (error) {
+        console.error('Error al obtener las citas:', error.message);
+      }
+    };
+
+    fetchCitas();
+  }, []);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
-    setSelectedTime(null); 
+    setSelectedTime(null);
   };
 
   const handleTimeChange = (time) => {
@@ -25,35 +45,40 @@ function Calendar() {
   const handleBooking = async () => {
     if (selectedDate && selectedTime) {
       const newBooking = {
-        tipo: 'juridica', // Tipo de cita actualizado a 'juridica'
+        tipo: 'juridica',
         fecha: selectedDate.toISOString().split('T')[0],
         horario: selectedTime.toTimeString().split(' ')[0],
         idDenuncia: showIdDenuncia ? idDenuncia : null,
       };
 
       try {
-        const token = localStorage.getItem('token'); // Obtener el token del localStorage
+        const token = localStorage.getItem('token');
         if (!token) {
-          alert('Usuario no autenticado');
+          Swal.fire('Usuario no autenticado');
           return;
         }
         const response = await addCita(newBooking, token);
-        setBookings([...bookings, newBooking]); // Actualización de bookings
+        const newCita = { ...newBooking, idCita: response.idCita };
+        setCitas([...citas, newCita]);
+        setBookings([...bookings, newBooking]);
         setSelectedDate(new Date());
         setSelectedTime(null);
         setShowIdDenuncia(false);
         setIdDenuncia("");
 
-        alert(`Cita confirmada:
-Tipo de Cita: ${newBooking.tipo}
-Fecha: ${newBooking.fecha}
-Horario: ${newBooking.horario}
-${newBooking.idDenuncia ? `ID de Denuncia: ${newBooking.idDenuncia}` : ''}`);
+        Swal.fire({
+          icon: 'success',
+          title: 'Cita confirmada',
+          html: `<p>Tipo de Cita: ${newBooking.tipo}</p>
+                 <p>Fecha: ${newBooking.fecha}</p>
+                 <p>Horario: ${newBooking.horario}</p>
+                 ${newBooking.idDenuncia ? `<p>ID de Denuncia: ${newBooking.idDenuncia}</p>` : ''}`,
+        });
       } catch (error) {
-        alert('Error al agregar la cita: ' + error.message);
+        Swal.fire('Error al agregar la cita: ' + error.message);
       }
     } else {
-      alert("Por favor, completa todos los campos obligatorios.");
+      Swal.fire('Por favor, completa todos los campos obligatorios.');
     }
   };
 
@@ -79,13 +104,23 @@ ${newBooking.idDenuncia ? `ID de Denuncia: ${newBooking.idDenuncia}` : ''}`);
     return times;
   };
 
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString('es-ES', options);
+  };
+
+  const formatTime = (timeString) => {
+    const [hours, minutes] = timeString.split(':');
+    return `${hours}:${minutes}`;
+  };
+
   return (
-    <section>
+    <section className="calendar-page">
       <Navbar />
-      <div className="MainConteiner">
+      <div className="MainContainer">
         <div className="calendar-container">
           <div className="calendar-side">
-            <h2>Agendar una cita jurídica</h2> {/* Texto actualizado */}
+            <h2>Agendar una cita jurídica</h2>
             <DatePicker
               selected={selectedDate}
               onChange={handleDateChange}
@@ -144,6 +179,35 @@ ${newBooking.idDenuncia ? `ID de Denuncia: ${newBooking.idDenuncia}` : ''}`);
               </>
             )}
           </div>
+        </div>
+        <div className="citas-container">
+          <h2>Citas Jurídicas Generadas</h2>
+          {citas.length > 0 ? (
+            <table className="citas-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Tipo</th>
+                  <th>Fecha</th>
+                  <th>Hora</th>
+                  <th>ID Denuncia</th>
+                </tr>
+              </thead>
+              <tbody>
+                {citas.map((cita) => (
+                  <tr key={cita.idCita}>
+                    <td>{cita.idCita}</td>
+                    <td>{cita.tipo}</td>
+                    <td>{formatDate(cita.fecha)}</td>
+                    <td>{formatTime(cita.horario)}</td>
+                    <td>{cita.idDenuncia}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>No hay citas registradas.</p>
+          )}
         </div>
       </div>
       <Footer />

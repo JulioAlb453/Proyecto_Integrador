@@ -3,9 +3,11 @@
   background-color: #f7f7f7;
   color: #333;
   padding-top: 5%;
+  align-items: center;
 }
 
 .banner {
+  margin-top: 60px;
   text-align: center;
   margin-bottom: 30px;
 }
@@ -21,6 +23,8 @@
 
 .carrousel-section {
   margin-bottom: 30px;
+  width: 900px;
+  margin-left: 23%;
 }
 
 /* Estilos para secciones de apoyos y noticias */

@@ -1,0 +1,29 @@
+
+.perfil-content {
+    width: 90%;
+    margin: 20px auto;
+    border: 2px solid #f7bfdbd0;
+    border-radius: 10px;
+    margin-top: 10%;
+    padding: 20px;
+    background-color: #dd95b9d0;
+  }
+  
+  /* Titulo */
+  .perfil-header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #030303;
+  }
+  
+  /* Titulo */
+  .perfil-header h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #030303;
+  }
+  
+  
+  
+  
+  

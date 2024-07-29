@@ -28,7 +28,9 @@
     "react-multi-carousel": "^2.8.5",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.24.1",
+    "react-slick": "^0.30.2",
     "router-dom": "^2.2.11",
+    "slick-carousel": "^1.8.1",
     "sonner": "^1.5.0",
     "sweetalert2": "^11.12.3",
     "yarn": "^1.22.22"

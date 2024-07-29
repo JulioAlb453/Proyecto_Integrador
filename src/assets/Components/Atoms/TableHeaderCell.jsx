@@ -1,8 +1,16 @@
 import React from 'react';
+import TableHeaderCell from '../Atoms/TableHeaderCell';
 
-// encapsula la estructura y el estilo de una celda de encabezado
-const TableHeaderCell = ({ children }) => (
-  <th>{children}</th>
+//Su propósito es agrupar y organizar las celdas de encabezado (<th>) de la tabla
+const TableHeader = ({ columns, selectedColumns }) => (
+  <thead>
+    <tr>
+      {Object.keys(columns).map((key) =>
+        selectedColumns[key] ? <TableHeaderCell key={key}>{columns[key]}</TableHeaderCell> : null
+      )}
+      <TableHeaderCell>Acciones</TableHeaderCell>
+    </tr>
+  </thead>
 );
 
-export default TableHeaderCell;
+export default TableHeader;

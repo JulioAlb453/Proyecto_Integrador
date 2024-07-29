@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #c82f63;
+    background-color: #7835a5;
     padding: 20px;
     box-sizing: border-box;
   }
@@ -26,7 +26,6 @@
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
     text-align: center;
   }
-  
   .wrapper h1 {
     font-size: 32px;
     margin-bottom: 20px;
@@ -35,7 +34,7 @@
   .input-box {
     position: relative;
     margin: 20px 0;
-    background-color: #f9e0ec;
+    background-color: #d3d3d3;
     border-radius: 50px;
   }
   
@@ -80,14 +79,14 @@
   
   .wrapper button {
     width: 100%;
-    padding: 10px;
-    background: #ff0090;
+    background: #7835a5;
     border: none;
     border-radius: 45px;
     cursor: pointer;
     font-size: 16px;
     color: #fff;
     font-weight: 700;
+    margin-left: -2px;
   }
   
   .register-link {
@@ -96,7 +95,7 @@
   }
   
   .register-link a {
-    color: #ff00aa;
+    color: #7835a5;
     text-decoration: none;
     font-weight: 600;
   }

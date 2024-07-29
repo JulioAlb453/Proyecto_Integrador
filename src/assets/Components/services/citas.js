@@ -1,12 +1,12 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-const API_URL = 'http://localhost:3000/citas/addCita';
+const API_URL = 'https://figualitarioapi.integrador.xyz/citas';
 
 export const addCita = async (cita) => {
   try {
     const token = localStorage.getItem('token');
-    const response = await axios.post(API_URL, cita, {
+    const response = await axios.post(`${API_URL}/addCita`, cita, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
@@ -57,5 +57,51 @@ export const addCita = async (cita) => {
       });
       throw new Error(`Error al configurar la solicitud: ${error.message}`);
     }
+  }
+};
+
+export const getAllCitasPsicologicas = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/getAllCitasPsicologicas`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || 'Error al obtener las citas');
+  }
+};
+
+export const getAllCitasJuridicas = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/getAllCitasJuridicas`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || 'Error al obtener las citas');
+  }
+};
+
+export const getCitasFecha = async (fecha) => {
+  try {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Usuario no autenticado');
+    }
+
+    const response = await axios.get(`${API_URL}/getCitasFecha`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      params: { fecha }
+    });
+
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || 'Error al obtener las citas');
   }
 };

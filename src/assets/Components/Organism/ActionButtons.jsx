@@ -10,7 +10,7 @@ function ActionButtons() {
       </div>
       <div className="asesorias">
         <h1>ASESORATES CON NUESTROS EXPERTOS</h1>
-        <ButtonLink text="CITA" to="/agendarCitas" />
+        <ButtonLink text="CITA" to="/Servicios" />
       </div>
       <div className="contactos">
         <h1>¿USTED HA SIDO AGREDIDA?</h1>

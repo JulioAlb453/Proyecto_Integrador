@@ -2,10 +2,8 @@
 
 /* Estilos generales para la página del calendario */
 .calendar-page {
-  font-family: 'Roboto', sans-serif; /* Fuente elegante y moderna */
+  font-family: 'Roboto', sans-serif; 
   color: #333;
- /* Espacio adicional para el footer */
-  margin-top: 10%;
 }
 
 .navbar {
@@ -18,38 +16,34 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
-
-
 .calendar-content {
   max-width: 800px;
-  margin: 80px auto 20%; /* Margen superior para el navbar y espacio inferior para el footer */
   background-color: #fff; /* Fondo blanco */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
   border-radius: 8px; /* Bordes redondeados */
   padding: 30px;
   text-align: center;
+  margin-top: 100px;
 }
 
 .MainContainer {
-  display: flex;
-  flex: 1;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
 
 .calendar-container {
   display: flex;
   flex: 1;
   justify-content: space-between;
-  align-items: flex-start;
-  height: 600px;
+  height: 400px;
   max-width: 900px;
   width: 100%;
   padding: 20px;
   background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  align-items:flex-start;
+  margin-top: 120px;
+  margin-left: 23%;
 }
 
 .calendar-side {
@@ -100,7 +94,7 @@ input[type="text"] {
 }
 
 button {
-  background-color: #007bff;
+  background-color: #853dac;
   color: #fff;
   margin: 10px;
   border: none;
@@ -112,10 +106,41 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #853dac;
 }
 
+.citas-container {
+  max-width: 900px;
+  width: 100%;
+  margin-top: 40px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-left: 23%;
+  margin-bottom: 50px;
+}
 
+.citas-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.citas-table th,
+.citas-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.citas-table th {
+  background-color: #853dac;
+  color: #fff;
+}
+
+.citas-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
 @media (max-width: 768px) {
   .calendar-container {

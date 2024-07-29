@@ -1,29 +1,37 @@
-/* Estilos generales de la página */
 .page-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
+/* Contenedor para todo el contenido principal */
+.content-wrapper {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* Contenedor del formulario para centrarlo en la página */
 .form-wrapper {
-  flex: auto;
-  margin-top: 100px;
-  display: flex;
+  width: 100%;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
-  text-align: left;
-  padding: 20px;
+  margin-bottom: 20px;
 }
 
 /* Estilo del contenedor del formulario */
 .form-container {
+  margin-top: 100px;
   max-width: 900px;
   width: 100%;
   padding: 20px;
   background: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
 }
 
 /* Sección del formulario */
@@ -31,8 +39,6 @@
   display: flex;
   padding: 10px;
 }
-
-
 
 /* Contenedor de campos a la izquierda y derecha */
 /* Agrupación de campos del formulario */
@@ -70,7 +76,9 @@
   box-sizing: border-box;
   resize: vertical; /* Permite redimensionar solo verticalmente */
 }
-button{
+
+/* Botón */
+button {
   gap: none;
   margin: none;
 }
@@ -101,3 +109,45 @@ button:hover:not(:disabled) {
   color: #155724;
 }
 
+/* Estilo de la tabla de denuncias */
+
+.denuncias-container{
+  margin-top: 30px;
+  width: 900px;
+}
+
+.denuncias-table {
+  width: 100%;
+  max-width: 900px;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #ffffff; /* Fondo blanco para la tabla */
+  border-radius: 8px; /* Bordes redondeados */
+  overflow: hidden; /* Esconde el desbordamiento de la tabla */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra de la tabla */
+}
+
+.denuncias-table th,
+.denuncias-table td {
+  border: 1px solid #ddd;
+  padding: 12px 15px; /* Espaciado más grande */
+  text-align: left;
+}
+
+.denuncias-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  color: #333;
+}
+
+.denuncias-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.denuncias-table tbody tr:hover {
+  background-color: #f1f1f1; /* Color al pasar el ratón */
+}
+
+.violentometro{
+  width: 300px;
+}

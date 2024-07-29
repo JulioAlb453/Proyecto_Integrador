@@ -1,5 +1,5 @@
 import React from 'react';
-import TableDataCell from '../Atoms/TableDataCell';
+import TableDataCell from '../Atoms/TableData';
 
 // Su propósito es renderizar las filas y celdas de datos en la tabla
 const TableBody = ({ data, columns, selectedColumns, onEdit, onDelete }) => (

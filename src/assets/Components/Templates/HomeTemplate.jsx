@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../Molecule/Footer';
 import Navbar from '../Molecule/Navbar';
-import CarouselOrganism from '../Organism/CarrouselOrganism';
+import  Carousel from '../Organism/CarrouselOrganism';
 import TitleAtom from '../Atoms/Title';
 import CardInformativo from '../Molecule/CardInformativo';
 import VisionSection from '../Organism/VisionSection';
@@ -49,7 +49,7 @@ function HomeTemplate() {
         
         {/* Sección de Carrusel */}
         <div className='carrousel-section'>
-          <CarouselOrganism />
+          <Carousel />
         </div>
         
         {/* Sección de Apoyos y Noticias */}

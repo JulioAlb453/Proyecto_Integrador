@@ -6,12 +6,10 @@ function VisionSection() {
   return (
     <div className="vision-section">
       <CardInformativo
-        imgSrc="https://salud.morelos.gob.mx/sites/salud.morelos.gob.mx/files/noticias/principal/llama_secretario_de_salud_a_trabajar_en_equipo_para_impulsar_un_morelos_mas_sano1.png"
+        imgSrc='src\assets\img\foto3.jpeg'
         imgAlt="Imagen de Visión"
         description={[
-          'Sección de noticias:',
-          'aquí vendrá toda la descripción de este otro programa',
-          'aquí vendrá toda la descripción de este otro programa',
+        "Ser una referencia municipal en el estado de Chiapas en la promoción de la igualdad de género, donde todas las mujeres de Tuxtla Gutiérrez vivan en un  entorno de equidad, respeto y oportunidades equitativas, empoderadas para alcanzar su máximo potencial y contribuir  activamente al desarrollo de la sociedad."
         ]}
       />
     </div>

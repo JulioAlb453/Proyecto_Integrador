@@ -12,4 +12,8 @@
     display: flex;
     padding-bottom: 5%;
   }
+
+  .profile-info{
+    background-color:rgb(255, 240, 249);
+  }
   

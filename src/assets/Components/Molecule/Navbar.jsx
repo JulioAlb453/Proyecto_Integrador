@@ -38,11 +38,18 @@ function Navbar() {
     setIsOpen((prevState) => !prevState);
   };
 
+  const handleLogout = () => {
+    // Elimina los datos del localStorage
+    localStorage.removeItem('token'); // Reemplaza 'token' con la clave que necesites eliminar
+    // Puedes agregar más lógica aquí si es necesario
+    setIsOpen(false); // Cierra el menú después de hacer logout
+  };
+
   return (
     <nav className="nav">
       <div className="nav__left">
-        <Link to="/" className="nav__link" onClick={() => setIsOpen(false)}>
-          <span className="nav__brand">Secretaría de Igualdad de la Mujer</span>
+        <Link to="/home" className="nav__link" onClick={() => setIsOpen(false)}>
+          <span className="nav__brand">Secretaría para la Igualdad de las Mujeres</span>
         </Link>
       </div>
 
@@ -83,11 +90,7 @@ function Navbar() {
           </Link>
         </li>
         <li className="nav__item">
-          <Link
-            to="/sobre-nosotros"
-            className="nav__link"
-            onClick={handleToggle}
-          >
+          <Link to="/SobreNosotros" className="nav__link" onClick={handleToggle}>
             <FontAwesomeIcon icon={faInfoCircle} className="nav__icon" />
             Sobre Nosotros
           </Link>
@@ -105,7 +108,13 @@ function Navbar() {
           </Link>
         </li>
         <li className="nav__item">
-          <Link to="/login" className="nav__link" onClick={handleToggle}>
+          <Link
+            to="/"
+            className="nav__link"
+            onClick={() => {
+              handleLogout();
+            }}
+          >
             <FontAwesomeIcon icon={faSignOutAlt} className="nav__icon" />
             Cerrar Sesión
           </Link>

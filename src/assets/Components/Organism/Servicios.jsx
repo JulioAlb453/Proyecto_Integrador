@@ -15,7 +15,7 @@ function ServiceView() {
           <div className="service-item">
             <h2>Citas Psicológicas</h2>
             <p>Ofrecemos servicios de apoyo psicológico para mujeres.</p>
-            <Link to="/CitaPsicoligica" className="button">
+            <Link to="/CitaPsicologica" className="button">
               Agendar cita psicológica
             </Link>
           </div>

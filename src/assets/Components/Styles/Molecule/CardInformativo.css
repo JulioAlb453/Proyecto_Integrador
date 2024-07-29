@@ -28,7 +28,7 @@
 
 .image-container img {
   max-width: 200px; /* Tamaño de imagen más pequeño */
-  height: auto;
+  height: 180px;
   border-radius: 8px; /* Bordes redondeados en la imagen */
 }
 
@@ -43,6 +43,8 @@
 .description-container p {
   font-size: 16px;
   margin: 5px 0; /* Margen entre párrafos */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 25px;
 }
 
 /* Estilo para pantallas pequeñas */
