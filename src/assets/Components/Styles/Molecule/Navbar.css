@@ -1,0 +1,97 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #612686;
+  color: #fff;
+  position: fixed; /* Mantiene el navbar fijo */
+  top: 0; /* Fija el navbar en la parte superior */
+  width: 100%; /* Asegura que el navbar ocupe todo el ancho de la pantalla */
+  height: 90px;
+  z-index: 1000; /* Asegura que el navbar esté encima de otros elementos */
+}
+
+.nav__left {
+  display: flex;
+  align-items: center;
+}
+
+.nav__link {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 1rem;
+}
+
+.nav__brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav__toggler {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav__toggler div {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 4px 0;
+}
+
+.nav__menu {
+  display: none;
+  flex-direction: column;
+  width: 300px; /* Ajusta el ancho según sea necesario */
+  position: fixed; /* Cambia a fixed para que el menú también sea fijo */
+  top: 0;
+  right: 0; /* Cambia a la derecha */
+  background-color: #333;
+  padding: 1rem;
+  list-style: none;
+  z-index: 1000;
+  height: 100vh; /* Hace que el menú ocupe toda la altura de la pantalla */
+}
+
+.nav__menu.open {
+  display: flex;
+}
+
+.nav__item {
+  margin: 1rem 0;
+}
+
+.nav__icon {
+  margin-right: 0.5rem;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .nav__menu {
+    display: none;
+    flex-direction: column;
+    width: 200px; /* Ajusta el ancho según sea necesario */
+    position: fixed; /* Cambia a fixed para que el menú también sea fijo */
+    top: 0;
+    right: 0; /* Cambia a la derecha */
+    background-color: #333;
+    padding: 1rem;
+    list-style: none;
+    z-index: 1000;
+    height: 100vh; /* Hace que el menú ocupe toda la altura de la pantalla */
+  }
+
+  .nav__menu.open {
+    display: flex;
+  }
+
+  .nav__item {
+    margin: 1rem 0;
+  }
+}

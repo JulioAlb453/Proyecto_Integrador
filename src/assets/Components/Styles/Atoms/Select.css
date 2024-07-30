@@ -1,0 +1,27 @@
+.table-select {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+  }
+  
+  .table-select label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  .table-select select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+  
+    &:focus {
+      border-color: #4CAF50; /* Green */
+      outline: none;
+    }
+  }
+  

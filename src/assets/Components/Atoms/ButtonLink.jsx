@@ -1,6 +1,7 @@
 // src/Atoms/Button.js
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../Styles/Atoms/ButtonLink.css'
 
 function ButtonLink({ text, to, link }) {
   return (

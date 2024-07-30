@@ -1,18 +1,18 @@
 import React from 'react';
-import Label from '../Atoms/Label';
-
+import LabelProfile from '../Atoms/LabelAtom';
+import '../Styles/Molecule/AppointmentSummary.css'
 function AppointmentSummary() {
   return (
     <div className="detalles-cita">
       <div className="tipo-cita">
-        <Label strong="Tipo de cita" text="Juridica" />
-        <Label strong="Fecha de la cita" text="XX/XX/XXXX" />
-        <Label strong="Hora de la cita" text="00:00" />
+        <LabelProfile strong="Tipo de cita" text="Juridica" />
+        <LabelProfile strong="Fecha de la cita" text="XX/XX/XXXX" />
+        <LabelProfile strong="Hora de la cita" text="00:00" />
       </div>
       <div className="tipo-cita2">
-        <Label strong="Tipo de cita" text="Psicologica" />
-        <Label strong="Fecha de la cita" text="XX/XX/XXXX" />
-        <Label strong="Hora de la cita" text="00:00" />
+        <LabelProfile strong="Tipo de cita" text="Psicologica" />
+        <LabelProfile strong="Fecha de la cita" text="XX/XX/XXXX" />
+        <LabelProfile strong="Hora de la cita" text="00:00" />
       </div>
     </div>
   );

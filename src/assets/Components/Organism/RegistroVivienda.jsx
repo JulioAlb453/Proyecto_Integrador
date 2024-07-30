@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { datosVivienda } from '../services/datosUsuarios'; // Asegúrate de que esta función exista en el archivo
+import { datosVivienda } from '../services/datosUsuario'; // Asegúrate de que esta función exista en el archivo
 
 const RegistroVivienda = () => {
   const [values, setValues] = useState({

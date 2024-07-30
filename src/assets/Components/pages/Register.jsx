@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CiLock } from 'react-icons/ci';
 import { SlUserFemale } from 'react-icons/sl';
-import './Register.css';
+import '../Styles/templates/Register.css';
 import { addUser } from '../../Components/services/usuarios.js';
 
 function LoginForm() {
@@ -92,7 +92,7 @@ function LoginForm() {
           <div className="register-link">
             <p>
               ¿Ya tienes una cuenta?
-              <a href="/login" className="link">
+              <a href="/" className="link">
                 Iniciar sesión
               </a>
             </p>

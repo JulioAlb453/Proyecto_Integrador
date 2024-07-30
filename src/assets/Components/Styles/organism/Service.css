@@ -1,0 +1,55 @@
+.service-view-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    flex-wrap: wrap; /* Para que los elementos se ajusten en filas */
+    min-height: calc(100vh - 60px); /* Resta la altura del Navbar */
+    padding: 20px;
+  }
+  
+  .service-item-conteiner {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    flex-wrap: wrap; /* Ajusta los items en filas */
+    max-width: 70%; /* Ancho máximo del contenedor */
+    width: 100%; /* Ancho completo */
+  }
+  
+  .service-item {
+    flex: 1 1 45%; /* Flexible, ocupa espacio pero con un ancho máximo */
+    margin: 10px;
+    padding: 20px;
+    height: 300px;
+    display: flex; /* Para usar flexbox */
+    flex-direction: column; /* Alinear elementos verticalmente */
+    justify-content: space-between; /* Distribuye el espacio verticalmente */
+    align-items: center; /* Centrar contenido horizontalmente */
+    text-align: center; /* Alineación del contenido */
+    background-color:rgb(255, 240, 249);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.354);
+  }
+  
+  .service-item h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .service-item p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 15px;
+  }
+  
+  .button {
+    display: inline-block; /* Ajustar el botón como bloque en línea */
+    background-color: #bd8799;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Ancho completo del contenedor */
+    max-width: 200px; /* Ancho máximo para el botón */
+  }

@@ -1,9 +1,9 @@
 import React from "react";
-import ProfileTemplate from "../Templates/ProfileTemplate";
+import PerfilTemplate from '../Templates/ProfileTemplate'
 
 function ProfilePage(){
     return(
-        <ProfileTemplate/>
+        <PerfilTemplate/>
     )
 }
 

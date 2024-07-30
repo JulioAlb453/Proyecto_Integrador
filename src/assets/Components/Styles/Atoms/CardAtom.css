@@ -1,0 +1,23 @@
+.card-atom {
+    background-color: #fff;
+    border: 1px solid #d10000;
+    border-radius: 8px;
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .card-atom img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .card-atom:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-atom h2 {
+    margin: 10px 0;
+  }
+  

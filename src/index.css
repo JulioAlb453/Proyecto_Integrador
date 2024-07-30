@@ -1,11 +1,10 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-
+  font-family: "Libre Franklin", sans-serif;
+  font-weight: 476;  
   background-color: bisque no-repeat;
   background-size: cover;
   background-position: center;
   height: 100%;
-
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

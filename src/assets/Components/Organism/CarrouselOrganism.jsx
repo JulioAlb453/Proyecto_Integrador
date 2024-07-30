@@ -1,9 +1,9 @@
-// src/components/organisms/CarouselOrganism.js
 import React from 'react';
 import CarouselMolecule from '../Molecule/CarrouselMolecule';
-import './CarrouselOrganism.css'; 
+import '../Styles/organism/CarrouselOrganism.css'; 
 
 function CarouselOrganism() {
+  // aqui se agregan las img al carrusel
   const images = [
     {
       src: 'https://www.educacionchiapas.gob.mx/wp-content/uploads/2021/10/infografia1-equidad-de-genero-corregido-texto-v2.jpg',

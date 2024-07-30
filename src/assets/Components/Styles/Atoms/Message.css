@@ -1,0 +1,33 @@
+/* src/components/Atoms/Message.module.css */
+
+.message {
+    font-size: 16px;
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin: 10px 0;
+  }
+  
+  .message.info {
+    background-color: #d9edf7;
+    color: #31708f;
+    border: 1px solid #bce8f1;
+  }
+  
+  .message.success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+  }
+  
+  .message.warning {
+    background-color: #fcf8e3;
+    color: #8a6d3b;
+    border: 1px solid #faebcc;
+  }
+  
+  .message.error {
+    background-color: #f2dede;
+    color: #a94442;
+    border: 1px solid #ebccd1;
+  }
+  

@@ -1,0 +1,29 @@
+/* src/Atoms/InputAdminTable.module.css */
+
+.input-container {
+    margin-bottom: 16px;
+  }
+  
+  .label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 4px;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  
+    &:focus {
+      border-color: #4CAF50; /* Green */
+      outline: none;
+    }
+  }
+  

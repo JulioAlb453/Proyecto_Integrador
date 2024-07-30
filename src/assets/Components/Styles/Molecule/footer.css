@@ -1,0 +1,63 @@
+.footer {
+  background-color: #612686; /* Color de fondo morado oscuro */
+  border-top: 1px solid #ddd;
+  height: 190px;
+}
+
+.footer-content {
+  display: flex;
+  max-width: 100vw;
+  margin-left: 110px;
+}
+
+.footer-logo img {
+  max-width: 130px; /* Reducimos un poco el tamaño del logo */
+  height: auto;
+  margin-top: 20px;
+}
+
+.footer-sections {
+  display: flex;
+  justify-content: space-between;/* Distribuimos los elementos equitativamente */
+  width: 100%;
+  margin-top: 50px; /* Añadimos margen superior */
+  margin-left: 40px;
+}
+
+.footer-section {
+  flex: 1; /* Que cada sección ocupe el mismo espacio */
+  margin: 0 10px; /* Añadimos margen a los lados de cada sección */
+  margin-right: 100px;
+  margin-left: 30px;
+}
+
+.footer-section h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.footer-section p,
+.footer-section ul {
+  margin: 0;
+  font-size: 14px;
+  color: #f1f1f1; /* Texto blanco para mejor contraste */
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+  color: #f7f7f7;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}

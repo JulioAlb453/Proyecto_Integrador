@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { datosPersonales } from '../services/datosUsuarios';
+import { datosPersonales } from '../services/datosUsuario';
 
 const RegistrarPersonal = () => {
   const [formData, setFormData] = useState({

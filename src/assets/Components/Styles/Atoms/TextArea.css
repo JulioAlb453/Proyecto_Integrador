@@ -1,0 +1,9 @@
+.textarea-field {
+  width: 400px;
+  height: 350px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  resize: none; /* Desactiva la redimensión del textarea */
+}

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import NewsCardMolecule from '../Molecule/NewsCardMolecule';
+
+//Seccion de noticias
 const NewsSectionOrganism = ({ newsItems }) => {
   return (
     <div className="news-section">

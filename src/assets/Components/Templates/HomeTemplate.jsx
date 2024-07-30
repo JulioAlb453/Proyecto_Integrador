@@ -1,17 +1,16 @@
-// src/templates/HomeTemplate.js
 import React from 'react';
 import Footer from '../Molecule/Footer';
 import Navbar from '../Molecule/Navbar';
-import CarouselOrganism from '../Organism/CarrouselOrganism';
-import TitleAtom from '../Atoms/Title'
-import Program from '../Molecule/Program';
-import NewsItem from '../Molecule/NewsItem';
-import VisionSection from '../Organism/MissionSection';
+import  Carousel from '../Organism/CarrouselOrganism';
+import TitleAtom from '../Atoms/Title';
+import CardInformativo from '../Molecule/CardInformativo';
+import VisionSection from '../Organism/VisionSection';
 import MissionSection from '../Organism/MissionSection';
-import './HomeTemplate.css';
+import '../Styles/templates/HomeTemplate.css';
 
 function HomeTemplate() {
-  const programs = [
+
+  const program = [
     {
       imgSrc: "https://becas.news/wp-content/uploads/Asi-es-como-puedes-hacer-tu-registro-a-Mujer-es-poder.jpg",
       imgAlt: "Imagen destacada 1",
@@ -38,53 +37,71 @@ function HomeTemplate() {
   ];
 
   return (
-    <section className="main-section">
+    <>
       <Navbar />
-      <div>
-        <CarouselOrganism />
-      </div>
-      <div className="content-wrapper">
-        <div className="main-content1">
-          <TitleAtom text="Programas destacados" />
-          <div className="programas-destacados">
-            {programs.map((program, index) => (
-              <Program
-                key={index}
-                imgSrc={program.imgSrc}
-                imgAlt={program.imgAlt}
-                description={program.description}
-              />
-            ))}
+      <section className="main-section">
+        {/* Banner Principal */}
+        <div className="banner">
+          <h1>Promoviendo la igualdad de genero y el</h1>
+          <h1>empoderamiento de la mujer.</h1>
+          {/* Aquí puedes agregar una imagen representativa */}
+        </div>
+        
+        {/* Sección de Carrusel */}
+        <div className='carrousel-section'>
+          <Carousel />
+        </div>
+        
+        {/* Sección de Apoyos y Noticias */}
+        <div className="apoyos-noticias-section">
+          {/* Apoyos */}
+          <div className="programas-section">
+            <TitleAtom text="Apoyos Destacados" />
+            <div className="programas-destacados">
+              {program.map((programItem, index) => (
+                <CardInformativo
+                  key={index}
+                  imgSrc={programItem.imgSrc}
+                  imgAlt={programItem.imgAlt}
+                  description={programItem.description}
+                />
+              ))}
+            </div>
+          </div>
+          
+          {/* Noticias */}
+          <div className="noticias-section">
+            <TitleAtom text="Noticias y Actualizaciones" />
+            <div className="noticias">
+              {news.map((newsItem, index) => (
+                <CardInformativo
+                  key={index}
+                  imgSrc={newsItem.imgSrc}
+                  imgAlt={newsItem.imgAlt}
+                  description={newsItem.description}
+                />
+              ))}
+            </div>
           </div>
         </div>
-
-        <div className="main-content2">
-          <TitleAtom text="Noticias" />
-          <div className="noticias">
-            {news.map((newsItem, index) => (
-              <NewsItem
-                key={index}
-                imgSrc={newsItem.imgSrc}
-                imgAlt={newsItem.imgAlt}
-                description={newsItem.description}
-              />
-            ))}
+        
+        {/* Sección de Misión y Visión */}
+        <div className="mision-vision-section">
+          {/* Visión */}
+          <div className="vision-section">
+            <TitleAtom text="Visión" />
+            <VisionSection />
+          </div>
+          
+          {/* Misión */}
+          <div className="mission-section">
+            <TitleAtom text="Misión" />
+            <MissionSection />
           </div>
         </div>
-      </div>
-
-      <div className="content-wrapper2">
-        <div className="main-content-vision">
-          <TitleAtom text="Visión" />
-          <VisionSection />
-        </div>
-        <div className="main-content-mision2">
-          <TitleAtom text="Misión" />
-          <MissionSection />
-        </div>
-      </div>
+      </section>
       <Footer />
-    </section>
+    </>
   );
 }
 

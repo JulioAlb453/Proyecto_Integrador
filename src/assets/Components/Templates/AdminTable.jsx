@@ -1,63 +1,109 @@
-import React, { useState } from 'react';
-import Select from '../Atoms/SelectAtom'
-import UsersAdminTable from '../Organism/UsersAdminTable';
-import EventsAdminTable from '../Organism/EventsAdminTable';
-import SocialSupportsTable from '../Organism/SocialSupportsTable';
-import NewsTable from '../Organism/NewsTable';
-import AppointmentsTable from '../Organism/AppointmentsTable';
-import './AdminTable.css'
+import "../Styles/templates/AdminTable.css";
+import React from 'react';
+import Footer from '../Molecule/Footer';
+import AdminBar from "../Molecule/adminBar";
+import  Carousel from '../Organism/CarrouselOrganism';
+import TitleAtom from '../Atoms/Title';
+import CardInformativo from '../Molecule/CardInformativo';
+import VisionSection from '../Organism/VisionSection';
+import MissionSection from '../Organism/MissionSection';
+import '../Styles/templates/HomeTemplate.css';
 
-const AdminTable = () => {
-  const [tableType, setTableType] = useState('users');
-  const [data, setData] = useState({
-    users: [
-      { id: 1, name: 'Juan', age: 30, gender: 'Male', position: 'Manager' },
-      { id: 2, name: 'María', age: 25, gender: 'Female', position: 'Staff' },
-    ],
-    events: [],
-    socialSupports: [],
-    news: [],
-    appointments: [],
-  });
+function AdminTable() {
 
-  const handleDataChange = (tableType, newData) => {
-    setData((prevData) => ({
-      ...prevData,
-      [tableType]: newData,
-    }));
-  };
-
-  const options = [
-    { value: 'users', label: 'Administrar Usuarios' },
-    { value: 'events', label: 'Administrar Eventos' },
-    { value: 'socialSupports', label: 'Apoyos Sociales' },
-    { value: 'news', label: 'Noticias' },
-    { value: 'appointments', label: 'Administrar Citas' },
+  const program = [
+    {
+      imgSrc: "https://becas.news/wp-content/uploads/Asi-es-como-puedes-hacer-tu-registro-a-Mujer-es-poder.jpg",
+      imgAlt: "Imagen destacada 1",
+      description: ["Este es otro apoyo:", "aquí vendrá toda la descripción de este otro programa"],
+    },
+    {
+      imgSrc: "https://tvazteca.brightspotcdn.com/dims4/default/3198725/2147483647/strip/true/crop/1280x720+0+0/resize/928x522!/format/jpg/quality/90/?url=http%3A%2F%2Ftv-azteca-brightspot.s3.amazonaws.com%2F4c%2F28%2F2c576d514615ac73f17a1dff2c60%2Fescasez-de-agua-26.jpg",
+      imgAlt: "Imagen destacada 2",
+      description: ["Este es otro apoyo:", "aquí vendrá toda la descripción de este otro programa", "aquí vendrá toda la descripción de este otro programa"],
+    },
   ];
 
-  const renderTable = () => {
-    switch (tableType) {
-      case 'users':
-        return <UsersAdminTable data={data.users} onDataChange={(newData) => handleDataChange('users', newData)} />;
-      case 'events':
-        return <EventsAdminTable data={data.events} onDataChange={(newData) => handleDataChange('events', newData)} />;
-      case 'socialSupports':
-        return <SocialSupportsTable data={data.socialSupports} onDataChange={(newData) => handleDataChange('socialSupports', newData)} />;
-      case 'news':
-        return <NewsTable data={data.news} onDataChange={(newData) => handleDataChange('news', newData)} />;
-      case 'appointments':
-        return <AppointmentsTable data={data.appointments} onDataChange={(newData) => handleDataChange('appointments', newData)} />;
-      default:
-        return null;
-    }
-  };
+  const news = [
+    {
+      imgSrc: "https://www.elsoldemexico.com.mx/mexico/politica/8uzwr6-pri-mujeres-cortesia.jpeg/ALTERNATES/LANDSCAPE_768/PRI%20mujeres%20CORTESIA.jpeg",
+      imgAlt: "Imagen destacada 3",
+      description: ["Este es otro apoyo:", "aquí vendrá toda la descripción o programa", "aquí vendrá toda la descripción de este otro programa"],
+    },
+    {
+      imgSrc: "https://www.canaldelcongreso.gob.mx/assets/img/noticias/0f68afd242fdc35fd53f207de8a85e8f.jpg",
+      imgAlt: "Imagen destacada 4",
+      description: ["Este es otro apoyo:", "aquí vendrá toda la descripción de este otro programa", "aquí vendrá toda la descripción de este otro programa"],
+    },
+  ];
 
   return (
-    <div>
-      <Select value={tableType} onChange={(e) => setTableType(e.target.value)} options={options} />
-      {renderTable()}
-    </div>
+    <>
+    <AdminBar />
+      <section className="main-section">
+        <div className="banner">
+          <h1>Promoviendo la igualdad de genero y el</h1>
+          <h1>empoderamiento de la mujer.</h1>
+          {/* Aquí puedes agregar una imagen representativa */}
+        </div>
+        
+        {/* Sección de Carrusel */}
+        <div className='carrousel-section'>
+          <Carousel />
+        </div>
+        
+        {/* Sección de Apoyos y Noticias */}
+        <div className="apoyos-noticias-section">
+          {/* Apoyos */}
+          <div className="programas-section">
+            <TitleAtom text="Apoyos Destacados" />
+            <div className="programas-destacados">
+              {program.map((programItem, index) => (
+                <CardInformativo
+                  key={index}
+                  imgSrc={programItem.imgSrc}
+                  imgAlt={programItem.imgAlt}
+                  description={programItem.description}
+                />
+              ))}
+            </div>
+          </div>
+          
+          {/* Noticias */}
+          <div className="noticias-section">
+            <TitleAtom text="Noticias y Actualizaciones" />
+            <div className="noticias">
+              {news.map((newsItem, index) => (
+                <CardInformativo
+                  key={index}
+                  imgSrc={newsItem.imgSrc}
+                  imgAlt={newsItem.imgAlt}
+                  description={newsItem.description}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+        
+        {/* Sección de Misión y Visión */}
+        <div className="mision-vision-section">
+          {/* Visión */}
+          <div className="vision-section">
+            <TitleAtom text="Visión" />
+            <VisionSection />
+          </div>
+          
+          {/* Misión */}
+          <div className="mission-section">
+            <TitleAtom text="Misión" />
+            <MissionSection />
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </>
   );
-};
+}
 
 export default AdminTable;
+

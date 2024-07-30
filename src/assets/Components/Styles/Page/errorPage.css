@@ -1,0 +1,29 @@
+/* Asegúrate de que el contenedor ocupe toda la altura de la ventana del navegador */
+body, html {
+    margin: 0;
+    height: 100%;
+}
+
+/* Centrar el contenido en la página */
+.container {
+    display: flex;
+    flex-direction: column; /* Apilar los elementos verticalmente */
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    height: 100vh; /* Ocupa toda la altura de la ventana del navegador */
+    text-align: center;
+    background-color: #f4f4f4; /* Color de fondo opcional */
+}
+
+h1, p {
+    margin: 10px 0; /* Añade márgenes verticales entre los elementos */
+}
+
+.error-icon {
+    color: red;
+    font-size: 60px;
+}
+.button{
+   background-color: rgb(83, 201, 72);
+}
+

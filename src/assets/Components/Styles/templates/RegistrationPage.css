@@ -1,0 +1,52 @@
+/* General */
+.content {
+    width: 80%;
+    margin: 20px auto;
+
+    border-radius: 10px;
+    padding: 20px;
+
+  }
+  
+  
+  /* FieldGroup Styles */
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+  
+  .field {
+    margin-bottom: 15px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 5px;
+    color: #030303;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ffffff;
+  }
+  
+  .input:focus {
+    outline: none;
+  }
+  
+  /* Styling for content2 */
+  .content2 {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .field-group {
+    width: 48%;
+  }
+  
