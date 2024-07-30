@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../Molecule/Footer';
 import Navbar from '../Molecule/Navbar';
-import  Carousel from '../Organism/CarrouselOrganism';
+import Carousel from '../Organism/CarrouselOrganism';
 import TitleAtom from '../Atoms/Title';
 import CardInformativo from '../Molecule/CardInformativo';
 import VisionSection from '../Organism/VisionSection';
@@ -42,13 +42,13 @@ function HomeTemplate() {
       <section className="main-section">
         {/* Banner Principal */}
         <div className="banner">
-          <h1>Promoviendo la igualdad de genero y el</h1>
+          <h1>Promoviendo la igualdad de género y el</h1>
           <h1>empoderamiento de la mujer.</h1>
           {/* Aquí puedes agregar una imagen representativa */}
         </div>
         
         {/* Sección de Carrusel */}
-        <div className='carrousel-section'>
+        <div className="carrousel-section">
           <Carousel />
         </div>
         
@@ -88,13 +88,13 @@ function HomeTemplate() {
         {/* Sección de Misión y Visión */}
         <div className="mision-vision-section">
           {/* Visión */}
-          <div className="vision-section">
+          <div className="vision-section-card">
             <TitleAtom text="Visión" />
             <VisionSection />
           </div>
           
           {/* Misión */}
-          <div className="mission-section">
+          <div className="mission-section-card">
             <TitleAtom text="Misión" />
             <MissionSection />
           </div>

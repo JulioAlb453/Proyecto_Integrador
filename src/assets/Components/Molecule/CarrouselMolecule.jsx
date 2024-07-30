@@ -1,7 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
 import '../Styles/Molecule/Carousel.css';
-
 import foto1 from '../../img/foto1.jpeg';
 import foto2 from '../../img/foto2.jpeg';
 import foto3 from '../../img/foto3.jpeg';
@@ -24,6 +23,7 @@ const Carousel = () => {
         autoplay: true,
         autoplaySpeed: 8000, // Cambiar cada 10 segundos
         arrows: true, // Mostrar flechas de navegación
+        
     };
 
     return (

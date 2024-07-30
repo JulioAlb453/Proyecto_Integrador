@@ -10,20 +10,24 @@ function ServiceView() {
       <Navbar />
       {/* Contenedor principal */}
       <div className="service-view-container">
-        <div className="service-item-conteiner">
-        {/* Contenedor Citas Psicologicas */}
+        {/* Contenedor para los items de servicio a la izquierda */}
+        <div className="service-item-container-left">
+          {/* Contenedor Citas Psicológicas */}
           <div className="service-item">
             <h2>Citas Psicológicas</h2>
             <p>Ofrecemos servicios de apoyo psicológico para mujeres.</p>
-            <Link to="/CitaPsicologica" className="button">
+            <Link to="/CitaPsicologica" className="button-link">
               Agendar cita psicológica
             </Link>
           </div>
-          {/* Contenedor Citas Juridicas */}
+        </div>
+        {/* Contenedor para los items de servicio a la derecha */}
+        <div className="service-item-container-right">
+          {/* Contenedor Citas Jurídicas */}
           <div className="service-item">
             <h2>Citas Jurídicas</h2>
             <p>Asistencia legal especializada para mujeres.</p>
-            <Link to="/CitaJuridica" className="button">
+            <Link to="/CitaJuridica" className="button-link">
               Agendar cita jurídica
             </Link>
           </div>

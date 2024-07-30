@@ -1,14 +1,3 @@
-/* Div principal */
-.resumen-cita {
-  padding: 10px;
-  border: 1px solid #000000;
-  border-radius: 5px;
-  background-color: rgb(255, 240, 249);
-  margin-left: 10%;
-  width: 50%;
-  
-}
-
 /* div que contiene ambas citas */
 .detalles-cita {
   display: flex;
@@ -22,9 +11,8 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.508);
   color: black;
 }
 

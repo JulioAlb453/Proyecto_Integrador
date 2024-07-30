@@ -1,9 +1,9 @@
 import React from "react";
-import AdminTable from "../Templates/AdminTable";
+import AdminPage from "../Templates/AdminPage";
 
 
 function TablaAdminPage() {
- return <AdminTable />;
+ return <AdminPage />;
 }
 
 export default TablaAdminPage;

@@ -1,12 +1,11 @@
-/* CarrouselOrganism.css */
-
 .container-carousel {
-    margin: 5%; /* Centrar el carrusel */
+    width: 100%;
+    max-width: 1200px; /* Máximo ancho del carrusel */
+    margin: 0 auto; /* Centrar el carrusel */
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.317); /* Sombra sutil para destacar la tarjeta */
+    background-color: #f7f7f7; /* Fondo claro para contraste */
     border-radius: 8px; /* Bordes redondeados */
-    width: 58%;
-    margin: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
     transition: transform 0.3s ease-in-out; /* Transición suave */
   }
   
@@ -14,10 +13,8 @@
     transform: scale(1.02); /* Ligeramente agrandar al pasar el ratón */
   }
   
-  .container-carousel img { 
-    width: 89%;
-    height: 900px;
-    margin: auto;
+  .container-carousel img {
+    width: 100%;
     border-radius: 8px; /* Bordes redondeados en las imágenes */
     transition: opacity 0.3s ease-in-out; /* Transición de opacidad suave */
   }

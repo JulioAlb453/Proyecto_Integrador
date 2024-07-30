@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { CiLock } from 'react-icons/ci';
 import { SlUserFemale } from 'react-icons/sl';
+import Swal from 'sweetalert2';
 import '../Styles/templates/LoginForm.css';
 import { login, getPerfil } from '../../Components/services/login';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../Atoms/Authcontext';
+import { faL } from '@fortawesome/free-solid-svg-icons';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -25,7 +27,18 @@ const LoginForm = () => {
       const data = await login(formData.email, formData.password);
       const { token } = data;
       authenticate(token);
-      alert(`Token: ${token}`);
+      Swal.fire({
+        title: 'Inicio de sesión exitoso',
+        icon: 'success',
+        width: '32rem',
+        showConfirmButton: false,
+        background: 'green',
+        color: 'white',
+        timer: 2500,
+        padding: 'auto',
+
+
+      });
       const perfilData = await getPerfil();
       const { tipoPerfil } = perfilData;
       if (tipoPerfil == 1) {
@@ -33,10 +46,27 @@ const LoginForm = () => {
       } else if (tipoPerfil == 2) {
         navigate('/home');
       } else {
-        alert('Tipo de perfil desconocido.');
+        Swal.fire({
+          title: 'Error',
+          text: 'Tipo de perfil desconocido.',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        });
       }
     } catch (error) {
-      alert('Error al iniciar sesión. Verifica tus credenciales.');
+      Swal.fire({
+        title: 'Error',
+        text: 'Error al iniciar sesión. Verifica tus credenciales.',
+        icon: 'error',
+        width: '700px',
+        
+        iconColor:'white',
+        color: 'white',
+        showConfirmButton:false,
+        cancelButtonText: false,
+        background: 'red',
+        timer: 2500
+      });
     }
   };
 

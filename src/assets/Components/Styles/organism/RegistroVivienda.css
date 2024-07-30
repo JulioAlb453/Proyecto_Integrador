@@ -1,67 +1,74 @@
-/* General */
+/* Estilos generales del formulario */
 .form-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-  }
-  
-  .cajita1, .cajita2 {
-    flex: 1;
-    min-width: 45%;
-  }
-  
-  .field-group {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .field {
-    margin-bottom: 15px;
-  }
-  
-  .label {
-    display: block;
-    margin-bottom: 5px;
-    color: #030303;
-    font-weight: bold;
-  }
-  
-  .input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #ffffff;
-  }
-  
-  .input:focus {
-    border-color: #f7bfdbd0;
-    outline: none;
-  }
-  
-  .submit-button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #6d2d30;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .submit-button:disabled {
-    background-color: #aaa;
-    cursor: not-allowed;
-  }
-  
-  .error-message {
-    color: red;
-    font-size: 14px;
-    text-align: center;
-    margin-top: 10px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  max-width: 900px; /* Ancho máximo del formulario */
+  margin: 20px auto; /* Centrando el formulario */
+  padding: 20px;
+  background-color: #f9f6f9; /* Fondo suave en un tono claro de morado */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografía accesible */
+}
+
+.cajita1, .cajita2 {
+  margin-bottom: 20px; /* Espaciado entre secciones */
+  padding: 15px;
+  border: 1px solid #d8c6e2; /* Borde ligero en tono morado claro */
+  border-radius: 8px; /* Bordes redondeados en secciones */
+  background-color: #ffffff; /* Fondo blanco para secciones */
+}
+
+label {
+  display: block;
+  margin-bottom: 10px; /* Espaciado entre etiquetas e inputs */
+  font-size: 16px; /* Tamaño de fuente de las etiquetas */
+  color: #6f42c1; /* Color morado oscuro para las etiquetas */
+  font-weight: 500; /* Peso de fuente medio para mayor legibilidad */
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #d8c6e2; /* Borde ligero en tono morado claro */
+  border-radius: 6px; /* Bordes redondeados en inputs */
+  font-size: 16px; /* Tamaño de fuente de los inputs */
+  color: #495057; /* Color de texto en los inputs */
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Eliminar spinner de números en Firefox */
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none; /* Eliminar spinner de números en Chrome y Safari */
+}
+
+button.submit-button {
+  background-color: #6f42c1; /* Color de fondo morado oscuro para el botón */
+  color: #ffffff; /* Color del texto del botón */
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px; /* Bordes redondeados en el botón */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Transición suave para el cambio de color */
+}
+
+button.submit-button:hover {
+  background-color: #5a2e9a; /* Color de fondo morado más oscuro al pasar el ratón */
+}
+
+button.submit-button:disabled {
+  background-color: #9b8dc5; /* Color de fondo cuando el botón está deshabilitado */
+  cursor: not-allowed; /* Cambia el cursor a una cruz cuando está deshabilitado */
+}
+
+.error-message {
+  color: #e53935; /* Color rojo para mensajes de error */
+  font-size: 16px;
+  margin-top: 10px;
+}

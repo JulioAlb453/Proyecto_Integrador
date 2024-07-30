@@ -1,6 +1,5 @@
 import Footer from '../Molecule/Footer';
 import AdminBar from "../Molecule/adminBar";
-import '../Styles/organism/UserProfileOrganism.css'
 import AdminInfo from "../Organism/AdminInfo";
 
 

@@ -1,52 +1,25 @@
-/* General */
-.content {
-    width: 80%;
-    margin: 20px auto;
+/* Contenedor principal para el template de registro */
+.registration-template-container {
+  background-color: #f4f4f4; /* Color de fondo suave */
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
 
-    border-radius: 10px;
-    padding: 20px;
+/* Contenedor para el formulario */
+.form-container {
+  background-color: #ffffff; /* Fondo blanco para el formulario */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera para el formulario */
+}
 
-  }
-  
-  
-  /* FieldGroup Styles */
-  .field-group {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-  }
-  
-  .field {
-    margin-bottom: 15px;
-  }
-  
-  .label {
-    display: block;
-    margin-bottom: 5px;
-    color: #030303;
-  }
-  
-  .input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #ffffff;
-  }
-  
-  .input:focus {
-    outline: none;
-  }
-  
-  /* Styling for content2 */
-  .content2 {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-  }
-  
-  .field-group {
-    width: 48%;
-  }
-  
+/* Estilo del título */
+.registration-template-container h1 {
+  color: #4a148c; /* Color morado oscuro */
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+}

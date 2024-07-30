@@ -2,8 +2,9 @@
 import React, { useState } from 'react';
 import TitleAtom from '../Atoms/Title';
 import RegistrationForm from '../Organism/RegistrationForm';
+import '../Styles/templates/RegistrationPage.css'; // Importa el archivo CSS
 
-function RegistrationTemplate() {
+const RegistrationTemplate = () => {
   const [formValues, setFormValues] = useState({
     apellidoP: '',
     nombre: '',
@@ -21,11 +22,13 @@ function RegistrationTemplate() {
   };
 
   return (
-    <div className="content">
-      <TitleAtom text="REGISTRO DE USUARIA" />
-      <RegistrationForm values={formValues} onChange={handleChange} />
+    <div className="registration-template-container">
+      <TitleAtom text="Registro de Usuaria" />
+      <div className="form-container">
+        <RegistrationForm values={formValues} onChange={handleChange} />
+      </div>
     </div>
   );
-}
+};
 
 export default RegistrationTemplate;

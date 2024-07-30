@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://figualitarioapi.integrador.xyz/Usuarios';
+const API_URL = 'http://localhost:3000/Usuarios';
 
 export const login = async (email, password) => {
   try {

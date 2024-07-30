@@ -1,153 +1,98 @@
-.page-container {
+/* Estilos generales */
+.registro-denuncia {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #f4f6f9; /* Fondo claro y profesional */
 }
 
-/* Contenedor para todo el contenido principal */
-.content-wrapper {
-  flex: 1;
-  padding: 20px;
+.registro-denuncia-form-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Contenedor del formulario para centrarlo en la página */
-.form-wrapper {
-  width: 100%;
-  display: inline-flex;
+  
   justify-content: center;
   align-items: center;
+  margin: 20px;
+}
+
+.registro-denuncia-form-content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 1200px; /* Ancho máximo para contenido */
+  margin-top: 5%;
+  padding: 20px;
+  background-color: #ffffff; /* Fondo blanco para el formulario */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.registro-denuncia-form {
+  flex: 1;
+}
+
+.registro-denuncia-form h1 {
+  color: #2c3e50; /* Color para títulos */
+  font-size: 28px;
   margin-bottom: 20px;
 }
 
-/* Estilo del contenedor del formulario */
-.form-container {
-  margin-top: 100px;
-  max-width: 900px;
-  width: 100%;
-  padding: 20px;
-  background: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: inline-flex;
-}
-
-/* Sección del formulario */
-.form-section {
+.registro-denuncia-img {
+  flex: 1;
   display: flex;
-  padding: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Contenedor de campos a la izquierda y derecha */
-/* Agrupación de campos del formulario */
-.form-group {
-  margin-bottom: 1rem;
+.violentometro {
+  max-width: 80%;
+  height: auto;
+  border-radius: 8px; /* Bordes redondeados en la imagen */
 }
 
-/* Etiquetas de los campos */
-.form-group label {
-  display: block;
+.registro-denuncia-list {
+  padding: 20px;
+  background-color: #ffffff; /* Fondo blanco para la lista */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin: 20px;
+}
+
+.titulo {
+  font-size: 24px;
+  color: #2c3e50; /* Color para títulos */
+  margin-bottom: 20px;
+}
+
+.loading-message,
+.error-message,
+.no-data-message {
+  color: #e74c3c; /* Color para mensajes de error */
   font-size: 16px;
-  margin-bottom: 0.5rem;
-  color: #333;
-}
-
-/* Campos de texto */
-.form-group input[type="text"],
-.form-group input[type="date"],
-.form-group select {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  box-sizing: border-box;
-}
-
-/* Textarea */
-.form-group textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  box-sizing: border-box;
-  resize: vertical; /* Permite redimensionar solo verticalmente */
-}
-
-/* Botón */
-button {
-  gap: none;
-  margin: none;
-}
-
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-button:hover:not(:disabled) {
-  background-color: #650b5a;
-}
-
-/* Mensajes de éxito y error */
-.message {
-  margin: 1rem 0;
-  padding: 1rem;
-  border-radius: 4px;
-}
-
-.message.error {
-  background-color: #f8d7da;
-  color: #721c24;
-}
-
-.message.success {
-  background-color: #d4edda;
-  color: #155724;
-}
-
-/* Estilo de la tabla de denuncias */
-
-.denuncias-container{
-  margin-top: 30px;
-  width: 900px;
 }
 
 .denuncias-table {
   width: 100%;
-  max-width: 900px;
   border-collapse: collapse;
-  margin: 20px 0;
-  background-color: #ffffff; /* Fondo blanco para la tabla */
-  border-radius: 8px; /* Bordes redondeados */
-  overflow: hidden; /* Esconde el desbordamiento de la tabla */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra de la tabla */
+  margin-top: 20px;
 }
 
 .denuncias-table th,
 .denuncias-table td {
   border: 1px solid #ddd;
-  padding: 12px 15px; /* Espaciado más grande */
+  padding: 12px;
   text-align: left;
 }
 
 .denuncias-table th {
-  background-color: #f4f4f4;
-  font-weight: bold;
-  color: #333;
+  background-color: #3498db; /* Color de fondo para los encabezados de la tabla */
+  color: #ffffff; /* Color de texto para los encabezados */
 }
 
-.denuncias-table tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
+.denuncias-table tr:nth-child(even) {
+  background-color: #f2f2f2; /* Fila alterna con fondo gris claro */
 }
 
-.denuncias-table tbody tr:hover {
-  background-color: #f1f1f1; /* Color al pasar el ratón */
-}
-
-.violentometro{
-  width: 300px;
+.denuncias-table tr:hover {
+  background-color: #e8f0f2; /* Color de fondo al pasar el ratón por encima */
 }

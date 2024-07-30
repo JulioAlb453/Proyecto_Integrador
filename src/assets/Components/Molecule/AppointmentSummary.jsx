@@ -1,6 +1,6 @@
 import React from 'react';
 import LabelProfile from '../Atoms/LabelAtom';
-import '../Styles/Molecule/AppointmentSummary.css'
+// import '../Styles/Molecule/AppointmentSummary.css'
 function AppointmentSummary() {
   return (
     <div className="detalles-cita">

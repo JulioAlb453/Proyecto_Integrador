@@ -1,7 +1,6 @@
 /* Estilo para los titulos */
 .title {
   padding: 10px 20px; /* Añadir un poco de padding para espacio interno */
-  border-radius: 8px; /* Bordes redondeados */
   font-size: 30px; /* Ajustar tamaño de letra para no abarcar mucho espacio */
   font-weight: bold;
   text-align: center;

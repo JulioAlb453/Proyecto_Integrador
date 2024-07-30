@@ -1,19 +1,68 @@
-/* ProfileInfo.css */
-/* Contenedor De todo el perfil */
-.profile-content {
-    gap: 20px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Contenedor principal del perfil */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f5f5f5; /* Fondo claro y neutro */
+}
 
-  }
-  /* Div que contiene el div de perfil y de resumenCita */
-  .details-content{
-    display: flex;
-    padding-bottom: 5%;
+/* Sección de detalles (perfil y resumen de cita) */
+.details-section {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end; /* Alinear a la derecha */
+}
+
+/* Detalles del perfil */
+.profile-details {
+  background-color: #fff0f9; /* Fondo rosa claro */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.49); /* Sombra suave */
+  flex: 1; /* Ocupa una parte igual del espacio disponible */
+  min-width: 280px; /* Ancho mínimo para asegurar un buen diseño responsivo */
+}
+
+/* Resumen de la cita */
+.appointment-summary {
+  background-color: #e6e6fa; /* Fondo lavanda */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.674); /* Sombra suave */
+  flex: 1; /* Ocupa una parte igual del espacio disponible */
+  min-width: 280px; /* Ancho mínimo para asegurar un buen diseño responsivo */
+}
+
+/* Seguimiento de denuncias */
+.complaint-follow-up {
+  background-color: #fff0f9; /* Fondo rosa claro */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.527); /* Sombra suave */
+  width: 100%; /* Abarca todo el ancho */
+}
+
+/* Título de secciones */
+.appointment-summary h2,
+.complaint-follow-up h2 {
+  font-size: 20px;
+  color: #4b0082; /* Índigo oscuro */
+  text-align: center;
+  margin-bottom: 10px;
+  text-transform: uppercase; /* Todo en mayúsculas */
+  letter-spacing: 1px; /* Espaciado entre letras */
+}
+
+/* Ajustes adicionales para dispositivos móviles */
+@media (max-width: 768px) {
+  .details-section {
+    flex-direction: column;
   }
 
-  .profile-info{
-    background-color:rgb(255, 240, 249);
+  .appointment-summary h2,
+  .complaint-follow-up h2 {
+    font-size: 18px;
   }
-  
+}

@@ -1,12 +1,10 @@
 /* CardInformativo.css */
-
 .program {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 20px;
   background-color: #6a1b9a; /* Fondo morado */
-  border: 2px solid #ffffff; /* Borde blanco */
   border-radius: 8px; /* Bordes redondeados */
   margin-bottom: 20px;
   transition: transform 0.3s ease-in-out; /* Transición suave */
@@ -23,11 +21,11 @@
 }
 
 .image-container {
-  margin-right: 20px;
+  margin-right: 60px;
 }
 
 .image-container img {
-  max-width: 200px; /* Tamaño de imagen más pequeño */
+  max-width: 400px; /* Tamaño de imagen más pequeño */
   height: 180px;
   border-radius: 8px; /* Bordes redondeados en la imagen */
 }
@@ -41,10 +39,9 @@
 }
 
 .description-container p {
-  font-size: 16px;
-  margin: 5px 0; /* Margen entre párrafos */
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  line-height: 25px;
+  font-size: 20px;
+  margin: 6px 0; /* Margen entre párrafos */
+  line-height: 30px;
 }
 
 /* Estilo para pantallas pequeñas */

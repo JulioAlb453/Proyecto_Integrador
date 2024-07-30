@@ -1,55 +1,78 @@
+/* Estilos generales para el contenedor de la vista de servicios */
 .service-view-container {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    flex-wrap: wrap; /* Para que los elementos se ajusten en filas */
-    min-height: calc(100vh - 60px); /* Resta la altura del Navbar */
-    padding: 20px;
-  }
-  
-  .service-item-conteiner {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    flex-wrap: wrap; /* Ajusta los items en filas */
-    max-width: 70%; /* Ancho máximo del contenedor */
-    width: 100%; /* Ancho completo */
-  }
-  
-  .service-item {
-    flex: 1 1 45%; /* Flexible, ocupa espacio pero con un ancho máximo */
-    margin: 10px;
-    padding: 20px;
-    height: 300px;
-    display: flex; /* Para usar flexbox */
-    flex-direction: column; /* Alinear elementos verticalmente */
-    justify-content: space-between; /* Distribuye el espacio verticalmente */
-    align-items: center; /* Centrar contenido horizontalmente */
-    text-align: center; /* Alineación del contenido */
-    background-color:rgb(255, 240, 249);
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.354);
-  }
-  
-  .service-item h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .service-item p {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 15px;
-  }
-  
-  .button {
-    display: inline-block; /* Ajustar el botón como bloque en línea */
-    background-color: #bd8799;
-    color: #fff;
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-    width: 100%; /* Ancho completo del contenedor */
-    max-width: 200px; /* Ancho máximo para el botón */
-  }
+  display: flex;
+  justify-content: space-between; /* Alinea los contenedores a los extremos izquierdo y derecho */
+  align-items: flex-start; /* Alinea los contenedores en la parte superior */
+  min-height: calc(100vh - 60px); /* Resta la altura del Navbar */
+  padding: 20px;
+  background-color: #f4f4f4; /* Fondo suave para todo el contenedor */
+}
+
+/* Contenedor de los items de servicio a la izquierda */
+.service-item-container-left {
+  flex: 1; /* Ocupa el espacio disponible en el lado izquierdo */
+  display: flex;
+  flex-direction: column; /* Alinea los items verticalmente */
+  max-width: 45%; /* Ancho máximo del contenedor en el lado izquierdo */
+}
+
+/* Contenedor de los items de servicio a la derecha */
+.service-item-container-right {
+  flex: 1; /* Ocupa el espacio disponible en el lado derecho */
+  display: flex;
+  flex-direction: column; /* Alinea los items verticalmente */
+  max-width: 45%; /* Ancho máximo del contenedor en el lado derecho */
+}
+
+/* Estilos para cada item de servicio */
+.service-item {
+  margin: 10px;
+  padding: 20px;
+  height: 300px;
+  display: flex; /* Utiliza flexbox */
+  flex-direction: column; /* Alinea elementos verticalmente */
+  justify-content: space-between; /* Distribuye el espacio verticalmente */
+  align-items: center; /* Centra contenido horizontalmente */
+  text-align: center; /* Alineación del contenido */
+  background-color: #fff; /* Fondo blanco para los items */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+  transition: transform 0.3s ease; /* Efecto de transición para el hover */
+}
+
+.service-item:hover {
+  transform: scale(1.02); /* Efecto de zoom al pasar el ratón */
+}
+
+/* Estilos para el título de cada item */
+.service-item h2 {
+  font-size: 24px;
+  color: #4a148c; /* Color morado oscuro */
+  margin-bottom: 10px;
+}
+
+/* Estilos para el párrafo de cada item */
+.service-item p {
+  font-size: 16px;
+  color: #666; /* Color gris para el texto */
+  margin-bottom: 15px;
+}
+
+/* Estilos para el enlace del botón */
+.button-link {
+  display: inline-block; /* Ajusta el botón como bloque en línea */
+  background-color: #bd8799; /* Color de fondo del botón */
+  color: #fff; /* Color del texto */
+  text-decoration: none;
+  padding: 10px 20px; /* Tamaño del botón */
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones para el hover */
+  width: 100%; /* Ancho completo del contenedor */
+  max-width: 220px; /* Ancho máximo para el botón */
+  text-align: center; /* Centrar texto dentro del botón */
+}
+
+.button-link:hover {
+  background-color: #a15d6d; /* Color de fondo del botón en hover */
+  transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
+}

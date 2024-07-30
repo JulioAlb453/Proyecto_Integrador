@@ -6,19 +6,19 @@ import "../Styles/organism/ProfileInfo.css";
 
 function ProfileInfo() {
   return (
-    <div className="profile-content">
-      <div className="details-content">
-        <div className="profile-info">
+    <div className="profile-container">
+      <div className="details-section">
+        <div className="profile-details">
           <DetallesPerfil />
         </div>
 
-        <div className="resumen-cita">
-          <h2>RESUMEN DE LA CITA</h2>
+        <div className="appointment-summary">
+          <h2>Resumen de la Cita</h2>
           <DetallesCita />
         </div>
       </div>
-    {/* Div Denuncias */}
-      <div className="seguimiento-denuncias">
+
+      <div className="complaint-follow-up">
         <SeguimientoDenuncia />
       </div>
     </div>

@@ -1,40 +1,47 @@
-/* ActionsButtonsProfile.css */
-
+/* Contenedor principal de los botones de acción */
 .action-buttons {
   display: flex;
+  flex-wrap: wrap; /* Permite que los botones se ajusten en varias filas si es necesario */
   gap: 20px;
   padding: 20px;
-  border-radius: 8px;
-  align-items: center;
+  border-radius: 10px; /* Bordes más redondeados para un diseño más suave */
+  background-color: #f9f9f9; /* Fondo claro y neutro */
+
 }
 
+/* Estilo para cada sección de botones */
 .action-buttons div {
-  width: 80%;
-  background-color: #ffe8f3;
+  flex: 1 1 300px; /* Flexbox para que cada sección tenga un ancho flexible pero mínimo */
+  background-color: #ffffff; /* Fondo blanco para una apariencia limpia */
   padding: 20px;
   border-radius: 8px;
   text-align: center;
-  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar */
+  border: 1px solid #e0e0e0; /* Borde gris claro */
 }
 
+/* Estilo para los títulos de las secciones */
 .action-buttons h1 {
-  font-size: 18px;
+  font-size: 20px; /* Tamaño de fuente ligeramente mayor para mejor visibilidad */
   margin-bottom: 15px;
-  color: #333;
-  font-weight: 600;
+  color: #4a4a4a; /* Color de texto más oscuro para mejor legibilidad */
+  font-weight: 700; /* Negrita para los títulos */
 }
 
+/* Estilo para los botones */
 .action-buttons button {
-  background-color: #934ae2;
-  color: white;
+  background-color: #6a1b9a; /* Color principal más suave */
+  color: #ffffff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 12px 24px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* Efecto al pasar el ratón sobre los botones */
 .action-buttons button:hover {
-  background-color: #357ABD;
+  background-color: #4a0072; /* Color más oscuro al pasar el ratón */
+  transform: translateY(-2px); /* Ligera elevación para el efecto de hover */
 }

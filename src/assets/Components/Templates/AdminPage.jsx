@@ -9,7 +9,7 @@ import VisionSection from '../Organism/VisionSection';
 import MissionSection from '../Organism/MissionSection';
 import '../Styles/templates/HomeTemplate.css';
 
-function AdminTable() {
+function AdminPage() {
 
   const program = [
     {
@@ -105,5 +105,5 @@ function AdminTable() {
   );
 }
 
-export default AdminTable;
+export default AdminPage;
 
