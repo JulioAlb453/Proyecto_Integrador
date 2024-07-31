@@ -23,6 +23,7 @@ import TablaAdminPage from "./assets/Components/pages/AdminPage";
 import "slick-carousel/slick/slick.css"; // Asegúrate de que esta ruta es correcta
 import "slick-carousel/slick/slick-theme.css"; // Asegúrate de que esta ruta es correcta
 import AdminPerfil from "./assets/Components/pages/AdminPerfil";
+import AdministrarEventos from "./assets/Components/pages/AdministrarEventos";
 
 function App() {
   return (
@@ -89,7 +90,7 @@ function App() {
             <Route path="/SobreNosotros" element={<ProtectedRoute />}>
               <Route path="/SobreNosotros" element={<SobreNosotros />} />
             </Route>
-            
+            <Route path="/AdministrarEventos" element = {<AdministrarEventos/>}/>
             <Route path="*" element={<NotFoundPage />} />{" "}
             {/* Añade esta línea */}
           </Routes>

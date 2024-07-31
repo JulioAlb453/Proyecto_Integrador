@@ -1,10 +1,9 @@
 import React from 'react';
 
-
-const ButtonSubmit = ({ text, type, disabled }) => (
-  <button className="submit-button" type={type} disabled={disabled}>
-    {text}
+const Button = ({ onClick, label }) => (
+  <button onClick={onClick} className="btn">
+    {label}
   </button>
 );
 
-export default ButtonSubmit;
+export default Button;

@@ -1,11 +1,19 @@
-/* Estilos generales para el contenedor de la vista de servicios */
+/* Contenedor principal */
+.service-view-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 871px;
+}
+
+/* Contenedor para el contenido principal */
 .service-view-container {
   display: flex;
   justify-content: space-between; /* Alinea los contenedores a los extremos izquierdo y derecho */
   align-items: flex-start; /* Alinea los contenedores en la parte superior */
-  min-height: calc(100vh - 60px); /* Resta la altura del Navbar */
+  flex: 1; /* Permite que el contenido principal ocupe el espacio disponible */
   padding: 20px;
   background-color: #f4f4f4; /* Fondo suave para todo el contenedor */
+  margin-top: 10%;
 }
 
 /* Contenedor de los items de servicio a la izquierda */
@@ -59,9 +67,9 @@
 }
 
 /* Estilos para el enlace del botón */
-.button-link {
+.service-button-link {
   display: inline-block; /* Ajusta el botón como bloque en línea */
-  background-color: #bd8799; /* Color de fondo del botón */
+  background-color: #6a1b9a; /* Color de fondo inicial del botón */
   color: #fff; /* Color del texto */
   text-decoration: none;
   padding: 10px 20px; /* Tamaño del botón */
@@ -72,7 +80,7 @@
   text-align: center; /* Centrar texto dentro del botón */
 }
 
-.button-link:hover {
-  background-color: #a15d6d; /* Color de fondo del botón en hover */
+.service-button-link:hover {
+  background-color: #a777d4; /* Color de fondo del botón en hover */
   transform: scale(1.05); /* Efecto de zoom al pasar el ratón */
 }

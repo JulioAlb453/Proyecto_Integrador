@@ -81,87 +81,90 @@ ${newBooking.idDenuncia ? `ID de Denuncia: ${newBooking.idDenuncia}` : ""}`);
       <div className="navbar">
         <Navbar />
       </div>
-      <div className="calendar-content">
-        <h2>Agendar una cita</h2>
-        <div className="MainContainer">
-          <div className="calendar-container">
-            <div className="calendar-side">
-              <DatePicker
-                selected={selectedDate}
-                onChange={handleDateChange}
-                dateFormat="dd/MM/yyyy"
-                inline
-              />
-            </div>
-            <div className="time-side">
-              <h3>Selecciona una hora:</h3>
-              <div className="time-picker">
-                {generateTimes().map((time) => (
-                  <button
-                    key={time}
-                    disabled={isTimeBooked(time)}
-                    onClick={() => handleTimeChange(time)}
-                    className={
-                      selectedTime && selectedTime.getTime() === time.getTime()
-                        ? "selected"
-                        : ""
-                    }
-                  >
-                    {time.toLocaleTimeString([], {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </button>
-                ))}
+      <div className="agendar-citas-conteiner">
+        <div className="calendar-content">
+          <h2>Agendar una cita</h2>
+          <div className="MainContainer">
+            <div className="calendar-container">
+              <div className="calendar-side">
+                <DatePicker
+                  selected={selectedDate}
+                  onChange={handleDateChange}
+                  dateFormat="dd/MM/yyyy"
+                  inline
+                />
               </div>
-              {selectedDate && selectedTime && (
-                <>
-                  <div className="booking-details">
-                    <label>Tipo de Cita:</label>
-                    <select
-                      value={tipoCita}
-                      onChange={(e) => setTipoCita(e.target.value)}
-                      required
+              <div className="time-side">
+                <h3>Selecciona una hora:</h3>
+                <div className="time-picker">
+                  {generateTimes().map((time) => (
+                    <button
+                      key={time}
+                      disabled={isTimeBooked(time)}
+                      onClick={() => handleTimeChange(time)}
+                      className={
+                        selectedTime &&
+                        selectedTime.getTime() === time.getTime()
+                          ? "selected"
+                          : ""
+                      }
                     >
-                      <option value="">Selecciona un tipo</option>
-                      <option value="juridica">Jurídica</option>
-                      <option value="psicologica">Psicológica</option>
-                    </select>
-                  </div>
-                  <div className="id-denuncia-checkbox">
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={showIdDenuncia}
-                        onChange={(e) => setShowIdDenuncia(e.target.checked)}
-                      />
-                      Tengo un id de Denuncia
-                    </label>
-                  </div>
-                  {showIdDenuncia && (
-                    <div className="id-denuncia-input">
-                      <input
-                        type="text"
-                        placeholder="ID de Denuncia"
-                        value={idDenuncia}
-                        onChange={(e) => setIdDenuncia(e.target.value)}
-                        required
-                      />
-                    </div>
-                  )}
-                  <div className="booking-summary">
-                    <p>
-                      Has seleccionado: {selectedDate.toLocaleDateString()} a
-                      las{" "}
-                      {selectedTime.toLocaleTimeString([], {
+                      {time.toLocaleTimeString([], {
                         hour: "2-digit",
                         minute: "2-digit",
                       })}
-                    </p>
-                    <button onClick={handleBooking}>Confirmar cita</button>
-                  </div>
-                </>
-              )}
+                    </button>
+                  ))}
+                </div>
+                {selectedDate && selectedTime && (
+                  <>
+                    <div className="booking-details">
+                      <label>Tipo de Cita:</label>
+                      <select
+                        value={tipoCita}
+                        onChange={(e) => setTipoCita(e.target.value)}
+                        required
+                      >
+                        <option value="">Selecciona un tipo</option>
+                        <option value="juridica">Jurídica</option>
+                        <option value="psicologica">Psicológica</option>
+                      </select>
+                    </div>
+                    <div className="id-denuncia-checkbox">
+                      <label>
+                        <input
+                          type="checkbox"
+                          checked={showIdDenuncia}
+                          onChange={(e) => setShowIdDenuncia(e.target.checked)}
+                        />
+                        Tengo un id de Denuncia
+                      </label>
+                    </div>
+                    {showIdDenuncia && (
+                      <div className="id-denuncia-input">
+                        <input
+                          type="text"
+                          placeholder="ID de Denuncia"
+                          value={idDenuncia}
+                          onChange={(e) => setIdDenuncia(e.target.value)}
+                          required
+                        />
+                      </div>
+                    )}
+                    <div className="booking-summary">
+                      <p>
+                        Has seleccionado: {selectedDate.toLocaleDateString()} a
+                        las{" "}
+                        {selectedTime.toLocaleTimeString([], {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
+                      </p>
+                      <button onClick={handleBooking}>Confirmar cita</button>
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>

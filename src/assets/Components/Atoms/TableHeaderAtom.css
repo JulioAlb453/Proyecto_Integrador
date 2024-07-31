@@ -1,0 +1,10 @@
+/* Encabezados de la tabla */
+.table-header {
+    background-color: #004d99; /* Azul oscuro para un tono serio */
+    color: #ffffff; /* Texto blanco para contraste */
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 2px solid #003366; /* Línea inferior para separación */
+  }
+  

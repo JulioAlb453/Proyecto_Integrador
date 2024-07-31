@@ -1,0 +1,80 @@
+.events-admin-table {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Modal de edición */
+  .edit-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 90%;
+    max-width: 500px;
+  }
+  
+  /* Estilo del formulario dentro del modal */
+  .edit-modal form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-modal label {
+    margin-bottom: 10px;
+  }
+  
+  .edit-modal input {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .input-error {
+    border-color: #dc3545;
+  }
+  
+  .error-text {
+    color: #dc3545;
+    font-size: 12px;
+  }
+  
+  .form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .btn-add {
+    background-color: #007bff;
+  }
+  
+  .btn-add:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-action {
+    background-color: #007bff;
+  }
+  
+  .btn-action:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-delete {
+    background-color: #dc3545;
+  }
+  
+  .btn-delete:hover {
+    background-color: #c82333;
+  }
+  

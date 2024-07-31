@@ -96,7 +96,7 @@ function AdminBar() {
           </Link>
         </li>
         <li className="nav__item">
-          <Link to="/verEventos" className="nav__link" onClick={handleToggle}>
+          <Link to="/AdministrarEventos" className="nav__link" onClick={handleToggle}>
             <FontAwesomeIcon icon={faCalendarAlt} className="nav__icon" />
             Ver eventos
           </Link>

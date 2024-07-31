@@ -35,8 +35,10 @@
 .input-box {
   position: relative;
   margin: 20px 0;
+  background-color: transparent;
   background-color: #f9e0ec;
   border-radius: 50px;
+
 }
 
 .input-box input {
@@ -65,18 +67,6 @@
   margin: -10px 0 15px;
 }
 
-.remember-forgot input {
-  accent-color: #f9e0ec;
-}
-
-.remember-forgot a {
-  color: #ff009d;
-  text-decoration: none;
-}
-
-.remember-forgot a:hover {
-  text-decoration: underline;
-}
 
 .wrapper button {
   width: 100%;

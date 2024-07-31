@@ -6,7 +6,6 @@ import '../Styles/templates/LoginForm.css';
 import { login, getPerfil } from '../../Components/services/login';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../Atoms/Authcontext';
-import { faL } from '@fortawesome/free-solid-svg-icons';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });

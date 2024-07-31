@@ -8,7 +8,6 @@
   background-color: #f9f6f9; /* Fondo suave en un tono claro de morado */
   border-radius: 10px; /* Bordes redondeados */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografía accesible */
 }
 
 .cajita1, .cajita2 {
@@ -32,10 +31,9 @@ input[type="number"] {
   width: 100%;
   padding: 12px;
   margin-top: 5px;
-  border: 1px solid #d8c6e2; /* Borde ligero en tono morado claro */
   border-radius: 6px; /* Bordes redondeados en inputs */
   font-size: 16px; /* Tamaño de fuente de los inputs */
-  color: #495057; /* Color de texto en los inputs */
+
 }
 
 input[type="number"] {
