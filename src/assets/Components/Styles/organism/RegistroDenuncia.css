@@ -12,6 +12,9 @@
   flex-direction: column;
   align-items: center;
 }
+label{
+  margin-bottom: 20px;
+}
 
 /* Contenedor del formulario para centrarlo en la página */
 .form-wrapper {
@@ -20,6 +23,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  
 }
 
 /* Estilo del contenedor del formulario */
@@ -27,8 +31,8 @@
   margin-top: 100px;
   max-width: 900px;
   width: 100%;
-  padding: 20px;
-  background: #f9f9f9;
+  padding-top: 40px;
+  background: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: inline-flex;
@@ -37,20 +41,26 @@
 /* Sección del formulario */
 .form-section {
   display: flex;
-  padding: 10px;
+  gap: 20px; /* Ajusta el valor según el espacio deseado */
+  padding: 40px;
+  background-color: #ffffff;
 }
+
 
 /* Contenedor de campos a la izquierda y derecha */
 /* Agrupación de campos del formulario */
 .form-group {
   margin-bottom: 1rem;
 }
+.field{
+  margin-bottom: 10px;
+}
 
 /* Etiquetas de los campos */
 .form-group label {
   display: block;
   font-size: 16px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 20px;
   color: #333;
 }
 
@@ -74,13 +84,19 @@
   border-radius: 4px;
   font-size: 16px;
   box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   resize: vertical; /* Permite redimensionar solo verticalmente */
 }
 
+.submit-button{
+  width: 90px;
+  margin-left: 38px;
+}
 /* Botón */
 button {
   gap: none;
   margin: none;
+  width: 120px;
 }
 
 button:disabled {
@@ -89,7 +105,7 @@ button:disabled {
 }
 
 button:hover:not(:disabled) {
-  background-color: #650b5a;
+  background-color: #5e0c8b;
 }
 
 /* Mensajes de éxito y error */
@@ -106,7 +122,7 @@ button:hover:not(:disabled) {
 
 .message.success {
   background-color: #d4edda;
-  color: #155724;
+  color: #934ae2;
 }
 
 /* Estilo de la tabla de denuncias */
@@ -149,5 +165,6 @@ button:hover:not(:disabled) {
 }
 
 .violentometro{
-  width: 300px;
+  width: 350px;
+  margin-right: 35px;
 }

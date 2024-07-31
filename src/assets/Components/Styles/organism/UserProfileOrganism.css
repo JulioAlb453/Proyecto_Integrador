@@ -2,11 +2,11 @@
 .perfil-content {
     width: 90%;
     margin: 20px auto;
-    border: 2px solid #f7bfdbd0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.152);
     border-radius: 10px;
     margin-top: 10%;
     padding: 20px;
-    background-color: #dd95b9d0;
+    background-color: #be95ddc8;
   }
   
   /* Titulo */

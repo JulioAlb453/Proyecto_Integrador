@@ -11,16 +11,14 @@ function ProfileInfo() {
         <div className="profile-info">
           <DetallesPerfil />
         </div>
-
+        <div className="seguimientos">
         <div className="resumen-cita">
-          <h2>RESUMEN DE LA CITA</h2>
+          <h3>RESUMEN DE LA CITA</h3>
           <DetallesCita />
         </div>
-      </div>
-    {/* Div Denuncias */}
       <div className="seguimiento-denuncias">
         <SeguimientoDenuncia />
-      </div>
+      </div></div></div>
     </div>
   );
 }

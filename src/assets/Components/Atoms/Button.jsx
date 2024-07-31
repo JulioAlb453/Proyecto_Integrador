@@ -1,4 +1,5 @@
 import React from 'react';
+import '../Styles/Atoms/ButtonSubmit.css'
 
 
 const ButtonSubmit = ({ text, type, disabled }) => (

@@ -1,5 +1,5 @@
 .button {
-    background-color: #4CAF50; /* Green */
+    background-color: #934ae2; /* Green */
     border: none;
     color: white;
     padding: 15px 32px;
@@ -13,7 +13,7 @@
     transition: background-color 0.3s ease;
   
     &:hover {
-      background-color: #45a049; /* Darker green */
+      background-color: #9949bc; /* Darker green */
     }
   
     &:disabled {

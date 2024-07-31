@@ -5,7 +5,7 @@
     max-width: 1200px; /* Máximo ancho del carrusel */
     margin: 0 auto; /* Centrar el carrusel */
     padding: 20px;
-    background-color: #f7f7f7; /* Fondo claro para contraste */
+    background-color: #ffffff; /* Fondo claro para contraste */
     border-radius: 8px; /* Bordes redondeados */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
     transition: transform 0.3s ease-in-out; /* Transición suave */

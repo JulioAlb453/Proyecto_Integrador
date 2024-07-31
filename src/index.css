@@ -1,7 +1,7 @@
 :root {
   font-family: "Libre Franklin", sans-serif;
   font-weight: 476;  
-  background-color: bisque no-repeat;
+  background-color: #ebebeb no-repeat;
   background-size: cover;
   background-position: center;
   height: 100%;
@@ -11,7 +11,7 @@
 }
 
 body {
-  background-color: #FFF6EE;
+  background-color: #ebebeb;
 }
 
 *,

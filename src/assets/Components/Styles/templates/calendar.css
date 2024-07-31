@@ -24,17 +24,19 @@
   padding: 30px;
   text-align: center;
   margin-top: 100px;
+  
 }
 
 .MainContainer {
   align-items: center;
+  
 }
 
 .calendar-container {
   display: flex;
   flex: 1;
   justify-content: space-between;
-  height: 400px;
+  height: 500px;
   max-width: 900px;
   width: 100%;
   padding: 20px;

@@ -1,19 +1,42 @@
 /* ProfileInfo.css */
 /* Contenedor De todo el perfil */
 .profile-content {
-    gap: 20px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  gap: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.218);
+  background-color: #ffffff;
+  padding: 20px;
+}
 
-  }
-  /* Div que contiene el div de perfil y de resumenCita */
-  .details-content{
-    display: flex;
-    padding-bottom: 5%;
-  }
+/* Div que contiene el div de perfil y de resumenCita */
+.details-content {
+  display: flex;
+}
 
-  .profile-info{
-    background-color:rgb(255, 240, 249);
-  }
+.profile-info {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.218);
+  background-color: #f7f7f7;
+  height: auto;
+  padding: 15px;
+}
+
+.seguimientos {
+  display: block;
+  margin-left: 2%;
+  width: 805px;
+  max-height: 270px; /* Set a fixed height for the seguimientos container */
+  overflow-y: auto; /* Add vertical scroll */
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.resumen-cita {
+  width: 100%;
   
+}
+
+.seguimiento-denuncias {
+  width: 100%;
+  
+}

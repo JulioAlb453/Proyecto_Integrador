@@ -1,7 +1,7 @@
 import axios from "axios";
 import Swal from 'sweetalert2';
 
-const API_URL = 'https://figualitarioapi.integrador.xyz/Denuncias';
+const API_URL = 'https://figualitarioapi.integrador.xyz/denuncias';
 
 export const addDenuncia = async (denunciaData) => {
     try {
@@ -71,18 +71,21 @@ export const getAllDenuncias = async () => {
       throw new Error(error.response?.data?.message || 'Error al agregar la noticia');
     }
   };
-
-  export const deleteDenuncia = async (idDenuncia) => {
+  
+  export const finalizarDenuncia = async (idDenuncia) => {
     try {
-      const response = await axios.post(`${API_URL}/deleteDenuncia`, { idDenuncia }, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+      const response = await axios.put(
+        `${API_URL}/finalizarDenuncia/${idDenuncia}`,
+        null, 
+        {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
         }
-      });
+      );
       return response.data;
     } catch (error) {
-      throw new Error(error.response?.data?.message || 'Error al eliminar la denuncia');
+      throw new Error(error.response?.data?.message || 'Error al finalizar la denuncia');
     }
   };
-  
+    

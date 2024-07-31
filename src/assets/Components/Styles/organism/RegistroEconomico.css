@@ -1,89 +1,84 @@
 /* RegistroEconomico.css */
 
-/* General */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+}
+
 .form-container {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
-  background-color: #f9f9f9;
+}
+
+.registro-form {
+  background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
 }
 
-.form-section {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
+.registro-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
 }
 
-.cofre-left, .cofre-right {
-  flex: 1;
-  min-width: 45%;
-}
-
-.field-group {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.field {
+.form-field {
   margin-bottom: 15px;
 }
 
-.label {
+.form-field label {
   display: block;
-  margin-bottom: 5px;
-  color: #030303;
   font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
 }
 
-.input {
-  width: 100%;
+.form-field input,
+.form-field select {
+  width: calc(100% - 22px); /* Ajusta el tamaño para el padding */
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: #ffffff;
+  font-size: 16px;
 }
 
-.input:focus {
-  border-color: #f7bfdbd0;
-  outline: none;
-}
-
-.submit-button {
-  display: block;
-  margin: 20px auto;
-  padding: 10px 20px;
-  background-color: #6d2d30;
+.boton2 {
+  padding: 15px;
+  background-color: #994caf;
   color: white;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  border-radius: 4px;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
+  width: 120px; /* Asegura que el botón tenga el mismo ancho que los campos del formulario */
+  margin-left: -3px;
 }
 
-.submit-button:disabled {
-  background-color: #aaa;
-  cursor: not-allowed;
+.boton2:hover {
+  background-color: #45a049;
 }
 
-.submit-button:hover {
-  background-color: #5a1f1c;
-}
-
-.error-message {
-  color: red;
-  font-size: 14px;
-  text-align: center;
-  margin-top: 10px;
-}
-
-.success-message {
-  color: #5bc0de;
-  font-size: 14px;
-  text-align: center;
-  margin-top: 10px;
+@media (max-width: 600px) {
+  .registro-form {
+    padding: 20px;
+  }
+  
+  .form-field input,
+  .form-field select {
+    font-size: 14px;
+    padding: 8px;
+  }
+  
+  .submit-button {
+    padding: 10px;
+    font-size: 14px;
+  }
 }

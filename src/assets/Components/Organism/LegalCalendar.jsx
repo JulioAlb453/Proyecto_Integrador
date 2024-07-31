@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Swal from 'sweetalert2';
 import Navbar from "../Molecule/Navbar";
 import Footer from "../Molecule/Footer";
-import { addCita, getAllCitasJuridicas } from "../services/citas.js";
+import { addCita, getAllCitasJuridicas, getCitasFecha } from "../services/citas.js";
 import "../Styles/templates/calendar.css";
 
 function Calendar() {
@@ -14,24 +14,51 @@ function Calendar() {
   const [showIdDenuncia, setShowIdDenuncia] = useState(false);
   const [idDenuncia, setIdDenuncia] = useState("");
   const [citas, setCitas] = useState([]);
+  const [disabledTimes, setDisabledTimes] = useState([]);
+
+  const fetchCitas = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        Swal.fire('Usuario no autenticado');
+        return;
+      }
+      const citasData = await getAllCitasJuridicas(token);
+      setCitas(citasData);
+    } catch (error) {
+      console.error('Error al obtener las citas:', error.message);
+    }
+  };
 
   useEffect(() => {
-    const fetchCitas = async () => {
+    fetchCitas();
+  }, []);
+
+  useEffect(() => {
+    const fetchCitasFecha = async (date) => {
       try {
         const token = localStorage.getItem('token');
         if (!token) {
           Swal.fire('Usuario no autenticado');
           return;
         }
-        const citasData = await getAllCitasJuridicas(token);
-        setCitas(citasData);
+
+        const formattedDate = date.toISOString().split('T')[0];
+        const citasFecha = await getCitasFecha(formattedDate, token);
+
+        setDisabledTimes(citasFecha.map(cita => {
+          const horario = cita.horario.slice(0, 5);
+          return { ...cita, horario };
+        }));
       } catch (error) {
-        console.error('Error al obtener las citas:', error.message);
+        console.error('Error al obtener las citas por fecha:', error.message);
       }
     };
 
-    fetchCitas();
-  }, []);
+    if (selectedDate) {
+      fetchCitasFecha(selectedDate);
+    }
+  }, [selectedDate]);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -47,7 +74,7 @@ function Calendar() {
       const newBooking = {
         tipo: 'juridica',
         fecha: selectedDate.toISOString().split('T')[0],
-        horario: selectedTime.toTimeString().split(' ')[0],
+        horario: selectedTime.toTimeString().slice(0, 5),
         idDenuncia: showIdDenuncia ? idDenuncia : null,
       };
 
@@ -57,10 +84,10 @@ function Calendar() {
           Swal.fire('Usuario no autenticado');
           return;
         }
-        const response = await addCita(newBooking, token);
-        const newCita = { ...newBooking, idCita: response.idCita };
-        setCitas([...citas, newCita]);
+        await addCita(newBooking, token);
+
         setBookings([...bookings, newBooking]);
+        setCitas([...citas, newBooking]);
         setSelectedDate(new Date());
         setSelectedTime(null);
         setShowIdDenuncia(false);
@@ -83,11 +110,8 @@ function Calendar() {
   };
 
   const isTimeBooked = (time) => {
-    return bookings.some(
-      (booking) =>
-        booking.fecha === selectedDate.toISOString().split('T')[0] &&
-        booking.horario === time.toTimeString().split(" ")[0]
-    );
+    const timeString = time.toTimeString().slice(0, 5);
+    return disabledTimes.some(booking => booking.horario === timeString);
   };
 
   const generateTimes = () => {
@@ -105,13 +129,16 @@ function Calendar() {
   };
 
   const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('es-ES', options);
+    return new Date(dateString).toISOString().split('T')[0];
   };
 
   const formatTime = (timeString) => {
-    const [hours, minutes] = timeString.split(':');
-    return `${hours}:${minutes}`;
+    return timeString.slice(0, 5);
+  };
+
+  const isWeekday = (date) => {
+    const day = date.getDay();
+    return day !== 0 && day !== 6;
   };
 
   return (
@@ -124,8 +151,9 @@ function Calendar() {
             <DatePicker
               selected={selectedDate}
               onChange={handleDateChange}
-              dateFormat="dd/MM/yyyy"
+              dateFormat="yyyy-MM-dd"
               inline
+              filterDate={(date) => isWeekday(date) && date >= new Date()}
             />
           </div>
           <div className="time-side">
@@ -142,7 +170,7 @@ function Calendar() {
                       : ""
                   }
                 >
-                  {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  {time.toTimeString().slice(0, 5)}
                 </button>
               ))}
             </div>
@@ -171,8 +199,8 @@ function Calendar() {
                 )}
                 <div className="booking-summary">
                   <p>
-                    Has seleccionado: {selectedDate.toLocaleDateString()} a las{" "}
-                    {selectedTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    Has seleccionado: {formatDate(selectedDate.toISOString())} a las{" "}
+                    {formatTime(selectedTime.toTimeString())}
                   </p>
                   <button onClick={handleBooking}>Confirmar cita</button>
                 </div>

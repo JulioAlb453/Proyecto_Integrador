@@ -1,6 +1,5 @@
 // src/components/templates/RegistrationTemplate.js
 import React, { useState } from 'react';
-import TitleAtom from '../Atoms/Title';
 import RegistrationForm from '../Organism/RegistrationForm';
 
 function RegistrationTemplate() {
@@ -21,10 +20,11 @@ function RegistrationTemplate() {
   };
 
   return (
+    <>
     <div className="content">
-      <TitleAtom text="REGISTRO DE USUARIA" />
       <RegistrationForm values={formValues} onChange={handleChange} />
     </div>
+    </>
   );
 }
 

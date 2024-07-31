@@ -1,18 +1,13 @@
-import React from "react";
+import React from 'react';
 
-// Seleccion de tablas
-
-import "../Styles/Atoms/SelectAtom.css";
-const Select = ({ id, value, onChange, options }) => (
-  <div className="table-select">
-    <select id={id} value={value} onChange={onChange}>
-      {options.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.label}
-        </option>
-      ))}
-    </select>
-  </div>
+const SelectTable = ({ id, value, onChange, options, required }) => (
+  <select id={id} value={value} onChange={onChange} required={required}>
+    {options.map((option, index) => (
+      <option key={index} value={option.value || option}>
+        {option.label || option}
+      </option>
+    ))}
+  </select>
 );
 
-export default Select;
+export default SelectTable;

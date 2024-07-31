@@ -26,7 +26,7 @@
     justify-content: space-between; /* Distribuye el espacio verticalmente */
     align-items: center; /* Centrar contenido horizontalmente */
     text-align: center; /* Alineación del contenido */
-    background-color:rgb(255, 240, 249);
+    background-color:rgb(255, 255, 255);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.354);
   }
@@ -44,12 +44,11 @@
   
   .button {
     display: inline-block; /* Ajustar el botón como bloque en línea */
-    background-color: #bd8799;
-    color: #fff;
     text-decoration: none;
     padding: 8px 16px;
     border-radius: 4px;
     transition: background-color 0.3s ease;
     width: 100%; /* Ancho completo del contenedor */
-    max-width: 200px; /* Ancho máximo para el botón */
+    max-width: 230px; /* Ancho máximo para el botón */
+    background-color: blueviolet;
   }

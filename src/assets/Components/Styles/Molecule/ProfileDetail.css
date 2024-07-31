@@ -2,12 +2,11 @@
 /* Div principal del perfil de usuaria */
 .profile-info{
     width: 40%;
-    padding: 10px;
-    border: 1px solid #000000;
     border-radius: 5px;
-    background-color: aliceblue;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.218);
+    background-color: #f7f7f7;
+    max-height: 400px;
   }
-  
   /* Imagen-contenedor */
   .profile-picture {
     width: 150px;
@@ -15,13 +14,19 @@
     border-radius: 5px;
     overflow: hidden;
     margin: 10px 0;
+    margin-left: 186px
+
   }
   /* Imagen en si */
   .profile-picture img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+   
   }
   
+  .dataContainer{
+    background-color: antiquewhite;
+  }
   
   

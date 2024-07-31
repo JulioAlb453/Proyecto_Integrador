@@ -5,7 +5,7 @@
   }
   
   .button {
-    background-color: #4CAF50; /* Green */
+    background-color: #b04cef; 
     border: none;
     color: white;
     padding: 15px 32px;
@@ -20,6 +20,6 @@
   }
   
   .button:hover {
-    background-color: #45a049; /* Darker green */
+    background-color: #8d43bb; /* Darker green */
   }
   
