@@ -25,7 +25,6 @@ const LoginForm = () => {
       const data = await login(formData.email, formData.password);
       const { token } = data;
       authenticate(token);
-      
       const perfilData = await getPerfil();
       const { tipoPerfil } = perfilData;
       if (tipoPerfil == 1) {

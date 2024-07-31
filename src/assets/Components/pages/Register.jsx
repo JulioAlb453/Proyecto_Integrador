@@ -3,6 +3,7 @@ import { CiLock } from 'react-icons/ci';
 import { SlUserFemale } from 'react-icons/sl';
 import '../Styles/templates/Register.css';
 import { addUser } from '../../Components/services/usuarios.js';
+import Swal from 'sweetalert2';
 
 function LoginForm() {
   const [formData, setFormData] = useState({
@@ -28,7 +29,12 @@ function LoginForm() {
     e.preventDefault();
     try {
       await addUser(formData);
-      alert('User added successfully');
+      Swal.fire({
+        title: 'Éxito',
+        text: 'Usuario registrada correctamente',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      });
       setFormData({
         email: '',
         password: '',

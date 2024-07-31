@@ -1,6 +1,7 @@
 // src/components/templates/RegistrationTemplate.js
 import React, { useState } from 'react';
 import RegistrationForm from '../Organism/RegistrationForm';
+import Swal from 'sweetalert2';
 
 function RegistrationTemplate() {
   const [formValues, setFormValues] = useState({
