@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://figualitarioapi.integrador.xyz/Usuarios';
+const API_URL = 'http://localhost:3000/Usuarios';
 
 export const datosPersonales = async (data) => {
   try {
@@ -151,3 +151,44 @@ export const datosVivienda = async (data) => {
     }
   }
 };
+
+export const getUser = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/getUser`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || 'Error al obtener el user');
+  }
+};
+
+export const getTrabajador = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/getTrabajador`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || 'Error al obtener el trabajador');
+  }
+};
+
+export const getDatosPersonales = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/getDatosPersonales`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || 'Error al obtener los datos');
+  }
+};
+
+

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-const API_URL = 'https://figualitarioapi.integrador.xyz/citas';
+const API_URL = 'http://localhost:3000/citas';
 
 export const addCita = async (cita) => {
   try {

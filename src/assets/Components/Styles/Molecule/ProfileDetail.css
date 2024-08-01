@@ -3,9 +3,9 @@
 .profile-info{
     width: 40%;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.218);
+    box-shadow: 0 4px 8px #00000038;
     background-color: #f7f7f7;
-    max-height: 400px;
+    max-height: 450px;
   }
   /* Imagen-contenedor */
   .profile-picture {
@@ -13,9 +13,7 @@
     height: 150px;
     border-radius: 5px;
     overflow: hidden;
-    margin: 10px 0;
     margin-left: 186px
-
   }
   /* Imagen en si */
   .profile-picture img {
@@ -26,7 +24,12 @@
   }
   
   .dataContainer{
-    background-color: antiquewhite;
+    background-color: #f7f7f7;
+    font-family: Arial, Helvetica, sans-serif;
   }
-  
-  
+
+  .p1{
+    border-radius: 7px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 17px;
+  }

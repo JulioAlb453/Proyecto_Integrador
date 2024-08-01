@@ -1,16 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import '../Styles/Molecule/SeguimientoDenuncia.css';
 import LabelProfile from '../Atoms/LabelAtom';
-import '../Styles/Molecule/SeguimientoDenuncia.css'
+import { getAllDenuncias } from '../services/denuncia';
+
 function SeguimientoDenuncia() {
+  const [denuncia, setDenuncia] = useState({
+    idDenuncia: '',
+    estatusDenuncia: '',
+    gravedadCaso: '',
+    caso: '',
+    fechaDenuncia: ''
+  });
+
+  useEffect(() => {
+    const fetchDenuncia = async () => {
+      const result = await getAllDenuncias();
+      setDenuncia(result[result.length - 1]);
+    };
+
+    fetchDenuncia();
+  }, []);
+
+  const formatFecha = (fecha) => {
+    const opciones = { day: 'numeric', month: 'long', year: 'numeric' };
+    return new Date(fecha).toLocaleDateString('es-ES', opciones);
+  };
+
   return (
     <div className="detalles-denuncias">
-    <h3>SEGUIMIENTO DE LA DENUNCIA</h3>
-      <LabelProfile strong="Estatus" text="lejfjf"/>
-      <LabelProfile strong="Motivo" text="Agresión física" />
-      <LabelProfile strong="Motivo" text=""/>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis dolorem, nobis tenetur nemo sequi sunt, quaerat perspiciatis ipsa dolores ut aliquid earum consectetur, labore illo. Nobis omnis quis neque iure. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis debitis ipsum quam voluptate, eveniet minima numquam mollitia nihil et excepturi. Dignissimos quia ad ut consectetur, nesciunt voluptas corporis ex ipsam!Lorem lorem
-        
-      </p>
+      <h3>DENUNCIA RECIENTE</h3>
+      {denuncia.idDenuncia ? (
+        <><p>
+          Estatus: <LabelProfile strong="Estatus de la Denuncia" text={denuncia.estatusDenuncia} /><br />
+          Gravedad: <LabelProfile strong="Gravedad del Caso" text={denuncia.gravedadCaso} /><br />
+          Caso: <LabelProfile strong="Caso" text={denuncia.caso} /><br />
+          Fecha de Denuncia: <LabelProfile strong="Fecha de la Denuncia" text={formatFecha(denuncia.fechaDenuncia)} /><br />
+          Folio: <LabelProfile strong="Id de la Denuncia" text={denuncia.idDenuncia} /><br />
+        </p></>
+      ) : (
+        <p>No hay denuncias disponibles.</p>
+      )}
     </div>
   );
 }

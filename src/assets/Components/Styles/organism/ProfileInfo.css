@@ -24,15 +24,17 @@
   display: block;
   margin-left: 2%;
   width: 805px;
-  max-height: 270px; /* Set a fixed height for the seguimientos container */
+  max-height: 400px; /* Set a fixed height for the seguimientos container */
   overflow-y: auto; /* Add vertical scroll */
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
+  background-color: rgb(255, 255, 255);
 }
 
 .resumen-cita {
   width: 100%;
+  margin-bottom: 25px;
   
 }
 

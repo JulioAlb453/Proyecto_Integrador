@@ -4,8 +4,10 @@ import { SlUserFemale } from 'react-icons/sl';
 import '../Styles/templates/Register.css';
 import { addUser } from '../../Components/services/usuarios.js';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -35,6 +37,7 @@ function LoginForm() {
         icon: 'success',
         confirmButtonText: 'Ok'
       });
+      navigate('/');
       setFormData({
         email: '',
         password: '',
@@ -96,7 +99,7 @@ function LoginForm() {
           </div>
           <button type="submit">Registrarse</button>
           <div className="register-link">
-            <p>
+            <p className='linkRegister'>
               ¿Ya tienes una cuenta?
               <a href="/" className="link">
                 Iniciar sesión

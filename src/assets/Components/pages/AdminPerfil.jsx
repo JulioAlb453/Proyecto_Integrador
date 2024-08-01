@@ -10,9 +10,6 @@ function AdminPerfil(){
     <>
     <AdminBar/>
     <div className="perfil-content1">
-        <div className="perfil-header">
-          <h1>PERFIL ADMINISTRADOR</h1>
-        </div>
         <div className="InfoPerfil1">
           <AdminInfo />
         </div>

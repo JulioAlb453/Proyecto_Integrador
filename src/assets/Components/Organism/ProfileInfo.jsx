@@ -13,7 +13,7 @@ function ProfileInfo() {
         </div>
         <div className="seguimientos">
         <div className="resumen-cita">
-          <h3>RESUMEN DE LA CITA</h3>
+          <h3>CITAS RECIENTES</h3>
           <DetallesCita />
         </div>
       <div className="seguimiento-denuncias">

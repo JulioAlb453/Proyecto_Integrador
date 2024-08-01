@@ -74,7 +74,7 @@ const LoginForm = () => {
           <button type="submit">Iniciar sesión</button>
 
           <div className="register-link">
-            <p>
+            <p className='linkRegister'>
               ¿No tienes una cuenta?{" "}
               <a href="/registrar" className="link">
                 ¡Regístrate!
