@@ -23,6 +23,7 @@ import TablaAdminPage from "./assets/Components/pages/TableAdminPage";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import AdminPerfil from "./assets/Components/pages/AdminPerfil";
+import VerCitasPage from "./assets/Components/pages/verCitasPage";
 
 function App() {
   return (
@@ -73,6 +74,9 @@ function App() {
             <Route path="/error" element={<ErrorPage />} />
             <Route path="/SobreNosotros" element={<ProtectedRoute />}>
               <Route path="/SobreNosotros" element={<SobreNosotros />} />
+            </Route>
+            <Route>
+            <Route path="/verCitas" element={<VerCitasPage />} />
             </Route>
             <Route path="*" element={<NotFoundPage />} /> {/* Añade esta línea */}
           </Routes>

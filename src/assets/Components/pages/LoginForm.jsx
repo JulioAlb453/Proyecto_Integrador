@@ -5,6 +5,7 @@ import '../Styles/templates/LoginForm.css';
 import { login, getPerfil } from '../../Components/services/login';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../Atoms/Authcontext';
+import Swal from 'sweetalert2';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -35,7 +36,12 @@ const LoginForm = () => {
         alert('Tipo de perfil desconocido.');
       }
     } catch (error) {
-      alert('Error al iniciar sesión. Verifica tus credenciales.');
+      Swal.fire({
+        title: 'Error',
+        text: 'Verifica tus credenciales',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
     }
   };
 

@@ -45,7 +45,12 @@ function LoginForm() {
       });
       setIsWorker(false); // Restablecer el checkbox también
     } catch (error) {
-      alert('Error adding user');
+      Swal.fire({
+        title: 'Error',
+        text: 'No se pudo registrar el usuario',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
     }
   };
 

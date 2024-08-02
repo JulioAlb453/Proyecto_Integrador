@@ -1,0 +1,75 @@
+.table-select {
+    margin-bottom: 20px;
+  }
+  
+  .table-select label {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .table-select select {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .checkbox-container {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 20px;
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .checkbox-label input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    border: 2px solid #007bff;
+    padding: 10px;
+    display: inline-block;
+    position: relative;
+    border-radius: 4px;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+  
+  .checkbox-label input[type="checkbox"]:checked {
+    background-color: #007bff;
+    border: 2px solid #007bff;
+  }
+  
+  .checkbox-label input[type="checkbox"]:checked::after {
+    content: '✔';
+    font-size: 14px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+  }
+  

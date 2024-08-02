@@ -105,3 +105,16 @@ export const getCitasFecha = async (fecha) => {
     throw new Error(error.response?.data?.message || 'Error al obtener las citas');
   }
 };
+
+export const verAllCitas = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/verAllCitas`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || 'Error al obtener las citas');
+  }
+};

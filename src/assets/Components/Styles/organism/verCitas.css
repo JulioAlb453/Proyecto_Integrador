@@ -1,0 +1,24 @@
+.tableContainer {
+    box-shadow: 0 3px 5px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .tableContainer .MuiTableCell-root {
+    padding: 16px;
+  }
+  
+  .tableContainer .MuiTableHead-root .MuiTableCell-root {
+    background-color: #3f51b5;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .tableContainer .MuiTableBody-root .MuiTableCell-root {
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+  }
+  
+  .tableContainer .MuiTableRow-root:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
