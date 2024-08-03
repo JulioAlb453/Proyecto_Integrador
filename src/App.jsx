@@ -24,6 +24,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import AdminPerfil from "./assets/Components/pages/AdminPerfil";
 import VerCitasPage from "./assets/Components/pages/verCitasPage";
+import VerDenunciasPage from "./assets/Components/pages/verDenunciasPage";
 
 function App() {
   return (
@@ -78,6 +79,7 @@ function App() {
             <Route>
             <Route path="/verCitas" element={<VerCitasPage />} />
             </Route>
+            <Route path="/verDenuncias" element={<VerDenunciasPage />} />
             <Route path="*" element={<NotFoundPage />} /> {/* Añade esta línea */}
           </Routes>
         </div>

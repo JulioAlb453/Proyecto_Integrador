@@ -88,4 +88,17 @@ export const getAllDenuncias = async () => {
       throw new Error(error.response?.data?.message || 'Error al finalizar la denuncia');
     }
   };
+
+  export const verAllDenuncias = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/verAllDenuncias`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response?.data?.message || 'Error al agregar la noticia');
+    }
+  };
     

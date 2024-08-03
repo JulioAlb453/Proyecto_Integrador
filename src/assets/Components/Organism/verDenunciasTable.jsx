@@ -71,7 +71,7 @@ const parseHora = (horaStr) => {
   return new Date(1970, 0, 1, hour, minute, second);
 };
 
-export default function VerCitasTable() {
+export default function VerDenunciasTable() {
   const [citas, setCitas] = useState([]);
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('idCita');
@@ -123,7 +123,7 @@ export default function VerCitasTable() {
 
   return (
     <div>
-      <TableContainer component={Paper} sx={{ width: '70%', height: 'auto',  marginTop:'3%', marginLeft:'15%', padding: '30px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', boxShadow: '0 4px 8px #00000038', borderRadius: '10px'}} className="tableContainer">
+      <TableContainer component={Paper} sx={{ width: '70%', height: 'auto',  marginTop:'3%', marginLeft:'15%', padding: '30px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', boxShadow: '0 4px 8px #00000038', borderRadius: '10px', paddingBottom: '5%'}} className="tableContainer">
         <h1>Citas</h1>
         <Table sx={{ width: 1000}} aria-label="customized table">
           <TableHead>
