@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import Navbar from "../Molecule/Navbar";
 import Footer from "../Molecule/Footer";
 import { addCita, getAllCitasJuridicas, getCitasFecha } from "../services/citas.js";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import "../Styles/templates/calendar.css";
 
 function Calendar() {
@@ -75,7 +75,7 @@ function Calendar() {
         tipo: 'juridica',
         fecha: selectedDate.toISOString().split('T')[0],
         horario: selectedTime.toTimeString().slice(0, 5),
-        idDenuncia: showIdDenuncia ? idDenuncia : null,
+        idDenuncia: showIdDenuncia ? idDenuncia : undefined,
       };
 
       try {

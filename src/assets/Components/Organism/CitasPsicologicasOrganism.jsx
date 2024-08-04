@@ -42,14 +42,9 @@ function Calendar() {
           Swal.fire('Usuario no autenticado');
           return;
         }
-
         const dateObj = typeof date === 'string' ? new Date(date) : date;
         const formattedDate = dateObj.toISOString().split('T')[0];
-        console.log("Fecha formateada:", formattedDate);
-
         const citasFecha = await getCitasFecha(formattedDate, token);
-        console.log("Citas obtenidas para la fecha:", citasFecha);
-
         setDisabledTimes(citasFecha.map(cita => {
           console.log("Horario de cita:", cita.horario);
           const horario = cita.horario.slice(0, 5);
@@ -82,7 +77,6 @@ function Calendar() {
         horario: selectedTime.toTimeString().slice(0, 5),
         idDenuncia: showIdDenuncia ? idDenuncia : null,
       };
-
       try {
         const token = localStorage.getItem('token');
         if (!token) {
@@ -90,9 +84,8 @@ function Calendar() {
           return;
         }
         await addCita(newBooking, token);
-
         setBookings([...bookings, newBooking]);
-        setCitas([...citas, { ...newBooking}]); // Suponiendo que no se tiene idCita, se usa Date.now() como identificador temporal.
+        setCitas([...citas, { ...newBooking}]); 
         setSelectedDate(new Date());
         setSelectedTime(null);
         setShowIdDenuncia(false);
@@ -117,7 +110,6 @@ function Calendar() {
   const isTimeBooked = (time) => {
     const timeString = time.toTimeString().slice(0, 5);
     const isBooked = disabledTimes.some(booking => booking.horario === timeString);
-    console.log("Verificando hora:", timeString, "Está reservada:", isBooked);
     return isBooked;
   };
 

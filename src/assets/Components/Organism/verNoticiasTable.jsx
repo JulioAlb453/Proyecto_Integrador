@@ -71,7 +71,7 @@ const parseHora = (horaStr) => {
   return new Date(1970, 0, 1, hour, minute, second);
 };
 
-export default function VerCitasTable() {
+export default function VerNoticiasTable() {
   const [citas, setCitas] = useState([]);
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('idCita');

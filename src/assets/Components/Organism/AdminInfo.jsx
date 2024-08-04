@@ -24,6 +24,7 @@ function AdminInfo() {
   }, []);
 
   return (
+    <div className="perfilAdmin">
     <div className="profile-content1">
       <h2>Perfil Administrador</h2>
       <div className="details-content1">
@@ -47,6 +48,7 @@ function AdminInfo() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

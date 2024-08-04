@@ -25,7 +25,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import AdminPerfil from "./assets/Components/pages/AdminPerfil";
 import VerCitasPage from "./assets/Components/pages/verCitasPage";
 import VerDenunciasPage from "./assets/Components/pages/verDenunciasPage";
-
+import VerUsuariosPage from "./assets/Components/pages/verUsuariosPage";
+import VerEventosPage from "./assets/Components/pages/verEventosPage";
+import VerNoticiasPage from "./assets/Components/pages/verNoticiasPage";
 function App() {
   return (
     <AuthProvider>
@@ -79,7 +81,14 @@ function App() {
             <Route>
             <Route path="/verCitas" element={<VerCitasPage />} />
             </Route>
-            <Route path="/verDenuncias" element={<VerDenunciasPage />} />
+            <Route>
+            <Route path="/verDenuncias" element={<VerDenunciasPage />} /></Route>
+            <Route>
+            <Route path="/verUsuarios" element={<VerUsuariosPage />} /></Route>
+            <Route>
+            <Route path="/verEventos" element={<VerEventosPage />} /></Route>
+            <Route>
+            <Route path="/verNoticias" element={<VerNoticiasPage />} /></Route>
             <Route path="*" element={<NotFoundPage />} /> {/* Añade esta línea */}
           </Routes>
         </div>

@@ -90,7 +90,7 @@ function AdminBar() {
           </Link>
         </li>
         <li className="nav__item">
-          <Link to="/Ver usuarios" className="nav__link" onClick={handleToggle}>
+          <Link to="/verUsuarios" className="nav__link" onClick={handleToggle}>
           <FontAwesomeIcon icon={faUser} className="nav__icon" />
             Ver usuarios
           </Link>

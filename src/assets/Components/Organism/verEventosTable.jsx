@@ -75,7 +75,7 @@ const parseHora = (horaStr) => {
   return new Date(1970, 0, 1, hour, minute, second);
 };
 
-export default function VerDenunciasTable() {
+export default function VerEventosTable() {
   const [denuncias, setDenuncias] = useState([]);
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('idDenuncia');

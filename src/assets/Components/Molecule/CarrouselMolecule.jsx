@@ -22,8 +22,8 @@ const Carousel = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 8000, // Cambiar cada 10 segundos
-        arrows: true, // Mostrar flechas de navegación
+        autoplaySpeed: 8000, 
+        arrows: true, 
     };
 
     return (

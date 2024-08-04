@@ -14,3 +14,8 @@
     border-bottom: 1px solid rgba(224, 224, 224, 1);
     padding: 15px;
   }
+  .verCitasTable{
+    flex: 1;
+    flex-direction: column;
+    min-height: 64.1vh;
+  }
