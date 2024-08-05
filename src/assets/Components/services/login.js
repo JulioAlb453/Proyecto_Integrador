@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const API_URL = 'https://figualitarioapi.intregrador/Usuarios';
+const API_URL = 'https://figualitarioapi.integrador.xyz/Usuarios/';
 
 export const login = async (email, password) => {
   try {
-    const response = await axios.get(`${API_URL}/login`, {
+    const response = await axios.get(`${API_URL}login`, {
       params: { email, password }
     });
     return response.data;

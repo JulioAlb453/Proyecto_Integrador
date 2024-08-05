@@ -1,7 +1,7 @@
 // services/noticias.js
 import axios from 'axios';
 
-const API_URL = 'https://figualitarioapi.integrador/noticias';
+const API_URL = 'https://figualitarioapi.integrador.xyz/noticias';
 
 export const getAllNoticias = async () => {
   try {

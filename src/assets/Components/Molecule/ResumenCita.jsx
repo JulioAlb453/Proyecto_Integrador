@@ -53,16 +53,7 @@ function DetallesCita() {
         )}
       </div>
       <div className="tipo-cita2">
-        {psicologicaCita.idCita ? (
-          <><h4>Psicologicas</h4>
-          <p>
-            Fecha de la cita: <LabelProfile strong="Fecha de la cita" text={psicologicaCita.fecha ? formatFecha(psicologicaCita.fecha) : 'XX/XX/XXXX'} /> <br />
-            Horario: <LabelProfile strong="Horario de la cita" text={psicologicaCita.horario || '00:00'} /> <br />
-            Folio: <LabelProfile strong="Id Cita" text={psicologicaCita.idCita || '0'} /> <br />
-          </p></>
-        ) : (
-          <p>No hay citas psicológicas disponibles.</p>
-        )}
+       
       </div>
     </div>
   );

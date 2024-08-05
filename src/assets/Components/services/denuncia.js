@@ -1,7 +1,7 @@
 import axios from "axios";
 import Swal from 'sweetalert2';
 
-const API_URL = 'http://figualitarioapi.integrador/denuncias';
+const API_URL = 'https://figualitarioapi.integrador.xyz/denuncias';
 
 export const addDenuncia = async (denunciaData) => {
     try {

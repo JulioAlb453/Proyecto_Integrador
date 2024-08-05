@@ -189,7 +189,7 @@ export default function VerUsersTable() {
 
   return (
     <div className='verUsuariosTable'>
-      <TableContainer component={Paper} sx={{ width: '60%', height: 'auto', marginTop: '3%', marginLeft: '20%', padding: '30px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', boxShadow: '0 4px 8px #00000038', borderRadius: '10px' }} className="tableContainer">
+      <TableContainer component={Paper} sx={{ width: '75%', height: 'auto', marginTop: '3%', marginLeft: '14%', padding: '30px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', boxShadow: '0 4px 8px #00000038', borderRadius: '10px' }} className="tableContainer">
         <h1>Usuarios</h1>
         <Table sx={{ width: 1150 }} aria-label="customized table">
           <TableHead>

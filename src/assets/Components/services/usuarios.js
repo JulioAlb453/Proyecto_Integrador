@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://figualitarioapi.integrador/addUser';
+const API_URL = 'https://figualitarioapi.integrador.xyz/addUser';
 
 
 export const addUser = async (user) => {
