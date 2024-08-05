@@ -216,10 +216,10 @@ export default function VerEventosTable() {
       <TableContainer
         component={Paper}
         sx={{
-          width: '70%',
+          width: '77%',
           height: 'auto',
           marginTop: '3%',
-          marginLeft: '15%',
+          marginLeft: '12%',
           padding: '30px',
           display: 'flex',
           flexDirection: 'column',

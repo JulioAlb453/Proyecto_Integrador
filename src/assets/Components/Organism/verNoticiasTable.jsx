@@ -193,7 +193,7 @@ export default function VerNoticiasTable() {
             setEditing(false);
             setOpen(true);
           }}
-          sx={{ marginLeft: 'auto', backgroundColor:'#8d1ed6b3', position:'absolute', right:'240px',marginTop:'32px' }}
+          sx={{ marginLeft: 'auto', backgroundColor:'#8d1ed6b3', position:'absolute', right:'195px',marginTop:'32px' }}
         >
           Agregar
         </Button>
