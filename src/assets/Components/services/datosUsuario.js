@@ -178,9 +178,62 @@ export const getTrabajador = async () => {
   }
 };
 
-export const getDatosPersonales = async () => {
+export const getDatosPersonales1 = async () => {
   try {
-    const response = await axios.get(`${API_URL}/getDatosPersonales`, {
+    const response = await axios.get(`${API_URL}/getDatosPersonales1`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || 'Error al obtener los datos');
+  }
+};
+
+
+export const getDatosPersonales = async (idUsuario) => {
+  try {
+    const response = await axios.get(`${API_URL}/getDatosPersonales/${idUsuario}`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || 'Error al obtener los datos');
+  }
+};
+
+export const getDatosVivienda = async (idUsuario) => {
+  try {
+    const response = await axios.get(`${API_URL}/getDatosVivienda/${idUsuario}`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || 'Error al obtener los datos');
+  }
+};
+
+export const getDatosEconomicos = async (idUsuario) => {
+  try {
+    const response = await axios.get(`${API_URL}/getDatosEconomicos/${idUsuario}`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.data?.message || 'Error al obtener los datos');
+  }
+};
+
+export const verAllUsuarios = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/verAllUsers`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }

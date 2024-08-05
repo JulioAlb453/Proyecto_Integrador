@@ -9,10 +9,15 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TableSortLabel from '@mui/material/TableSortLabel';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
 import '../Styles/organism/verCitas.css';
-import { verAllCitas } from '../services/citas';
+import { verAllUsuarios, getDatosEconomicos, getDatosPersonales, getDatosVivienda } from '../services/datosUsuario';
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
+const StyledTableCell = styled(TableCell)(({ theme, size }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.primary.dark,
     color: theme.palette.common.white,
@@ -21,9 +26,12 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     padding: '6px 10px',
   },
   [`&.${tableCellClasses.body}`]: {
-    fontSize: 16,
+    fontSize: size === 'large' ? 16 : 16,
     padding: '6px 10px',
-    minWidth: '100px',
+    minWidth: size === 'large' ? '150px' : '100px',
+  },
+  '&:hover': {
+    backgroundColor: theme.palette.action.hover,
   },
 }));
 
@@ -45,11 +53,6 @@ const StyledTableSortLabel = styled(TableSortLabel)(({ theme }) => ({
   },
 }));
 
-const formatFecha = (fechaStr) => {
-  const date = new Date(fechaStr);
-  return date.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
-};
-
 const getComparator = (order, orderBy) => {
   return order === 'desc'
     ? (a, b) => (b[orderBy] < a[orderBy] ? -1 : 1)
@@ -66,34 +69,29 @@ const stableSort = (array, comparator) => {
   return stabilizedThis.map((el) => el[0]);
 };
 
-const parseHora = (horaStr) => {
-  const [hour, minute, second] = horaStr.split(':').map(Number);
-  return new Date(1970, 0, 1, hour, minute, second);
-};
-
 export default function VerUsersTable() {
-  const [citas, setCitas] = useState([]);
+  const [usuarios, setUsuarios] = useState([]);
   const [order, setOrder] = useState('asc');
-  const [orderBy, setOrderBy] = useState('idCita');
-  const [tipoFiltro, setTipoFiltro] = useState('');
-  const [orderByTipo, setOrderByTipo] = useState('');
-  const [orderByHora, setOrderByHora] = useState(false);
+  const [orderBy, setOrderBy] = useState('idUsuario');
+  const [expandedData, setExpandedData] = useState(null);
+  const [expandedDataType, setExpandedDataType] = useState('');
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   useEffect(() => {
-    const fetchCita = async () => {
+    const fetchUsuarios = async () => {
       try {
-        const result = await verAllCitas();
+        const result = await verAllUsuarios();
         if (Array.isArray(result)) {
-          setCitas(result);
+          setUsuarios(result);
         } else {
           console.error('Error: el resultado de la API no es un array', result);
         }
       } catch (error) {
-        console.error('Error fetching citas:', error);
+        console.error('Error fetching usuarios:', error);
       }
     };
 
-    fetchCita();
+    fetchUsuarios();
   }, []);
 
   const handleRequestSort = (property) => {
@@ -102,69 +100,101 @@ export default function VerUsersTable() {
     setOrderBy(property);
   };
 
-  const handleTipoChange = (event) => {
-    setTipoFiltro(event.target.value);
-    setOrderByTipo(event.target.value);
+  const handleCellClick = async (idUsuario, dataType) => {
+    if (!idUsuario) return;
+    try {
+      let data;
+      switch (dataType) {
+        case 'personales':
+          data = await getDatosPersonales(idUsuario);
+          break;
+        case 'economicos':
+          data = await getDatosEconomicos(idUsuario);
+          break;
+        case 'vivienda':
+          data = await getDatosVivienda(idUsuario);
+          break;
+        default:
+          console.error('Tipo de datos no reconocido');
+          return;
+      }
+      setExpandedData(data);
+      setExpandedDataType(dataType);
+      setDialogOpen(true);
+    } catch (error) {
+      console.error(`Error fetching ${dataType}:`, error);
+    }
   };
 
-  const handleHoraChange = () => {
-    setOrderByHora(!orderByHora);
+  const sortedUsuarios = stableSort(usuarios, getComparator(order, orderBy));
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('es-ES', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    });
   };
 
-  const filteredCitas = citas.filter(cita =>
-    tipoFiltro ? cita.tipo === tipoFiltro : true
-  );
+  const renderDataAttributes = (data, dataType) => {
+    let attributes = {};
+    switch (dataType) {
+      case 'personales':
+        attributes = {
+          'Edad': data[0].edad,
+          'Nombre': data[0].nombre,
+          'Apellido Paterno': data[0].apellidoPaterno,
+          'Apellido Materno': data[0].apellidoMaterno,
+          'Telefono': data[0].telefono,
+          'Hijos': data[0].numHijos,
+          'Estado Civil': data[0].estadoCivil,
+          'Fecha Nacimiento': formatDate(data[0].fechaNacimiento),
+        };
+        break;
+      case 'economicos':
+        attributes = {
+          'Ocupacion': data[0].ocupacion,
+          'Ingresos Mensuales': data[0].ingresosMensuales,
+          'Gastos Mensuales': data[0].gastosMensuales,
+          'Apoyos Externos': data[0].apoyosExternos,
+        };
+        break;
+      case 'vivienda':
+        attributes = {
+          'Calle': data[0].calle,
+          'Colonia': data[0].colonia,
+          'Número Exterior': data[0].numeroExterior,
+          'Código Postal': data[0].codigoPostal,
+          'Número Interior': data[0].numInterior,
+          'Número Habitaciones': data[0].numHabitaciones,
+          'Estatus Vivienda': data[0].estatusVivienda,
+          'Tipo Vivienda': data[0].tipoVivienda,
+        };
+        break;
+      default:
+        return null;
+    }
 
-  const sortedCitas = stableSort(filteredCitas, getComparator(order, orderBy));
-
-  const finalSortedCitas = orderByHora
-    ? sortedCitas.sort((a, b) => parseHora(a.horario) - parseHora(b.horario))
-    : sortedCitas;
+    return (
+      <Box sx={{ margin: 2, }}>
+        {Object.entries(attributes).map(([key, value]) => (
+          <Typography key={key} variant="body2" sx={{ marginBottom: 1, fontSize:'18px' }}>
+            <strong>{key}:</strong> {value !== undefined && value !== null ? value : 'No disponible'}
+          </Typography>
+        ))}
+      </Box>
+    );
+  };
 
   return (
-    <div className='verCitasTable'>
-      <TableContainer component={Paper} sx={{ width: '60%', height: 'auto',  marginTop:'3%', marginLeft:'20%', padding: '30px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', boxShadow: '0 4px 8px #00000038', borderRadius: '10px'}} className="tableContainer">
-        <h1>Citas</h1>
-        <Table sx={{ width: 1150}} aria-label="customized table">
+    <div className='verUsuariosTable'>
+      <TableContainer component={Paper} sx={{ width: '60%', height: 'auto', marginTop: '3%', marginLeft: '20%', padding: '30px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', boxShadow: '0 4px 8px #00000038', borderRadius: '10px' }} className="tableContainer">
+        <h1>Usuarios</h1>
+        <Table sx={{ width: 1150 }} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell sortDirection={orderBy === 'idCita' ? order : false}>
-                <StyledTableSortLabel
-                  active={orderBy === 'idCita'}
-                  direction={orderBy === 'idCita' ? order : 'asc'}
-                  onClick={() => handleRequestSort('idCita')}
-                >
-                  ID
-                </StyledTableSortLabel>
-              </StyledTableCell>
-              <StyledTableCell sortDirection={orderBy === 'tipo' ? order : false}>
-                <StyledTableSortLabel
-                  active={orderBy === 'tipo'}
-                  direction={orderBy === 'tipo' ? order : 'asc'}
-                  onClick={() => handleRequestSort('tipo')}
-                >
-                  Tipo
-                </StyledTableSortLabel>
-              </StyledTableCell>
-              <StyledTableCell sortDirection={orderBy === 'idDenuncia' ? order : false}>
-                <StyledTableSortLabel
-                  active={orderBy === 'idDenuncia'}
-                  direction={orderBy === 'idDenuncia' ? order : 'asc'}
-                  onClick={() => handleRequestSort('idDenuncia')}
-                >
-                  ID Denuncia
-                </StyledTableSortLabel>
-              </StyledTableCell>
-              <StyledTableCell sortDirection={orderBy === 'horario' ? order : false}>
-                <StyledTableSortLabel
-                  active={orderBy === 'horario'}
-                  direction={orderBy === 'horario' ? order : 'asc'}
-                  onClick={() => handleRequestSort('horario')}
-                >
-                  Horario
-                </StyledTableSortLabel>
-              </StyledTableCell>
-              <StyledTableCell sortDirection={orderBy === 'idUsuario' ? order : false}>
+              <StyledTableCell size="large" sortDirection={orderBy === 'idUsuario' ? order : false}>
                 <StyledTableSortLabel
                   active={orderBy === 'idUsuario'}
                   direction={orderBy === 'idUsuario' ? order : 'asc'}
@@ -173,33 +203,86 @@ export default function VerUsersTable() {
                   ID Usuario
                 </StyledTableSortLabel>
               </StyledTableCell>
-              <StyledTableCell sortDirection={orderBy === 'fecha' ? order : false}>
+              <StyledTableCell size="large" sortDirection={orderBy === 'email' ? order : false}>
                 <StyledTableSortLabel
-                  active={orderBy === 'fecha'}
-                  direction={orderBy === 'fecha' ? order : 'asc'}
-                  onClick={() => handleRequestSort('fecha')}
+                  active={orderBy === 'email'}
+                  direction={orderBy === 'email' ? order : 'asc'}
+                  onClick={() => handleRequestSort('email')}
                 >
-                  Fecha
+                  Email
+                </StyledTableSortLabel>
+              </StyledTableCell>
+              <StyledTableCell size="small" sortDirection={orderBy === 'idDatosPersonales' ? order : false}>
+                <StyledTableSortLabel
+                  active={orderBy === 'idDatosPersonales'}
+                  direction={orderBy === 'idDatosPersonales' ? order : 'asc'}
+                  onClick={() => handleRequestSort('idDatosPersonales')}
+                >
+                  ID Datos Personales
+                </StyledTableSortLabel>
+              </StyledTableCell>
+              <StyledTableCell size="small" sortDirection={orderBy === 'idDatosEconomicos' ? order : false}>
+                <StyledTableSortLabel
+                  active={orderBy === 'idDatosEconomicos'}
+                  direction={orderBy === 'idDatosEconomicos' ? order : 'asc'}
+                  onClick={() => handleRequestSort('idDatosEconomicos')}
+                >
+                  ID Datos Económicos
+                </StyledTableSortLabel>
+              </StyledTableCell>
+              <StyledTableCell size="small" sortDirection={orderBy === 'idDatosVivienda' ? order : false}>
+                <StyledTableSortLabel
+                  active={orderBy === 'idDatosVivienda'}
+                  direction={orderBy === 'idDatosVivienda' ? order : 'asc'}
+                  onClick={() => handleRequestSort('idDatosVivienda')}
+                >
+                  ID Datos Vivienda
                 </StyledTableSortLabel>
               </StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {finalSortedCitas.map((cita) => (
-              <StyledTableRow key={cita.idCita}>
-                <StyledTableCell component="th" scope="row">
-                  {cita.idCita}
+            {sortedUsuarios.map((usuario) => (
+              <StyledTableRow key={usuario.idUsuario}>
+                <StyledTableCell size="large">{usuario.idUsuario}</StyledTableCell>
+                <StyledTableCell size="large">{usuario.email}</StyledTableCell>
+                <StyledTableCell
+                  size="small"
+                  onClick={() => usuario.idDatosPersonales && handleCellClick(usuario.idUsuario, 'personales')}
+                  style={{ cursor: usuario.idDatosPersonales ? 'pointer' : 'default', textDecoration: usuario.idDatosPersonales ? 'underline' : 'none' }}
+                >
+                  {usuario.idDatosPersonales || 'N/A'}
                 </StyledTableCell>
-                <StyledTableCell>{cita.tipo}</StyledTableCell>
-                <StyledTableCell>{cita.idDenuncia}</StyledTableCell>
-                <StyledTableCell>{cita.horario}</StyledTableCell>
-                <StyledTableCell>{cita.idUsuario}</StyledTableCell>
-                <StyledTableCell>{formatFecha(cita.fecha)}</StyledTableCell>
+                <StyledTableCell
+                  size="small"
+                  onClick={() => usuario.idDatosEconomicos && handleCellClick(usuario.idUsuario, 'economicos')}
+                  style={{ cursor: usuario.idDatosEconomicos ? 'pointer' : 'default', textDecoration: usuario.idDatosEconomicos ? 'underline' : 'none' }}
+                >
+                  {usuario.idDatosEconomicos || 'N/A'}
+                </StyledTableCell>
+                <StyledTableCell
+                  size="small"
+                  onClick={() => usuario.idDatosVivienda && handleCellClick(usuario.idUsuario, 'vivienda')}
+                  style={{ cursor: usuario.idDatosVivienda ? 'pointer' : 'default', textDecoration: usuario.idDatosVivienda ? 'underline' : 'none' }}
+                >
+                  {usuario.idDatosVivienda || 'N/A'}
+                </StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+      <Dialog open={dialogOpen} onClose={() => setDialogOpen(false)} maxWidth="sm" fullWidth style={{fontStyle:'none'}}
+        >
+        <DialogTitle style={{fontSize:'20px'}}>
+          Datos {expandedDataType.charAt(0).toUpperCase() + expandedDataType.slice(1)}
+        </DialogTitle>
+        <DialogContent  dividers 
+        >
+          {expandedData ? renderDataAttributes(expandedData, expandedDataType) : 'No data available'}
+          
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

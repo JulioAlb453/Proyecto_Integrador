@@ -1,18 +1,11 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
+import {
+  Table, TableBody, TableContainer, TableHead, TableRow, Paper, TableSortLabel, Dialog, DialogContent, DialogTitle, Button, TextField,
+} from '@mui/material';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import TableSortLabel from '@mui/material/TableSortLabel';
-import Dialog from '@mui/material/Dialog';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import { verAllDenuncias } from '../services/denuncia';
+import { getAllEventos, addEvento, updateEvento, deleteEvento } from '../services/eventos';
 import '../Styles/organism/verCitas.css';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -51,7 +44,11 @@ const StyledTableSortLabel = styled(TableSortLabel)(({ theme }) => ({
 
 const formatFecha = (fechaStr) => {
   const date = new Date(fechaStr);
-  return date.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+  return date.toLocaleDateString('es-ES', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
 };
 
 const getComparator = (order, orderBy) => {
@@ -70,33 +67,59 @@ const stableSort = (array, comparator) => {
   return stabilizedThis.map((el) => el[0]);
 };
 
-const parseHora = (horaStr) => {
-  const [hour, minute, second] = horaStr.split(':').map(Number);
-  return new Date(1970, 0, 1, hour, minute, second);
+const formatHora = (horaStr) => {
+  const [hour, minute] = horaStr.split(':').map(Number);
+  return `${String(hour).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
 };
 
 export default function VerEventosTable() {
-  const [denuncias, setDenuncias] = useState([]);
+  const [eventos, setEventos] = useState([]);
   const [order, setOrder] = useState('asc');
-  const [orderBy, setOrderBy] = useState('idDenuncia');
-  const [orderByHora, setOrderByHora] = useState(false);
-  const [selectedDenuncia, setSelectedDenuncia] = useState(null);
+  const [orderBy, setOrderBy] = useState('idEventos');
+  const [selectedEvento, setSelectedEvento] = useState(null);
+  const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
+  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+
+  // Estado para el nuevo evento
+  const [newEvento, setNewEvento] = useState({
+    fechaEvento: '',         // Tipo date
+    horario: '',             // Tipo time
+    descripcion: '',
+    finalInscripcion: '',    // Tipo date
+    calle: '',
+    colonia: '',
+    numExterior: '',
+    codigoPostal: '',
+  });
+
+  // Estado para el evento en edición
+  const [editEvento, setEditEvento] = useState({
+    idEventos: '',
+    fechaEvento: '',         // Tipo date
+    horario: '',             // Tipo time
+    descripcion: '',
+    finalInscripcion: '',    // Tipo date
+    calle: '',
+    colonia: '',
+    numExterior: '',
+    codigoPostal: '',
+  });
 
   useEffect(() => {
-    const fetchDenuncias = async () => {
+    const fetchEventos = async () => {
       try {
-        const result = await verAllDenuncias();
+        const result = await getAllEventos();
         if (Array.isArray(result)) {
-          setDenuncias(result);
+          setEventos(result);
         } else {
           console.error('Error: el resultado de la API no es un array', result);
         }
       } catch (error) {
-        console.error('Error fetching denuncias:', error);
+        console.error('Error fetching eventos:', error);
       }
     };
 
-    fetchDenuncias();
+    fetchEventos();
   }, []);
 
   const handleRequestSort = (property) => {
@@ -105,24 +128,91 @@ export default function VerEventosTable() {
     setOrderBy(property);
   };
 
-  const handleHoraChange = () => {
-    setOrderByHora(!orderByHora);
-  };
-  const sortedDenuncias = stableSort(denuncias, getComparator(order, orderBy));
-  const finalSortedDenuncias = orderByHora
-    ? sortedDenuncias.sort((a, b) => parseHora(a.horaDenuncia) - parseHora(b.horaDenuncia))
-    : sortedDenuncias;
+  const sortedEventos = stableSort(eventos, getComparator(order, orderBy));
 
-  const handleRowClick = (denuncia) => {
-    setSelectedDenuncia(denuncia);
+  const handleRowClick = (evento) => {
+    setSelectedEvento(evento);
+    setEditEvento({
+      ...evento,
+      fechaEvento: new Date(evento.fechaEvento).toISOString().substr(0, 10), // YYYY-MM-DD
+      horario: formatHora(new Date(evento.horario).toISOString().substr(11, 5)), // HH:MM
+      finalInscripcion: new Date(evento.finalInscripcion).toISOString().substr(0, 10),
+    });
+    setIsEditDialogOpen(true);
   };
 
   const handleCloseDialog = () => {
-    setSelectedDenuncia(null);
+    setSelectedEvento(null);
+    setIsAddDialogOpen(false);
+    setIsEditDialogOpen(false);
+  };
+
+  // Función para agregar un nuevo evento
+  const handleAddEvento = async () => {
+    try {
+      await addEvento({
+        ...newEvento,
+        fechaEvento: new Date(newEvento.fechaEvento).toISOString(),
+        horario: new Date(`1970-01-01T${newEvento.horario}:00`).toISOString(), // Convierte al formato adecuado
+        finalInscripcion: new Date(newEvento.finalInscripcion).toISOString(),
+      });
+      setNewEvento({
+        fechaEvento: '',
+        horario: '',
+        descripcion: '',
+        finalInscripcion: '',
+        calle: '',
+        colonia: '',
+        numExterior: '',
+        codigoPostal: '',
+      });
+      handleCloseDialog();
+      const result = await getAllEventos();
+      setEventos(result);
+    } catch (error) {
+      console.error('Error adding evento:', error);
+    }
+  };
+
+  // Función para actualizar un evento existente
+  const handleUpdateEvento = async () => {
+    try {
+      await updateEvento(editEvento.idEventos, {
+        ...editEvento,
+        fechaEvento: new Date(editEvento.fechaEvento).toISOString(),
+        horario: new Date(`1970-01-01T${editEvento.horario}:00`).toISOString(), // Convierte al formato adecuado
+        finalInscripcion: new Date(editEvento.finalInscripcion).toISOString(),
+      });
+      handleCloseDialog();
+      const result = await getAllEventos();
+      setEventos(result);
+    } catch (error) {
+      console.error('Error updating evento:', error);
+    }
+  };
+
+  // Función para eliminar un evento
+  const handleDeleteEvento = async (id) => {
+    try {
+      await deleteEvento(id);
+      const result = await getAllEventos();
+      setEventos(result);
+    } catch (error) {
+      console.error('Error deleting evento:', error);
+    }
+  };
+
+  // Función para manejar cambios en los campos del formulario
+  const handleInputChange = (e, setFunction) => {
+    const { name, value } = e.target;
+    setFunction((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   return (
-    <div className='verCitasTable'>
+    <div className="verEventosTable">
       <TableContainer
         component={Paper}
         sx={{
@@ -140,104 +230,260 @@ export default function VerEventosTable() {
         }}
         className="tableContainer"
       >
-        <h1>Denuncias</h1>
-        <Table sx={{ }} aria-label="customized table">
+        <h1>Eventos</h1>
+        <Button onClick={() => setIsAddDialogOpen(true)} variant="contained" color="primary">
+          Agregar Evento
+        </Button>
+        <Table aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell sortDirection={orderBy === 'idDenuncia' ? order : false}>
+              <StyledTableCell sortDirection={orderBy === 'idEventos' ? order : false}>
                 <StyledTableSortLabel
-                  active={orderBy === 'idDenuncia'}
-                  direction={orderBy === 'idDenuncia' ? order : 'asc'}
-                  onClick={() => handleRequestSort('idDenuncia')}
+                  active={orderBy === 'idEventos'}
+                  direction={orderBy === 'idEventos' ? order : 'asc'}
+                  onClick={() => handleRequestSort('idEventos')}
                 >
-                  ID Denuncia
+                  ID Evento
                 </StyledTableSortLabel>
               </StyledTableCell>
-              <StyledTableCell sortDirection={orderBy === 'gravedadCaso' ? order : false}>
+              <StyledTableCell sortDirection={orderBy === 'fechaEvento' ? order : false}>
                 <StyledTableSortLabel
-                  active={orderBy === 'gravedadCaso'}
-                  direction={orderBy === 'gravedadCaso' ? order : 'asc'}
-                  onClick={() => handleRequestSort('gravedadCaso')}
+                  active={orderBy === 'fechaEvento'}
+                  direction={orderBy === 'fechaEvento' ? order : 'asc'}
+                  onClick={() => handleRequestSort('fechaEvento')}
                 >
-                  Gravedad del Caso
+                  Fecha del Evento
                 </StyledTableSortLabel>
               </StyledTableCell>
-              <StyledTableCell sortDirection={orderBy === 'idUsuario' ? order : false}>
+              <StyledTableCell sortDirection={orderBy === 'horario' ? order : false}>
                 <StyledTableSortLabel
-                  active={orderBy === 'idUsuario'}
-                  direction={orderBy === 'idUsuario' ? order : 'asc'}
-                  onClick={() => handleRequestSort('idUsuario')}
+                  active={orderBy === 'horario'}
+                  direction={orderBy === 'horario' ? order : 'asc'}
+                  onClick={() => handleRequestSort('horario')}
                 >
-                  ID Usuario
+                  Horario
                 </StyledTableSortLabel>
               </StyledTableCell>
-              <StyledTableCell sortDirection={orderBy === 'motivoDenuncia' ? order : false}>
+              <StyledTableCell sortDirection={orderBy === 'descripcion' ? order : false}>
                 <StyledTableSortLabel
-                  active={orderBy === 'motivoDenuncia'}
-                  direction={orderBy === 'motivoDenuncia' ? order : 'asc'}
-                  onClick={() => handleRequestSort('motivoDenuncia')}
+                  active={orderBy === 'descripcion'}
+                  direction={orderBy === 'descripcion' ? order : 'asc'}
+                  onClick={() => handleRequestSort('descripcion')}
                 >
-                  Fecha de la Denuncia
+                  Descripción
                 </StyledTableSortLabel>
               </StyledTableCell>
-              <StyledTableCell sortDirection={orderBy === 'estatusDenuncia' ? order : false}>
+              <StyledTableCell sortDirection={orderBy === 'finalInscripcion' ? order : false}>
                 <StyledTableSortLabel
-                  active={orderBy === 'estatusDenuncia'}
-                  direction={orderBy === 'estatusDenuncia' ? order : 'asc'}
-                  onClick={() => handleRequestSort('estatusDenuncia')}
+                  active={orderBy === 'finalInscripcion'}
+                  direction={orderBy === 'finalInscripcion' ? order : 'asc'}
+                  onClick={() => handleRequestSort('finalInscripcion')}
                 >
-                  Estatus de la Denuncia
+                  Fecha Final Inscripción
                 </StyledTableSortLabel>
               </StyledTableCell>
-              <StyledTableCell sortDirection={orderBy === 'horaDenuncia' ? order : false}>
-                <StyledTableSortLabel
-                  active={orderBy === 'horaDenuncia'}
-                  direction={orderBy === 'horaDenuncia' ? order : 'asc'}
-                  onClick={() => handleRequestSort('horaDenuncia')}
-                >
-                  Hora de la Denuncia
-                </StyledTableSortLabel>
-              </StyledTableCell>
-              <StyledTableCell sortDirection={orderBy === 'caso' ? order : false}>
-                <StyledTableSortLabel
-                  active={orderBy === 'caso'}
-                  direction={orderBy === 'caso' ? order : 'asc'}
-                  onClick={() => handleRequestSort('caso')}
-                >
-                  Caso
-                </StyledTableSortLabel>
-              </StyledTableCell>
+              <StyledTableCell>Calle</StyledTableCell>
+              <StyledTableCell>Colonia</StyledTableCell>
+              <StyledTableCell>Número Exterior</StyledTableCell>
+              <StyledTableCell>Código Postal</StyledTableCell>
+              <StyledTableCell>Acciones</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {finalSortedDenuncias.map((denuncia) => (
-              <StyledTableRow key={denuncia.idDenuncia} onClick={() => handleRowClick(denuncia)}>
-                <StyledTableCell>{denuncia.idDenuncia}</StyledTableCell>
-                <StyledTableCell>{denuncia.gravedadCaso}</StyledTableCell>
-                <StyledTableCell>{denuncia.idUsuario}</StyledTableCell>
-                <StyledTableCell>{formatFecha(denuncia.fechaDenuncia)}</StyledTableCell>
-                <StyledTableCell>{denuncia.estatusDenuncia}</StyledTableCell>
-                <StyledTableCell>{denuncia.horaDenuncia}</StyledTableCell>
-                <StyledTableCell>{denuncia.caso}</StyledTableCell>
+            {sortedEventos.map((evento) => (
+              <StyledTableRow key={evento.idEventos} onClick={() => handleRowClick(evento)}>
+                <StyledTableCell>{evento.idEventos}</StyledTableCell>
+                <StyledTableCell>{formatFecha(evento.fechaEvento)}</StyledTableCell>
+                <StyledTableCell>{formatHora(evento.horario)}</StyledTableCell>
+                <StyledTableCell>{evento.descripcion}</StyledTableCell>
+                <StyledTableCell>{formatFecha(evento.finalInscripcion)}</StyledTableCell>
+                <StyledTableCell>{evento.calle}</StyledTableCell>
+                <StyledTableCell>{evento.colonia}</StyledTableCell>
+                <StyledTableCell>{evento.numExterior}</StyledTableCell>
+                <StyledTableCell>{evento.codigoPostal}</StyledTableCell>
+                <StyledTableCell>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDeleteEvento(evento.idEventos);
+                    }}
+                  >
+                    Eliminar
+                  </Button>
+                </StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-      <Dialog 
-        open={Boolean(selectedDenuncia)} 
-        onClose={handleCloseDialog} 
-        PaperProps={{ style: { minWidth: '500px', minHeight: '100px', overflowWrap:'break-word', fontSize:'18px', fontWeight:'lighter' } }}
-      >
-        <DialogTitle>Detalles de la Denuncia</DialogTitle>
-        <DialogContent sx={{}}>
-          {selectedDenuncia && (
-            <div className="detallesDenuncia">
-              <p><strong>Motivo de la Denuncia:</strong> {selectedDenuncia.motivoDenuncia}</p>
-              <p><strong>Agresor:</strong> {selectedDenuncia.violentador}</p>
-              <p><strong>Fecha del caso:</strong> {formatFecha(selectedDenuncia.fechaCaso)}</p>
-            </div>
-          )}
+
+      <Dialog open={isAddDialogOpen} onClose={handleCloseDialog}>
+        <DialogTitle>Agregar Evento</DialogTitle>
+        <DialogContent>
+          {/* Fecha del Evento (date) */}
+          <TextField
+            label="Fecha del Evento"
+            type="date"
+            name="fechaEvento"
+            value={newEvento.fechaEvento}
+            onChange={(e) => handleInputChange(e, setNewEvento)}
+            fullWidth
+            margin="normal"
+          />
+          {/* Horario (time) */}
+          <TextField
+            label="Horario"
+            type="time"
+            name="horario"
+            value={newEvento.horario}
+            onChange={(e) => handleInputChange(e, setNewEvento)}
+            fullWidth
+            margin="normal"
+          />
+          {/* Descripción */}
+          <TextField
+            label="Descripción"
+            name="descripcion"
+            value={newEvento.descripcion}
+            onChange={(e) => handleInputChange(e, setNewEvento)}
+            fullWidth
+            margin="normal"
+          />
+          {/* Fecha Final Inscripción (date) */}
+          <TextField
+            label="Fecha Final Inscripción"
+            type="date"
+            name="finalInscripcion"
+            value={newEvento.finalInscripcion}
+            onChange={(e) => handleInputChange(e, setNewEvento)}
+            fullWidth
+            margin="normal"
+          />
+          {/* Calle */}
+          <TextField
+            label="Calle"
+            name="calle"
+            value={newEvento.calle}
+            onChange={(e) => handleInputChange(e, setNewEvento)}
+            fullWidth
+            margin="normal"
+          />
+          {/* Colonia */}
+          <TextField
+            label="Colonia"
+            name="colonia"
+            value={newEvento.colonia}
+            onChange={(e) => handleInputChange(e, setNewEvento)}
+            fullWidth
+            margin="normal"
+          />
+          {/* Número Exterior */}
+          <TextField
+            label="Número Exterior"
+            name="numExterior"
+            value={newEvento.numExterior}
+            onChange={(e) => handleInputChange(e, setNewEvento)}
+            fullWidth
+            margin="normal"
+          />
+          {/* Código Postal */}
+          <TextField
+            label="Código Postal"
+            name="codigoPostal"
+            value={newEvento.codigoPostal}
+            onChange={(e) => handleInputChange(e, setNewEvento)}
+            fullWidth
+            margin="normal"
+          />
+          <Button onClick={handleAddEvento} variant="contained" color="primary">
+            Agregar
+          </Button>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={isEditDialogOpen} onClose={handleCloseDialog}>
+        <DialogTitle>Editar Evento</DialogTitle>
+        <DialogContent>
+          {/* Fecha del Evento (date) */}
+          <TextField
+            label="Fecha del Evento"
+            type="date"
+            name="fechaEvento"
+            value={editEvento.fechaEvento}
+            onChange={(e) => handleInputChange(e, setEditEvento)}
+            fullWidth
+            margin="normal"
+          />
+          {/* Horario (time) */}
+          <TextField
+            label="Horario"
+            type="time"
+            name="horario"
+            value={editEvento.horario}
+            onChange={(e) => handleInputChange(e, setEditEvento)}
+            fullWidth
+            margin="normal"
+          />
+          {/* Descripción */}
+          <TextField
+            label="Descripción"
+            name="descripcion"
+            value={editEvento.descripcion}
+            onChange={(e) => handleInputChange(e, setEditEvento)}
+            fullWidth
+            margin="normal"
+          />
+          {/* Fecha Final Inscripción (date) */}
+          <TextField
+            label="Fecha Final Inscripción"
+            type="date"
+            name="finalInscripcion"
+            value={editEvento.finalInscripcion}
+            onChange={(e) => handleInputChange(e, setEditEvento)}
+            fullWidth
+            margin="normal"
+          />
+          {/* Calle */}
+          <TextField
+            label="Calle"
+            name="calle"
+            value={editEvento.calle}
+            onChange={(e) => handleInputChange(e, setEditEvento)}
+            fullWidth
+            margin="normal"
+          />
+          {/* Colonia */}
+          <TextField
+            label="Colonia"
+            name="colonia"
+            value={editEvento.colonia}
+            onChange={(e) => handleInputChange(e, setEditEvento)}
+            fullWidth
+            margin="normal"
+          />
+          {/* Número Exterior */}
+          <TextField
+            label="Número Exterior"
+            name="numExterior"
+            value={editEvento.numExterior}
+            onChange={(e) => handleInputChange(e, setEditEvento)}
+            fullWidth
+            margin="normal"
+          />
+          {/* Código Postal */}
+          <TextField
+            label="Código Postal"
+            name="codigoPostal"
+            value={editEvento.codigoPostal}
+            onChange={(e) => handleInputChange(e, setEditEvento)}
+            fullWidth
+            margin="normal"
+          />
+          <Button onClick={handleUpdateEvento} variant="contained" color="primary">
+            Actualizar
+          </Button>
         </DialogContent>
       </Dialog>
     </div>

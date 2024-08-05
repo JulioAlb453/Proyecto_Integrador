@@ -126,10 +126,10 @@ export default function VerDenunciasTable() {
       <TableContainer
         component={Paper}
         sx={{
-          width: '70%',
+          width: '80%',
           height: 'auto',
           marginTop: '3%',
-          marginLeft: '15%',
+          marginLeft: '11%',
           padding: '30px',
           display: 'flex',
           flexDirection: 'column',

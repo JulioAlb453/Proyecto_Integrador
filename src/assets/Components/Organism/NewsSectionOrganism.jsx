@@ -39,11 +39,10 @@ const NewsSectionOrganism = () => {
         <div className="news-section-organism">
           {newsItems.map((newsItem, index) => (
             <div key={index} className="news-item">
-              <img src={newsItem.imgSrc} alt={newsItem.imgAlt} />
               <div className="content">
-                <TitleNews title={newsItem.title} className="title" />
-                <p className="text">{newsItem.text}</p>
-                <p className="date">{newsItem.date}</p>
+                <TitleNews title={newsItem.titulo} className="title" />
+                <p className="text">{newsItem.descripcion}</p>
+                <p className="date">{new Date(newsItem.fecha).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
               </div>
             </div>
           ))}

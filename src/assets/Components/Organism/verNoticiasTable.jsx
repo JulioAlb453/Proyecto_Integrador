@@ -9,8 +9,16 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TableSortLabel from '@mui/material/TableSortLabel';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
 import '../Styles/organism/verCitas.css';
-import { verAllCitas } from '../services/citas';
+import { getAllNoticias, addNoticia, updateNoticia, deleteNoticia } from '../services/noticias';
+import '../Styles/organism/verCitas.css'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -37,6 +45,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:last-child td, &:last-child th': {
     border: 0,
   },
+  cursor: 'pointer',
 }));
 
 const StyledTableSortLabel = styled(TableSortLabel)(({ theme }) => ({
@@ -66,34 +75,38 @@ const stableSort = (array, comparator) => {
   return stabilizedThis.map((el) => el[0]);
 };
 
-const parseHora = (horaStr) => {
-  const [hour, minute, second] = horaStr.split(':').map(Number);
-  return new Date(1970, 0, 1, hour, minute, second);
-};
+const CustomButton = styled(Button)({
+  color: 'black',
+  '&:hover': {
+    backgroundColor: 'gray',
+  },
+});
 
 export default function VerNoticiasTable() {
-  const [citas, setCitas] = useState([]);
+  const [noticias, setNoticias] = useState([]);
   const [order, setOrder] = useState('asc');
-  const [orderBy, setOrderBy] = useState('idCita');
-  const [tipoFiltro, setTipoFiltro] = useState('');
-  const [orderByTipo, setOrderByTipo] = useState('');
-  const [orderByHora, setOrderByHora] = useState(false);
+  const [orderBy, setOrderBy] = useState('idNoticia');
+  const [open, setOpen] = useState(false);
+  const [titulo, setTitulo] = useState('');
+  const [descripcion, setDescripcion] = useState('');
+  const [editing, setEditing] = useState(false);
+  const [selectedNoticia, setSelectedNoticia] = useState(null);
 
   useEffect(() => {
-    const fetchCita = async () => {
+    const fetchNoticias = async () => {
       try {
-        const result = await verAllCitas();
+        const result = await getAllNoticias();
         if (Array.isArray(result)) {
-          setCitas(result);
+          setNoticias(result);
         } else {
           console.error('Error: el resultado de la API no es un array', result);
         }
       } catch (error) {
-        console.error('Error fetching citas:', error);
+        console.error('Error fetching noticias:', error);
       }
     };
 
-    fetchCita();
+    fetchNoticias();
   }, []);
 
   const handleRequestSort = (property) => {
@@ -102,66 +115,100 @@ export default function VerNoticiasTable() {
     setOrderBy(property);
   };
 
-  const handleTipoChange = (event) => {
-    setTipoFiltro(event.target.value);
-    setOrderByTipo(event.target.value);
+  const handleAddNoticia = async () => {
+    try {
+      const fecha = new Date().toISOString();
+      await addNoticia({ titulo, descripcion, fecha });
+      setOpen(false);
+      setTitulo('');
+      setDescripcion('');
+
+      const result = await getAllNoticias();
+      if (Array.isArray(result)) {
+        setNoticias(result);
+      }
+    } catch (error) {
+      console.error('Error adding noticia:', error);
+    }
   };
 
-  const handleHoraChange = () => {
-    setOrderByHora(!orderByHora);
+  const handleUpdateNoticia = async () => {
+    try {
+      if (selectedNoticia) {
+        await updateNoticia(selectedNoticia.idNoticia, { titulo, descripcion });
+        setOpen(false);
+        setTitulo('');
+        setDescripcion('');
+        setEditing(false);
+
+        const result = await getAllNoticias();
+        if (Array.isArray(result)) {
+          setNoticias(result);
+        }
+      }
+    } catch (error) {
+      console.error('Error updating noticia:', error);
+    }
   };
 
-  const filteredCitas = citas.filter(cita =>
-    tipoFiltro ? cita.tipo === tipoFiltro : true
-  );
+  const handleDeleteNoticia = async () => {
+    try {
+      if (selectedNoticia) {
+        await deleteNoticia(selectedNoticia.idNoticia);
+        setOpen(false);
+        setTitulo('');
+        setDescripcion('');
+        setEditing(false);
+        setSelectedNoticia(null);
 
-  const sortedCitas = stableSort(filteredCitas, getComparator(order, orderBy));
+        const result = await getAllNoticias();
+        if (Array.isArray(result)) {
+          setNoticias(result);
+        }
+      }
+    } catch (error) {
+      console.error('Error deleting noticia:', error);
+    }
+  };
 
-  const finalSortedCitas = orderByHora
-    ? sortedCitas.sort((a, b) => parseHora(a.horario) - parseHora(b.horario))
-    : sortedCitas;
+  const handleRowClick = (noticia) => {
+    setSelectedNoticia(noticia);
+    setTitulo(noticia.titulo);
+    setDescripcion(noticia.descripcion);
+    setEditing(true);
+    setOpen(true);
+  };
+
+  const sortedNoticias = stableSort(noticias, getComparator(order, orderBy));
 
   return (
     <div className='verCitasTable'>
-      <TableContainer component={Paper} sx={{ width: '60%', height: 'auto',  marginTop:'3%', marginLeft:'20%', padding: '30px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', boxShadow: '0 4px 8px #00000038', borderRadius: '10px'}} className="tableContainer">
-        <h1>Citas</h1>
-        <Table sx={{ width: 1150}} aria-label="customized table">
+      <div className="header">
+        <Button className='botonAdd'
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            setTitulo('');
+            setDescripcion('');
+            setEditing(false);
+            setOpen(true);
+          }}
+          sx={{ marginLeft: 'auto', backgroundColor:'#8d1ed6b3', position:'absolute', right:'240px',marginTop:'32px' }}
+        >
+          Agregar
+        </Button>
+      </div>
+      <TableContainer component={Paper} sx={{ width: '80%', height: 'auto', marginTop: '3%', marginLeft: '10%', padding: '30px', display: 'flex', flexDirection: 'column',  boxShadow: '0 4px 8px #00000038', borderRadius: '10px', textAlign:'center' }} className="tableContainer">
+        <h1>Noticias</h1><Table sx={{ width: '100%' }} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell sortDirection={orderBy === 'idCita' ? order : false}>
+              <StyledTableCell sortDirection={orderBy === 'idNoticia' ? order : false}>
                 <StyledTableSortLabel
-                  active={orderBy === 'idCita'}
-                  direction={orderBy === 'idCita' ? order : 'asc'}
-                  onClick={() => handleRequestSort('idCita')}
+                  active={orderBy === 'idNoticia'}
+                  direction={orderBy === 'idNoticia' ? order : 'asc'}
+                  onClick={() => handleRequestSort('idNoticia')}
                 >
-                  ID
-                </StyledTableSortLabel>
-              </StyledTableCell>
-              <StyledTableCell sortDirection={orderBy === 'tipo' ? order : false}>
-                <StyledTableSortLabel
-                  active={orderBy === 'tipo'}
-                  direction={orderBy === 'tipo' ? order : 'asc'}
-                  onClick={() => handleRequestSort('tipo')}
-                >
-                  Tipo
-                </StyledTableSortLabel>
-              </StyledTableCell>
-              <StyledTableCell sortDirection={orderBy === 'idDenuncia' ? order : false}>
-                <StyledTableSortLabel
-                  active={orderBy === 'idDenuncia'}
-                  direction={orderBy === 'idDenuncia' ? order : 'asc'}
-                  onClick={() => handleRequestSort('idDenuncia')}
-                >
-                  ID Denuncia
-                </StyledTableSortLabel>
-              </StyledTableCell>
-              <StyledTableCell sortDirection={orderBy === 'horario' ? order : false}>
-                <StyledTableSortLabel
-                  active={orderBy === 'horario'}
-                  direction={orderBy === 'horario' ? order : 'asc'}
-                  onClick={() => handleRequestSort('horario')}
-                >
-                  Horario
+                  ID Noticia
                 </StyledTableSortLabel>
               </StyledTableCell>
               <StyledTableCell sortDirection={orderBy === 'idUsuario' ? order : false}>
@@ -171,6 +218,24 @@ export default function VerNoticiasTable() {
                   onClick={() => handleRequestSort('idUsuario')}
                 >
                   ID Usuario
+                </StyledTableSortLabel>
+              </StyledTableCell>
+              <StyledTableCell sortDirection={orderBy === 'titulo' ? order : false}>
+                <StyledTableSortLabel
+                  active={orderBy === 'titulo'}
+                  direction={orderBy === 'titulo' ? order : 'asc'}
+                  onClick={() => handleRequestSort('titulo')}
+                >
+                  Título
+                </StyledTableSortLabel>
+              </StyledTableCell>
+              <StyledTableCell sortDirection={orderBy === 'descripcion' ? order : false}>
+                <StyledTableSortLabel
+                  active={orderBy === 'descripcion'}
+                  direction={orderBy === 'descripcion' ? order : 'asc'}
+                  onClick={() => handleRequestSort('descripcion')}
+                >
+                  Descripción
                 </StyledTableSortLabel>
               </StyledTableCell>
               <StyledTableCell sortDirection={orderBy === 'fecha' ? order : false}>
@@ -185,21 +250,59 @@ export default function VerNoticiasTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {finalSortedCitas.map((cita) => (
-              <StyledTableRow key={cita.idCita}>
-                <StyledTableCell component="th" scope="row">
-                  {cita.idCita}
-                </StyledTableCell>
-                <StyledTableCell>{cita.tipo}</StyledTableCell>
-                <StyledTableCell>{cita.idDenuncia}</StyledTableCell>
-                <StyledTableCell>{cita.horario}</StyledTableCell>
-                <StyledTableCell>{cita.idUsuario}</StyledTableCell>
-                <StyledTableCell>{formatFecha(cita.fecha)}</StyledTableCell>
+            {sortedNoticias.map((noticia) => (
+              <StyledTableRow key={noticia.idNoticia} onClick={() => handleRowClick(noticia)}>
+                <StyledTableCell>{noticia.idNoticia}</StyledTableCell>
+                <StyledTableCell>{noticia.idUsuario}</StyledTableCell>
+                <StyledTableCell>{noticia.titulo}</StyledTableCell>
+                <StyledTableCell>{noticia.descripcion}</StyledTableCell>
+                <StyledTableCell>{formatFecha(noticia.fecha)}</StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+      <Dialog open={open} onClose={() => setOpen(false)}>
+        <DialogTitle>{editing ? 'Editar Noticia' : 'Agregar Noticia'}</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            label="Título"
+            type="text"
+            fullWidth
+            value={titulo}
+            onChange={(e) => setTitulo(e.target.value)}
+          />
+          <TextareaAutosize
+            aria-label="minimum height"
+            minRows={12} // Ajusta este valor para aumentar el tamaño del área de texto
+            placeholder="Descripción"
+            style={{ width: '100%', marginTop: '10px', padding: '10px', fontSize:'17px', fontFamily:'Arial', resize: 'none',}} 
+            value={descripcion}
+            onChange={(e) => setDescripcion(e.target.value)}
+          />
+        </DialogContent>
+        <DialogActions sx={{marginRight:'15px'}}>
+          <Button onClick={() => setOpen(false)} sx={{color:'white' ,backgroundColor:'#8d1ed6b3', marginRight:'21px'}} >
+            Cancelar
+          </Button>
+          {editing ? (
+            <>
+              <Button onClick={handleUpdateNoticia} sx={{color:'white', backgroundColor:'#8d1ed6b3', marginRight:'21px'}} >
+                Actualizar
+              </Button>
+              <Button onClick={handleDeleteNoticia} sx={{color:'white', backgroundColor:'#8d1ed6b3'}}>
+                Eliminar
+              </Button>
+            </>
+          ) : (
+            <Button onClick={handleAddNoticia} color="primary">
+              Agregar
+            </Button>
+          )}
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

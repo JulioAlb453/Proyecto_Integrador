@@ -19,3 +19,16 @@
     flex-direction: column;
     min-height: 64.1vh;
   }
+
+  .MuiBox-root{
+    font-size: 20px;
+  }
+  .botonAdd {
+    color: black;
+    background-color: #8d1ed6b3;
+  }
+  
+  .botonAdd:hover {
+    background-color: #6616a1;
+  }
+  

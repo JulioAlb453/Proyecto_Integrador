@@ -1,11 +1,11 @@
 // services/noticias.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/noticias';
+const API_URL = 'http://localhost:3000/eventos';
 
-export const getAllNoticias = async () => {
+export const getAllEventos = async () => {
   try {
-    const response = await axios.get(`${API_URL}/getAllNoticias`, {
+    const response = await axios.get(`${API_URL}/getAllEventos`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -17,9 +17,9 @@ export const getAllNoticias = async () => {
 };
 
 
-export const addNoticia = async (noticia) => {
+export const addEvento = async (evento) => {
   try {
-    const response = await axios.post(`${API_URL}/addNoticia`, noticia, {
+    const response = await axios.post(`${API_URL}/addEvento`, evento, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -31,9 +31,9 @@ export const addNoticia = async (noticia) => {
   }
 };
 
-export const updateNoticia = async (idNoticia, noticia) => {
+export const updateEvento = async (idEvento, evento) => {
   try {
-    const response = await axios.put(`${API_URL}/updateNoticias/${idNoticia}`, noticia, {
+    const response = await axios.put(`${API_URL}/updateEvento/${idEvento}`, evento, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -45,9 +45,9 @@ export const updateNoticia = async (idNoticia, noticia) => {
   }
 };
 
-export const deleteNoticia = async (idNoticia) => {
+export const deleteEvento = async (idEvento) => {
   try {
-    const response = await axios.delete(`${API_URL}/deleteNoticias/${idNoticia}`, {
+    const response = await axios.delete(`${API_URL}/deleteEvento/${idEvento}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }

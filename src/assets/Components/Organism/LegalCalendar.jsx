@@ -101,6 +101,8 @@ function Calendar() {
                  <p>Horario: ${newBooking.horario}</p>
                  ${newBooking.idDenuncia ? `<p>ID de Denuncia: ${newBooking.idDenuncia}</p>` : ''}`,
         });
+        const citasData = await getAllCitasJuridicas(token);
+      setCitas(citasData);
       } catch (error) {
         Swal.fire('Error al agregar la cita: ' + error.message);
       }
