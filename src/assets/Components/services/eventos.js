@@ -31,9 +31,9 @@ export const addEvento = async (evento) => {
   }
 };
 
-export const updateEvento = async (idEvento, evento) => {
+export const updateEvento = async (idEventos, evento) => {
   try {
-    const response = await axios.put(`${API_URL}/updateEvento/${idEvento}`, evento, {
+    const response = await axios.put(`${API_URL}/updateEvento/${idEventos}`, evento, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -45,9 +45,9 @@ export const updateEvento = async (idEvento, evento) => {
   }
 };
 
-export const deleteEvento = async (idEvento) => {
+export const deleteEvento = async (idEventos) => {
   try {
-    const response = await axios.delete(`${API_URL}/deleteEvento/${idEvento}`, {
+    const response = await axios.delete(`${API_URL}/deleteEvento/${idEventos}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }

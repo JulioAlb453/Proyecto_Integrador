@@ -167,9 +167,11 @@ export default function VerEventosTable() {
         codigoPostal: '',
       });
       handleCloseDialog();
+      Swal.fire('Éxito', 'Evento agregado correctamente', 'success');
       const result = await getAllEventos();
       setEventos(result);
     } catch (error) {
+      Swal.fire('Error', 'Error agregando evento', 'error');
       console.error('Error adding evento:', error);
     }
   };
@@ -192,9 +194,9 @@ export default function VerEventosTable() {
   };
 
   // Función para eliminar un evento
-  const handleDeleteEvento = async (id) => {
+  const handleDeleteEvento = async (idEventos) => {
     try {
-      await deleteEvento(id);
+      await deleteEvento(idEventos);
       const result = await getAllEventos();
       setEventos(result);
     } catch (error) {
@@ -213,6 +215,9 @@ export default function VerEventosTable() {
 
   return (
     <div className="verEventosTable">
+      <Button onClick={() => setIsAddDialogOpen(true)} variant="contained" color="primary" sx={{width:'100px', position:'absolute', right:'210px', marginTop:'35px', backgroundColor:'#8d1ed6b3'}}>
+          Agregar
+        </Button>
       <TableContainer
         component={Paper}
         sx={{
@@ -231,9 +236,7 @@ export default function VerEventosTable() {
         className="tableContainer"
       >
         <h1>Eventos</h1>
-        <Button onClick={() => setIsAddDialogOpen(true)} variant="contained" color="primary">
-          Agregar Evento
-        </Button>
+        
         <Table aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -243,7 +246,7 @@ export default function VerEventosTable() {
                   direction={orderBy === 'idEventos' ? order : 'asc'}
                   onClick={() => handleRequestSort('idEventos')}
                 >
-                  ID Evento
+                  ID
                 </StyledTableSortLabel>
               </StyledTableCell>
               <StyledTableCell sortDirection={orderBy === 'fechaEvento' ? order : false}>
@@ -252,41 +255,16 @@ export default function VerEventosTable() {
                   direction={orderBy === 'fechaEvento' ? order : 'asc'}
                   onClick={() => handleRequestSort('fechaEvento')}
                 >
-                  Fecha del Evento
+                  Fecha Evento
                 </StyledTableSortLabel>
               </StyledTableCell>
-              <StyledTableCell sortDirection={orderBy === 'horario' ? order : false}>
-                <StyledTableSortLabel
-                  active={orderBy === 'horario'}
-                  direction={orderBy === 'horario' ? order : 'asc'}
-                  onClick={() => handleRequestSort('horario')}
-                >
-                  Horario
-                </StyledTableSortLabel>
-              </StyledTableCell>
-              <StyledTableCell sortDirection={orderBy === 'descripcion' ? order : false}>
-                <StyledTableSortLabel
-                  active={orderBy === 'descripcion'}
-                  direction={orderBy === 'descripcion' ? order : 'asc'}
-                  onClick={() => handleRequestSort('descripcion')}
-                >
-                  Descripción
-                </StyledTableSortLabel>
-              </StyledTableCell>
-              <StyledTableCell sortDirection={orderBy === 'finalInscripcion' ? order : false}>
-                <StyledTableSortLabel
-                  active={orderBy === 'finalInscripcion'}
-                  direction={orderBy === 'finalInscripcion' ? order : 'asc'}
-                  onClick={() => handleRequestSort('finalInscripcion')}
-                >
-                  Fecha Final Inscripción
-                </StyledTableSortLabel>
-              </StyledTableCell>
+              <StyledTableCell>Horario</StyledTableCell>
+              <StyledTableCell>Descripción</StyledTableCell>
+              <StyledTableCell>Final Inscripción</StyledTableCell>
               <StyledTableCell>Calle</StyledTableCell>
               <StyledTableCell>Colonia</StyledTableCell>
-              <StyledTableCell>Número Exterior</StyledTableCell>
-              <StyledTableCell>Código Postal</StyledTableCell>
-              <StyledTableCell>Acciones</StyledTableCell>
+              <StyledTableCell>Num Exterior</StyledTableCell>
+              <StyledTableCell>Codigo Postal</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -294,35 +272,23 @@ export default function VerEventosTable() {
               <StyledTableRow key={evento.idEventos} onClick={() => handleRowClick(evento)}>
                 <StyledTableCell>{evento.idEventos}</StyledTableCell>
                 <StyledTableCell>{formatFecha(evento.fechaEvento)}</StyledTableCell>
-                <StyledTableCell>{formatHora(evento.horario)}</StyledTableCell>
+                <StyledTableCell>{evento.horario}</StyledTableCell>
                 <StyledTableCell>{evento.descripcion}</StyledTableCell>
                 <StyledTableCell>{formatFecha(evento.finalInscripcion)}</StyledTableCell>
                 <StyledTableCell>{evento.calle}</StyledTableCell>
                 <StyledTableCell>{evento.colonia}</StyledTableCell>
                 <StyledTableCell>{evento.numExterior}</StyledTableCell>
                 <StyledTableCell>{evento.codigoPostal}</StyledTableCell>
-                <StyledTableCell>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleDeleteEvento(evento.idEventos);
-                    }}
-                  >
-                    Eliminar
-                  </Button>
-                </StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
 
-      <Dialog open={isAddDialogOpen} onClose={handleCloseDialog}>
-        <DialogTitle>Agregar Evento</DialogTitle>
+      {/* Diálogo para agregar evento */}
+      <Dialog open={isAddDialogOpen} onClose={handleCloseDialog} fullWidth maxWidth="sm">
+        <DialogTitle  >Agregar Evento</DialogTitle>
         <DialogContent>
-          {/* Fecha del Evento (date) */}
           <TextField
             label="Fecha del Evento"
             type="date"
@@ -331,8 +297,10 @@ export default function VerEventosTable() {
             onChange={(e) => handleInputChange(e, setNewEvento)}
             fullWidth
             margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
-          {/* Horario (time) */}
           <TextField
             label="Horario"
             type="time"
@@ -341,8 +309,10 @@ export default function VerEventosTable() {
             onChange={(e) => handleInputChange(e, setNewEvento)}
             fullWidth
             margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
-          {/* Descripción */}
           <TextField
             label="Descripción"
             name="descripcion"
@@ -351,17 +321,18 @@ export default function VerEventosTable() {
             fullWidth
             margin="normal"
           />
-          {/* Fecha Final Inscripción (date) */}
           <TextField
-            label="Fecha Final Inscripción"
+            label="Final Inscripción"
             type="date"
             name="finalInscripcion"
             value={newEvento.finalInscripcion}
             onChange={(e) => handleInputChange(e, setNewEvento)}
             fullWidth
             margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
-          {/* Calle */}
           <TextField
             label="Calle"
             name="calle"
@@ -370,7 +341,6 @@ export default function VerEventosTable() {
             fullWidth
             margin="normal"
           />
-          {/* Colonia */}
           <TextField
             label="Colonia"
             name="colonia"
@@ -379,16 +349,14 @@ export default function VerEventosTable() {
             fullWidth
             margin="normal"
           />
-          {/* Número Exterior */}
           <TextField
-            label="Número Exterior"
+            label="Num Exterior"
             name="numExterior"
             value={newEvento.numExterior}
             onChange={(e) => handleInputChange(e, setNewEvento)}
             fullWidth
             margin="normal"
           />
-          {/* Código Postal */}
           <TextField
             label="Código Postal"
             name="codigoPostal"
@@ -398,91 +366,10 @@ export default function VerEventosTable() {
             margin="normal"
           />
           <Button onClick={handleAddEvento} variant="contained" color="primary">
-            Agregar
+            Guardar
           </Button>
-        </DialogContent>
-      </Dialog>
-
-      <Dialog open={isEditDialogOpen} onClose={handleCloseDialog}>
-        <DialogTitle>Editar Evento</DialogTitle>
-        <DialogContent>
-          {/* Fecha del Evento (date) */}
-          <TextField
-            label="Fecha del Evento"
-            type="date"
-            name="fechaEvento"
-            value={editEvento.fechaEvento}
-            onChange={(e) => handleInputChange(e, setEditEvento)}
-            fullWidth
-            margin="normal"
-          />
-          {/* Horario (time) */}
-          <TextField
-            label="Horario"
-            type="time"
-            name="horario"
-            value={editEvento.horario}
-            onChange={(e) => handleInputChange(e, setEditEvento)}
-            fullWidth
-            margin="normal"
-          />
-          {/* Descripción */}
-          <TextField
-            label="Descripción"
-            name="descripcion"
-            value={editEvento.descripcion}
-            onChange={(e) => handleInputChange(e, setEditEvento)}
-            fullWidth
-            margin="normal"
-          />
-          {/* Fecha Final Inscripción (date) */}
-          <TextField
-            label="Fecha Final Inscripción"
-            type="date"
-            name="finalInscripcion"
-            value={editEvento.finalInscripcion}
-            onChange={(e) => handleInputChange(e, setEditEvento)}
-            fullWidth
-            margin="normal"
-          />
-          {/* Calle */}
-          <TextField
-            label="Calle"
-            name="calle"
-            value={editEvento.calle}
-            onChange={(e) => handleInputChange(e, setEditEvento)}
-            fullWidth
-            margin="normal"
-          />
-          {/* Colonia */}
-          <TextField
-            label="Colonia"
-            name="colonia"
-            value={editEvento.colonia}
-            onChange={(e) => handleInputChange(e, setEditEvento)}
-            fullWidth
-            margin="normal"
-          />
-          {/* Número Exterior */}
-          <TextField
-            label="Número Exterior"
-            name="numExterior"
-            value={editEvento.numExterior}
-            onChange={(e) => handleInputChange(e, setEditEvento)}
-            fullWidth
-            margin="normal"
-          />
-          {/* Código Postal */}
-          <TextField
-            label="Código Postal"
-            name="codigoPostal"
-            value={editEvento.codigoPostal}
-            onChange={(e) => handleInputChange(e, setEditEvento)}
-            fullWidth
-            margin="normal"
-          />
-          <Button onClick={handleUpdateEvento} variant="contained" color="primary">
-            Actualizar
+          <Button onClick={handleCloseDialog} variant="outlined" color="secondary" style={{ marginLeft: '10px' }}>
+            Cancelar
           </Button>
         </DialogContent>
       </Dialog>

@@ -1,48 +1,54 @@
 // src/Organisms/EventSectionOrganism.js
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import Navbar from '../Molecule/Navbar';
 import Footer from '../Molecule/Footer';
-import EventData from '../Atoms/EventData';
-import '../Styles/organism/EventSection.css'; // Asegúrate de crear este archivo de estilos
+import TitleNews from "../Atoms/TitleNews";// Asegúrate de que la ruta sea correcta
+import { getAllEventos } from "../services/eventos";
+import '../Styles/Page/SeccionNoticias.css';
 
-const events = [
-  {
-    title: "Evento 1",
-    date: "01/09/2024",
-    location: "Auditorio Principal",
-    description: "Descripción del evento 1.",
-    imgSrc: "https://www.capital21.cdmx.gob.mx/noticias/wp-content/uploads/2023/03/tiempodemujeres.jpg",
-    imgAlt: "Evento 1",
-  },
-  {
-    title: "Evento 2",
-    date: "15/09/2024",
-    location: "Sala de Conferencias",
-    description: "Descripción del evento 2.",
-    imgSrc: "https://sn.gob.mx/wp-content/uploads/2020/05/MUJER-SOBRE-RUEDA3-1024x683-1.jpg",
-    imgAlt: "Evento 2",
-  },
-  // Agrega más eventos según sea necesario
-];
+const EventSectionOrganism = () => {
+  const [eventItems, setEventItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-function EventSectionOrganism() {
+  useEffect(() => {
+    getAllEventos()
+      .then(data => {
+        setEventItems(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        setError('Error al cargar los eventos');
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <p>Cargando eventos...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
   return (
     <div className="app-container">
       <header className="navbar-container">
         <Navbar />
       </header>
-      <main className="event-section-container">
-        <div className="event-section-organism">
-          {events.map((event, index) => (
-            <EventData
-              key={index}
-              title={event.title}
-              date={event.date}
-              location={event.location}
-              description={event.description}
-              imgSrc={event.imgSrc}
-              imgAlt={event.imgAlt}
-            />
+      <main className="news-section-container">
+        <div className="news-section-organism">
+          {eventItems.map((eventItem, index) => (
+            <div key={index} className="news-item">
+              <div className="content">
+                <TitleNews title={eventItem.titulo} className="title" />
+                <p className="text">{eventItem.descripcion}</p>
+                <p className="date">Fecha del Evento: {new Date(eventItem.fechaEvento).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                <p className="time">Horario: {eventItem.horario}</p>
+                <p className="address">Dirección: {eventItem.calle}, {eventItem.colonia}, {eventItem.numExterior}, {eventItem.codigoPostal}</p>
+                <p className="inscription">Fin de Inscripción: {new Date(eventItem.finalInscripcion).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+              </div>
+            </div>
           ))}
         </div>
       </main>
